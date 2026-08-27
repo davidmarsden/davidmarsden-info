@@ -1,0 +1,12 @@
+# Raw Micro.blog exports and archives
+*.bar
+*.zip
+
+# Exported content/data are preserved separately, not maintained here
+content/
+data/
+
+# Generated/site-build output
+public/
+resources/
+.DS_Store
