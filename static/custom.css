@@ -1,0 +1,31 @@
+:root {
+	--background: #FFF;
+	--primary: #DA291C;
+	--secondary: #fafafa;
+	--tertiary: #e4e4e4;
+	--accent: #FBE122;
+	--text-color: #000;
+	--black: #000;
+	--white: #fff;
+	--font-primary: 'Atkinson Hyperlegible';
+	--font-secondary: 'Inter';
+	--alert: #FFE4E1;
+	--alert-accent: #FFDAB9;
+	--note: #FFF9DB;
+	--note-accent: #D2B48C;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000;
+    --primary: #DA291C;
+    --secondary: #fafafa;
+    --tertiary: #e4e4e4;
+    --accent: #4169E1;
+    --text-color: #FBE122;
+    --alert: #FFE4E1;
+    --alert-accent: #FFDAB9;
+    --note: #FFF9DB;
+    --note-accent: #D2B48C;
+  }
+}
