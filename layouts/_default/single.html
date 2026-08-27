@@ -1,0 +1,65 @@
+{{ define "main" }}
+{{ if eq .RelPermalink "/blog/" }}
+<div class="archive h-feed Blog">
+  <h2 class="p-name category-title">Blog</h2>
+  <div>
+    <p>Personal posts, newest first.</p>
+    <hr>
+  </div>
+
+  <div class="post_list" role="main">
+    {{ $posts := where .Site.RegularPages.ByDate.Reverse "Type" "post" }}
+    {{ $paginator := .Paginate $posts }}
+    {{ range $paginator.Pages }}
+    <div class="post-preview h-entry {{ range .Params.categories }} {{ . | urlize | lower }}{{ end }}">
+      {{ if .Title }}
+        <h2 class="post-title p-name"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        <div class="post-date-wrapper">
+          <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ partial "dateformat/short" . }}</time>
+        </div>
+        {{ if in .RawContent "<!--more-->" }}
+          <div class="p-summary">
+            {{ $splitContents := split .RawContent "<!--more-->" }}
+            {{ $summary := index $splitContents 0 }}
+            {{ $summary = replaceRE "\\[\\^.*?\\]" "" $summary }}
+            {{ $summary = replaceRE "\\n\\[\\^.*?\\]:.*" "" $summary }}
+            <p>{{ $summary | markdownify }}</p>
+            <p><a class="read-more" href="{{ .Permalink }}"><button>{{ T "Read more" }} →</button></a></p>
+          </div>
+        {{ else }}
+          <div class="e-content with-title">{{ .Content }}</div>
+        {{ end }}
+      {{ else }}
+        <div class="post-date-wrapper">
+          <a href="{{ .Permalink }}" class="post-date u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ partial "dateformat/short" . }}</time></a>
+        </div>
+        <div class="e-content without-title">{{ .Content }}</div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+<div class="post-nav">
+  {{ if $paginator.HasPrev }}
+  <span class="prev"><a href="{{ $paginator.Prev.URL }}" title="Previous Page"><button>← {{ T "Newer" }}</button></a></span>
+  {{ end }}
+  {{ if $paginator.HasNext }}
+  <span class="next"><a href="{{ $paginator.Next.URL }}"><button>{{ T "Older" }} →</button></a></span>
+  {{ end }}
+</div>
+{{ else }}
+<div class="page">
+  {{ if .Title }}
+  <h2 class="p-name post-title">{{ .Title }}</h2>
+  {{ else }}
+  <h2 class="p-name post-title">{{ T "Quick update" }}</h2>
+  {{ end }}
+  {{ if .Params.reply_to_url }} <a href="{{ .Permalink }}" class="post-date u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ partial "dateformat/short" . }}</time> ∞</a>
+  <div class="reply-to"> {{ T "Replying to" }}: {{ if eq .Params.reply_to_hostname "micro.blog" }} <a href="{{ .Params.reply_to_url }}" class="u-in-reply-to">@{{ .Params.reply_to_username }}</a> {{ else }} <a href="{{ .Params.reply_to_url }}" class="u-in-reply-to">{{ .Params.reply_to_hostname }}</a> {{ end }} </div> {{ end }}
+  <article class="post-content">
+    {{ .Content }}
+  </article>
+</div>
+{{ end }}
+{{ end }}
