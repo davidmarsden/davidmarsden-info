@@ -8,8 +8,7 @@
 
   <div class="post_list" role="main">
     {{ $posts := where .Site.RegularPages.ByDate.Reverse "Type" "post" }}
-    {{ $paginator := .Paginate $posts }}
-    {{ range $paginator.Pages }}
+    {{ range first 20 $posts }}
       <div class="post-preview h-entry {{ range .Params.categories }} {{ . | urlize | lower }}{{ end }}">
         {{ if .Title }}
           <h2 class="post-title p-name"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
@@ -39,12 +38,5 @@
   </div>
 </div>
 
-<div class="post-nav">
-  {{ if $paginator.HasPrev }}
-    <span class="prev"><a href="{{ $paginator.Prev.URL }}" title="Previous Page"><button>← {{ T "Newer" }}</button></a></span>
-  {{ end }}
-  {{ if $paginator.HasNext }}
-    <span class="next"><a href="{{ $paginator.Next.URL }}"><button>{{ T "Older" }} →</button></a></span>
-  {{ end }}
-</div>
+<p class="view-all"><a href="{{ "archive/" | relURL }}">View the full archive →</a></p>
 {{ end }}
