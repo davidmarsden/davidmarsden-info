@@ -1,0 +1,27 @@
+{
+  "_note": "Redacted reference snapshot derived from the Micro.blog theme-and-Markdown export on 2026-08-27. This is documentation, not a deployment config. Email addresses, generated IDs/timestamps, feed details and other account-specific values are intentionally omitted.",
+  "title": "David Marsden",
+  "baseURL": "https://davidmarsden.info/",
+  "languageCode": "en",
+  "defaultContentLanguage": "en",
+  "paginate": 10,
+  "rssLimit": 25,
+  "uglyURLs": false,
+  "enableRobotsTXT": true,
+  "pluralizeListTitles": false,
+  "author": {
+    "name": "David Marsden",
+    "username": "davidmarsden",
+    "activitypub": {
+      "username": "david@davidmarsden.info",
+      "url": "https://davidmarsden.info/activitypub/david"
+    }
+  },
+  "params": {
+    "microposts_count": 1,
+    "longform_count": 5,
+    "include_conversation": true,
+    "sidebar_show_on_posts": true,
+    "sidebar_show_on_pages": true
+  }
+}
