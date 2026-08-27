@@ -1,8 +1,127 @@
 {{ define "main" }}
-<div class="homepage-hub-proof">
-  <h2>David Marsden</h2>
-  <p>Homepage hub architecture proof.</p>
-  <p>This deliberately plain page confirms that the site root can be separated from the chronological post stream.</p>
-  <p><a href="{{ "blog/" | relURL }}">View the blog →</a></p>
-</div>
+<main class="hub-home">
+  <section class="hub-hero" aria-labelledby="hub-title">
+    <p class="hub-kicker">David Marsden</p>
+    <h1 id="hub-title">Writing, investigating, building things and occasionally making a racket.</h1>
+    <p class="hub-intro">I write about local democracy and place, build online communities and odd little web projects, make music with Hovercraft, and have spent an unreasonable number of years running multiplayer football worlds.</p>
+    <p class="hub-intro hub-intro-last">This is the front door to all of it.</p>
+    <p class="hub-primary-link"><a href="{{ "blog/" | relURL }}">Read my personal blog →</a></p>
+  </section>
+
+  <section class="hub-section" aria-labelledby="writing-heading">
+    <div class="hub-section-heading">
+      <p class="hub-section-number">01</p>
+      <h2 id="writing-heading">Writing &amp; local democracy</h2>
+    </div>
+
+    <article class="hub-project hub-project-featured">
+      <p class="hub-label">Investigative citizen journalism</p>
+      <h3><a href="https://southallstories.uk/">Southall Stories</a></h3>
+      <p>Local democracy, planning, environment, housing, accountability and the things people would rather you didn’t notice — from Southall and across Ealing.</p>
+      <p class="hub-project-link"><a href="https://southallstories.uk/">Visit Southall Stories →</a></p>
+    </article>
+
+    <div class="hub-project-grid">
+      <article class="hub-project">
+        <p class="hub-label">Civic infrastructure</p>
+        <h3><a href="https://commons.southallstories.uk/">Ealing Civic Commons</a></h3>
+        <p>An open civic information project for gathering, organising and sharing what is happening to Ealing.</p>
+        <p class="hub-status">Incubated by Southall Stories.</p>
+      </article>
+
+      <article class="hub-project">
+        <p class="hub-label">Personal writing</p>
+        <h3><a href="{{ "blog/" | relURL }}">Blog</a></h3>
+        <p>Notes, observations, photos, family life, music, politics, technology and whatever else has caught my attention.</p>
+        <p class="hub-project-link"><a href="{{ "blog/" | relURL }}">Latest posts →</a></p>
+      </article>
+    </div>
+  </section>
+
+  <section class="hub-section" aria-labelledby="football-heading">
+    <div class="hub-section-heading">
+      <p class="hub-section-number">02</p>
+      <h2 id="football-heading">Football worlds</h2>
+    </div>
+    <p class="hub-section-intro">I’ve been running online multiplayer football-management communities for more than thirty years. These are the worlds, archives and tools that have grown out of them.</p>
+
+    <div class="hub-project-grid">
+      <article class="hub-project">
+        <p class="hub-label">Community</p>
+        <h3><a href="https://smtop100.blog/">SM Top 100</a></h3>
+        <p>The original multiplayer Soccer Manager community: five divisions, promotion, relegation, cups, rivalries, statistics and an alarming amount of history.</p>
+      </article>
+
+      <article class="hub-project">
+        <p class="hub-label">Community</p>
+        <h3><a href="https://top100regen.website/">Top 100 Regen</a></h3>
+        <p>A second-generation multiplayer football world and community.</p>
+      </article>
+
+      <article class="hub-project">
+        <p class="hub-label">In development</p>
+        <h3><a href="https://thebeautifulgame.online/">The Beautiful Game</a></h3>
+        <p>A new multiplayer online football-management application.</p>
+      </article>
+
+      <article class="hub-project">
+        <p class="hub-label">Data</p>
+        <h3><a href="https://thepinkfinal.online/">The Pink Final</a></h3>
+        <p>The companion club and player database for The Beautiful Game.</p>
+      </article>
+    </div>
+
+    <article class="hub-project hub-project-archive">
+      <p class="hub-label">From the archive</p>
+      <h3><a href="https://onejimmycarter.blogspot.co.uk/">One Jimmy Carter</a></h3>
+      <p>My old football blog. Kept online largely because the internet ought to remember things.</p>
+    </article>
+  </section>
+
+  <section class="hub-section hub-music" aria-labelledby="music-heading">
+    <div class="hub-section-heading">
+      <p class="hub-section-number">03</p>
+      <h2 id="music-heading">Music</h2>
+    </div>
+    <article class="hub-project hub-project-featured">
+      <p class="hub-label">Punk music · 1995 → now</p>
+      <h3 class="hub-hovercraft"><a href="https://hovercraft.band/">HOVERCRAFT</a></h3>
+      <p>A punk band formed in Grimsby in the mid-1990s, resurrected thirty years later with unfinished songs, old recordings, new technology and unfinished business.</p>
+      <p class="hub-project-link"><a href="https://hovercraft.band/">Music, artwork and archive →</a></p>
+    </article>
+  </section>
+
+  <section class="hub-section" aria-labelledby="build-heading">
+    <div class="hub-section-heading">
+      <p class="hub-section-number">04</p>
+      <h2 id="build-heading">Things I build</h2>
+    </div>
+
+    <article class="hub-project hub-project-featured">
+      <p class="hub-label">Experiment / open-source tool</p>
+      <h3>Handwritten Publish</h3>
+      <p class="hub-tagline">From paper to web at the push of a pen.</p>
+      <p>A handwriting-to-web publishing tool inspired by my reMarkable workflow: write by hand, send it, publish it.</p>
+      <p class="hub-status">In development.</p>
+    </article>
+  </section>
+
+  <section class="hub-section hub-about" aria-labelledby="about-heading">
+    <div class="hub-section-heading">
+      <p class="hub-section-number">05</p>
+      <h2 id="about-heading">About</h2>
+    </div>
+    <p>I’m based in Southall, west London. I’m an investigative journalist, community researcher, web tinkerer, former-and-apparently-current-again punk musician, and administrator of online football worlds that should probably have died decades ago but stubbornly refuse to.</p>
+    <p>Much of my current writing concerns local government, development, environment and community power in Southall and Ealing.</p>
+    <p>By day I work in charity administration and project development at <a href="https://kingscentresouthall.org.uk/">King’s Centre Southall</a>.</p>
+    <p class="hub-disclaimer">This is my personal website. The views, writing and projects here are my own unless explicitly stated otherwise.</p>
+  </section>
+
+  <nav class="hub-footer-links" aria-label="Personal site links">
+    <a href="{{ "blog/" | relURL }}">Blog</a>
+    <a href="{{ "archive/" | relURL }}">Archive</a>
+    <a href="{{ "feed.xml" | relURL }}">RSS</a>
+    <a href="https://github.com/davidmarsden">GitHub</a>
+  </nav>
+</main>
 {{ end }}
