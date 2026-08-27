@@ -1,0 +1,12 @@
+<!-- Some normal HTML -->
+<div class="sidebar-item">
+  <p></p>
+</div>
+
+<!-- Your blogroll recommendations -->
+{{ partial "sidebar-widgets/recommendations.html" . }}
+
+<!-- Another blogroll lists, this one for other links -->
+{{ partial "sidebar-widgets/links.html" (dict
+    "title" "Links"
+    "links" (index .Site.Data.blogrolls "other-links"))}}
