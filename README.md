@@ -1,47 +1,33 @@
 # davidmarsden.info
 
-Version-controlled customisations and implementation notes for [davidmarsden.info](https://davidmarsden.info/), a Micro.blog site using the Bayou theme.
+Version-controlled customisation layer for David Marsden's personal Micro.blog site at [davidmarsden.info](https://davidmarsden.info/).
 
 ## Purpose
 
-This repository records the parts of the site that are deliberately customised, together with enough documentation to understand, reproduce, test, and safely change them.
+The repository records the site's deliberate Hugo/Micro.blog overrides, project documentation, and implementation history. It does **not** mirror every exported post or every upstream Bayou/plugin file.
 
-It is **not** a full copy of the Micro.blog export, the Bayou theme, installed plug-ins, or the site's post archive.
+## Base setup
 
-## Current baseline
-
-Captured: 2026-08-27
-
-- Hosting/publishing: Micro.blog
+- Host: Micro.blog
 - Base theme: Bayou 1.2.4 by Matt Langford
 - Hugo: 0.91
-- Primary domain: `davidmarsden.info`
-- Micro.blog/Fediverse identity: retained on the existing domain
+- Primary social/blog domain: `davidmarsden.info`
 
-The baseline was taken from Micro.blog's **Export theme and Markdown** ZIP before work began on a new personal homepage/hub.
+See `docs/CURRENT-SETUP.md` and `docs/PLUGINS.md` for the preserved baseline.
 
-## What is version controlled here
+## Homepage work
 
-Only local overrides and project documentation are maintained here. The upstream Bayou theme and plug-in-generated files remain dependencies rather than being copied into this repository.
+The `homepage-hub` branch is the active redesign branch. It now contains:
 
-Current local overrides:
+- a custom personal hub at `/`;
+- a custom content type for `/blog/`;
+- a latest-posts blog page linking through to the full archive;
+- homepage styling in `static/custom.css`.
 
-- `static/custom.css`
-- `layouts/_default/baseof.html`
-- `layouts/partials/microhook-head.html`
-- `layouts/partials/microhook-intro.html`
-- `layouts/partials/sidebar.html`
+The architecture was tested successfully on `davidmarsden-test.micro.blog` before the full homepage design was added.
 
-See `docs/CURRENT-SETUP.md` for the baseline inventory and `docs/PLUGINS.md` for installed plug-ins.
+## Safety / rollback
 
-## Planned work
+The branch `pre-homepage-redesign-2026-08-27` preserves the known-good pre-redesign state.
 
-The next phase is to make `davidmarsden.info` the front door to David's various sites and projects while preserving the existing Micro.blog domain, social identity, post URLs, feeds, and archive.
-
-Development should happen on a branch and be tested on a Micro.blog test/preview blog before changes are applied to the live site.
-
-See `docs/HOMEPAGE-PLAN.md`.
-
-## Backups
-
-The raw Micro.blog export ZIP and `.bar` archive should be kept separately as preservation backups. They are intentionally not committed here.
+Raw Micro.blog exports are intentionally kept outside this repository.

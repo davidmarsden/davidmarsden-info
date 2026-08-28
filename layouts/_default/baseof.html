@@ -52,11 +52,14 @@
 
     <nav class="site-nav">
       <ul>
+        <li><a class="page-link Blog" href="{{ "blog/" | relURL }}">Blog</a></li>
         {{ range .Site.Menus.main }}
+        {{ if and (ne .Name "Blog") (ne .Name "Replies") }}
         {{ if .Page.Params.redirect_url }}
         <li><a class="page-link {{ .Name }}" href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a></li>
         {{ else }}
         <li><a class="page-link {{ .Name }}" href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
+        {{ end }}
         {{ end }}
         {{ end }}
       </ul>

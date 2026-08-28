@@ -29,3 +29,192 @@
     --note-accent: #D2B48C;
   }
 }
+
+/* davidmarsden.info hub homepage */
+.hub-home {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.hub-home a {
+  text-underline-offset: 0.15em;
+}
+
+.hub-hero {
+  padding: 1.25rem 0 3rem;
+}
+
+.hub-kicker,
+.hub-label,
+.hub-section-number {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-secondary), sans-serif;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hub-kicker,
+.hub-section-number {
+  color: var(--primary);
+}
+
+.hub-hero h1 {
+  max-width: 46rem;
+  margin: 0 0 1.4rem;
+  font-size: clamp(2.05rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.032em;
+}
+
+.hub-intro {
+  max-width: 44rem;
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.05rem, 2.3vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.hub-intro-last {
+  font-weight: 700;
+}
+
+.hub-primary-link {
+  margin-top: 1.5rem;
+  font-weight: 700;
+}
+
+.hub-section {
+  padding: 2.6rem 0 2.9rem;
+  border-top: 2px solid var(--tertiary);
+}
+
+.hub-section-heading {
+  margin-bottom: 1.35rem;
+}
+
+.hub-section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.hub-section-intro {
+  max-width: 44rem;
+  margin: -0.35rem 0 1.7rem;
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.hub-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.hub-project {
+  padding: 1.25rem 0;
+}
+
+.hub-project-grid .hub-project {
+  padding: 1.25rem;
+  border: 1px solid var(--tertiary);
+}
+
+.hub-project-featured {
+  max-width: 46rem;
+  padding: 1.45rem 0 1rem;
+}
+
+.hub-project h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.55rem;
+  line-height: 1.15;
+}
+
+.hub-project h3 a {
+  color: inherit;
+}
+
+.hub-project p {
+  margin: 0.4rem 0 0;
+  line-height: 1.52;
+}
+
+.hub-label {
+  color: var(--primary);
+}
+
+.hub-project-link,
+.hub-status {
+  font-size: 0.95rem;
+}
+
+.hub-status {
+  opacity: 0.72;
+  font-style: italic;
+}
+
+.hub-project-archive {
+  margin-top: 1rem;
+  padding-top: 1.35rem;
+  border-top: 1px dashed var(--tertiary);
+}
+
+.hub-hovercraft {
+  font-size: clamp(2.4rem, 7vw, 5rem) !important;
+  letter-spacing: -0.045em;
+}
+
+.hub-tagline {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.hub-about > p {
+  max-width: 46rem;
+  margin: 0 0 1.1rem;
+  font-size: 1.04rem;
+  line-height: 1.65;
+}
+
+.hub-disclaimer {
+  margin-top: 1.55rem !important;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--tertiary);
+  font-size: 0.92rem !important;
+  opacity: 0.78;
+}
+
+.hub-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.25rem;
+  padding: 1.25rem 0 3.25rem;
+  border-top: 2px solid var(--tertiary);
+  font-weight: 700;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hub-kicker,
+  .hub-label,
+  .hub-section-number {
+    color: var(--white);
+  }
+}
+
+@media (max-width: 700px) {
+  .hub-project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hub-hero {
+    padding-top: 0.65rem;
+  }
+
+  .hub-section {
+    padding: 2.1rem 0 2.35rem;
+  }
+}
