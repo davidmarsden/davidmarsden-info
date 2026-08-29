@@ -2,6 +2,18 @@
 
 Significant changes to the site customisation layer are recorded here.
 
+## 2026-08-29
+
+### Homepage v1 live and sidebar removed
+
+- Confirmed the new personal hub design is live at `davidmarsden.info`.
+- Corrected homepage copy to **Helping Hand** and **The Kings Centre Southall**.
+- Removed the local `layouts/partials/sidebar.html` override.
+- Removed **Sidebar for Bayou 1.0.0** after confirming that it independently injected the remaining blogroll/recommendations sidebar.
+- Kept **Blogroll shortcode 1.2.2** for the dedicated `/blogroll/` page; the shortcode itself only renders where explicitly placed.
+- Documented the distinction between the Blogroll shortcode and Sidebar for Bayou plug-ins in `docs/PLUGINS.md`.
+- Discovered that `davidmarsden.info` and `davidmarsden-test.micro.blog` were using the same custom Bayou theme, so theme edits affected both sites. The test blog should not be treated as isolated staging until it has its own cloned custom theme.
+
 ## 2026-08-28
 
 ### Homepage hub v1 approved for live deployment
