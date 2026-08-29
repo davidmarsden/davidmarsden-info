@@ -9,15 +9,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const landscapes = [];
 
     images.forEach((img) => {
-      img.classList.remove("is-featured-landscape");
+      img.classList.remove("is-featured-landscape", "is-featured-panorama");
       if (!img.naturalWidth || !img.naturalHeight) return;
 
       const ratio = img.naturalWidth / img.naturalHeight;
+
+      if (ratio >= 1.8) {
+        img.classList.add("is-featured-panorama");
+        return;
+      }
+
       if (ratio >= 1.35) landscapes.push(img);
     });
 
     landscapes.forEach((img, index) => {
-      if (index % 5 === 0) img.classList.add("is-featured-landscape");
+      if (index % 3 === 0) img.classList.add("is-featured-landscape");
     });
   };
 
