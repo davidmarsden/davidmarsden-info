@@ -7,8 +7,6 @@
   gap: 1.15rem;
 }
 
-/* Micro.blog's collection plug-in applies thumbnail sizes in its own CSS.
-   Force collection images to fill our grid cells so the gallery remains large. */
 .photo-showcase-gallery .microblog_collection img {
   width: 100% !important;
   height: auto !important;
@@ -16,11 +14,8 @@
   margin: 0 !important;
 }
 
-.photo-showcase-gallery .microblog_collection a.is-featured-landscape {
+.photo-showcase-gallery .microblog_collection img.is-featured-landscape {
   grid-column: span 2;
-}
-
-.photo-showcase-gallery .microblog_collection a.is-featured-landscape img {
   width: 100% !important;
   height: 100% !important;
   aspect-ratio: 16 / 10;
@@ -36,17 +31,14 @@
     gap: 0.9rem;
   }
 
-  .photo-showcase-gallery .microblog_collection a.is-featured-landscape {
+  .photo-showcase-gallery .microblog_collection img.is-featured-landscape {
     grid-column: span 2;
   }
 }
 
 @media (max-width: 460px) {
-  .photo-showcase-gallery .microblog_collection a.is-featured-landscape {
+  .photo-showcase-gallery .microblog_collection img.is-featured-landscape {
     grid-column: auto;
-  }
-
-  .photo-showcase-gallery .microblog_collection a.is-featured-landscape img {
     height: auto !important;
     aspect-ratio: auto;
     object-fit: contain;

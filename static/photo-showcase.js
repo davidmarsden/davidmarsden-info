@@ -2,27 +2,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const gallery = document.querySelector(".photo-showcase-gallery .microblog_collection");
   if (!gallery) return;
 
-  const items = Array.from(gallery.querySelectorAll("a")).filter((item) => item.querySelector("img"));
-  if (!items.length) return;
+  const images = Array.from(gallery.querySelectorAll("img"));
+  if (!images.length) return;
 
   const classify = () => {
     const landscapes = [];
 
-    items.forEach((item) => {
-      item.classList.remove("is-featured-landscape");
-      const img = item.querySelector("img");
-      if (!img || !img.naturalWidth || !img.naturalHeight) return;
+    images.forEach((img) => {
+      img.classList.remove("is-featured-landscape");
+      if (!img.naturalWidth || !img.naturalHeight) return;
 
       const ratio = img.naturalWidth / img.naturalHeight;
-      if (ratio >= 1.35) landscapes.push(item);
+      if (ratio >= 1.35) landscapes.push(img);
     });
 
-    landscapes.forEach((item, index) => {
-      if (index % 5 === 0) item.classList.add("is-featured-landscape");
+    landscapes.forEach((img, index) => {
+      if (index % 5 === 0) img.classList.add("is-featured-landscape");
     });
   };
 
-  const images = items.map((item) => item.querySelector("img"));
   let waiting = images.filter((img) => !img.complete).length;
 
   if (!waiting) {
