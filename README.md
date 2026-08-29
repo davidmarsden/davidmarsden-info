@@ -15,6 +15,10 @@ The repository records the site's deliberate Hugo/Micro.blog overrides, project 
 
 See `docs/CURRENT-SETUP.md` and `docs/PLUGINS.md` for the preserved baseline.
 
+## Roadmap
+
+See `docs/ROADMAP.md` for the current site-development plan. Phase 1 (Favourite Photos) is complete; Phase 2 covers core navigation plus the About and Archive revamps.
+
 ## Homepage work
 
 The `homepage-hub` branch is the active redesign branch. It now contains:
