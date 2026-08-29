@@ -1,0 +1,88 @@
+.about-page {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.about-page-header {
+  padding: 1rem 0 2rem;
+}
+
+.about-page-kicker,
+.about-page-explore-label {
+  margin: 0 0 0.45rem;
+  color: var(--primary);
+  font-family: var(--font-secondary), sans-serif;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.about-page-header h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.about-page-content {
+  max-width: 46rem;
+}
+
+.about-page-content > p:first-child {
+  margin-top: 0;
+  font-size: clamp(1.08rem, 2.3vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.about-page-content h2 {
+  margin: 2.8rem 0 0.8rem;
+  padding-top: 2.2rem;
+  border-top: 2px solid var(--tertiary);
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.about-page-content p,
+.about-page-content li {
+  font-size: 1.04rem;
+  line-height: 1.65;
+}
+
+.about-page-content ul {
+  padding-left: 1.2rem;
+}
+
+.about-page-content a {
+  text-underline-offset: 0.15em;
+}
+
+.about-page-content strong {
+  font-weight: 800;
+}
+
+.about-page-explore {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.25rem;
+  margin-top: 3rem;
+  padding: 1.4rem 0 3rem;
+  border-top: 2px solid var(--tertiary);
+  font-weight: 700;
+}
+
+.about-page-explore-label {
+  flex-basis: 100%;
+}
+
+@media (max-width: 640px) {
+  .about-page-header {
+    padding-top: 0.4rem;
+  }
+
+  .about-page-content h2 {
+    margin-top: 2.2rem;
+    padding-top: 1.8rem;
+  }
+}
