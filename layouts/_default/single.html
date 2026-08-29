@@ -1,0 +1,35 @@
+{{ define "main" }}
+{{ if eq .RelPermalink "/about/" }}
+<main class="about-page">
+  <header class="about-page-header">
+    <p class="about-page-kicker">About</p>
+    <h1>{{ .Title }}</h1>
+  </header>
+
+  <article class="about-page-content">
+    {{ .Content }}
+  </article>
+
+  <nav class="about-page-explore" aria-label="Explore David Marsden's site">
+    <p class="about-page-explore-label">Explore</p>
+    <a href="{{ "blog/" | relURL }}">Blog</a>
+    <a href="{{ "photos/" | relURL }}">Favourite photos</a>
+    <a href="{{ "library/" | relURL }}">Library</a>
+    <a href="{{ "archive/" | relURL }}">Archive</a>
+  </nav>
+</main>
+{{ else }}
+<div class="page">
+  {{ if .Title }}
+  <h2 class="p-name post-title">{{ .Title }}</h2>
+  {{ else }}
+  <h2 class="p-name post-title">{{ T "Quick update" }}</h2>
+  {{ end }}
+  {{ if .Params.reply_to_url }} <a href="{{ .Permalink }}" class="post-date u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ partial "dateformat/short" . }}</time> ∞</a>
+  <div class="reply-to"> {{ T "Replying to" }}: {{ if eq .Params.reply_to_hostname "micro.blog" }} <a href="{{ .Params.reply_to_url }}" class="u-in-reply-to">@{{ .Params.reply_to_username }}</a> {{ else }} <a href="{{ .Params.reply_to_url }}" class="u-in-reply-to">{{ .Params.reply_to_hostname }}</a> {{ end }} </div> {{ end }}
+  <article class="post-content">
+    {{ .Content }}
+  </article>
+</div>
+{{ end }}
+{{ end }}
