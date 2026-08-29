@@ -51,10 +51,18 @@
   grid-column: span 2;
 }
 
-.photo-showcase-gallery .microblog_collection img.is-featured-landscape,
-.photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape img {
+.photo-showcase-gallery .microblog_collection img.is-featured-landscape {
   width: 100% !important;
   height: 100% !important;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* Captioned landscape figures need to size to their content so the caption
+   remains inside the grid row instead of overflowing beneath a 100%-high image. */
+.photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape img {
+  width: 100% !important;
+  height: auto !important;
   aspect-ratio: 16 / 10;
   object-fit: cover;
 }
