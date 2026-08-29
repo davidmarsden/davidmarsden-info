@@ -1,0 +1,188 @@
+.site-archive {
+  max-width: 58rem;
+  margin: 0 auto;
+}
+
+.site-archive-header {
+  max-width: 46rem;
+  padding: 1rem 0 2.25rem;
+}
+
+.site-archive-kicker,
+.archive-label {
+  margin: 0 0 0.45rem;
+  color: var(--primary);
+  font-family: var(--font-secondary), sans-serif;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.site-archive-header h1 {
+  margin: 0 0 0.8rem;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.site-archive-intro {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+.archive-years {
+  padding: 1.25rem 0 1.6rem;
+  border-top: 2px solid var(--tertiary);
+  border-bottom: 1px solid var(--tertiary);
+}
+
+.archive-year-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.archive-year-links a {
+  display: inline-block;
+  padding: 0.35rem 0.62rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.archive-categories {
+  margin: 1.35rem 0 2.25rem;
+  border-bottom: 1px solid var(--tertiary);
+}
+
+.archive-categories > summary {
+  cursor: pointer;
+  padding: 0.8rem 0 1rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.archive-categories > summary span {
+  margin-left: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.archive-category-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem 1rem;
+  padding: 0 0 1.3rem;
+}
+
+.archive-category-links a {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.archive-category-links a span {
+  opacity: 0.65;
+}
+
+.archive-year {
+  scroll-margin-top: 1rem;
+  border-top: 2px solid var(--tertiary);
+}
+
+.archive-year > details > summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 1.15rem 0;
+  list-style-position: inside;
+}
+
+.archive-year-title {
+  font-size: clamp(1.65rem, 4vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.archive-year-count {
+  font-size: 0.9rem;
+  opacity: 0.68;
+  white-space: nowrap;
+}
+
+.archive-post-list {
+  margin: 0;
+  padding: 0 0 1.25rem;
+  list-style: none;
+}
+
+.archive-post {
+  display: grid;
+  grid-template-columns: 5.25rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--tertiary);
+}
+
+.archive-post-date {
+  padding-top: 0.08rem;
+  font-family: var(--font-secondary), sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  opacity: 0.72;
+  white-space: nowrap;
+}
+
+.archive-post-title,
+.archive-post-summary {
+  display: inline;
+  line-height: 1.45;
+}
+
+.archive-post-title {
+  font-weight: 750;
+}
+
+.archive-post-summary {
+  text-decoration-thickness: 0.06em;
+}
+
+.archive-back {
+  margin: 0 0 1.3rem;
+  text-align: right;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 720px) {
+  .archive-category-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .archive-post {
+    grid-template-columns: 4.55rem minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .archive-category-links {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-post {
+    display: block;
+    padding: 0.8rem 0;
+  }
+
+  .archive-post-date {
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+}
