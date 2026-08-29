@@ -1,6 +1,6 @@
 # Current setup
 
-Baseline captured from Micro.blog on 2026-08-27 before work began on the new personal homepage/hub.
+Baseline captured from Micro.blog on 2026-08-27 before work began on the new personal homepage/hub, with later operational notes added as they were discovered.
 
 ## Platform
 
@@ -21,25 +21,17 @@ These files are part of the current site-specific custom layer and should be tre
 - `layouts/_default/baseof.html`
 - `layouts/partials/microhook-head.html`
 - `layouts/partials/microhook-intro.html`
-- `layouts/partials/sidebar.html`
+- `layouts/index.html`
+- `layouts/blog/single.html`
+- `content/blog.md`
+
+The former local `layouts/partials/sidebar.html` override was removed during the homepage redesign. The separate **Sidebar for Bayou** plug-in was also removed on 2026-08-29 after confirming it was independently injecting the remaining blogroll/recommendations sidebar.
 
 ## Upstream Bayou files not copied here
 
-The Micro.blog export also contains the active Bayou theme. Core files such as these matched upstream Bayou and are deliberately not maintained here until we intentionally override them:
+The Micro.blog export also contains the active Bayou theme. Core files that match upstream Bayou are deliberately not maintained here until we intentionally override them.
 
-- `layouts/index.html`
-- `layouts/_default/list.html`
-- `layouts/_default/single.html`
-- `layouts/post/single.html`
-- `layouts/section/replies.html`
-- `static/css/main.css`
-- `static/css/all.min.css`
-- `static/webfonts/*`
-- `i18n/*`
-- `theme.toml`
-- `config_example.json`
-
-`layouts/_default/baseof.html` is the exception: the live export differs from upstream and is therefore preserved here.
+`layouts/_default/baseof.html` is an exception: the live export differed from upstream and is therefore preserved here.
 
 ## Generated/plugin-owned files
 
@@ -53,12 +45,16 @@ The raw export also includes posts and generated data such as bookshelves, colle
 
 The untouched Micro.blog export ZIP and `.bar` archive should be retained separately.
 
+## Test-site caveat discovered 2026-08-29
+
+`davidmarsden.info` and `davidmarsden-test.micro.blog` were found to be using the same custom Bayou theme. Editing that shared custom theme therefore changed both sites at once.
+
+The test blog must **not** be treated as an isolated staging environment while it shares the production custom theme. Before using it for risky theme experiments, give it a separate cloned custom theme.
+
 ## Safe development rule
 
-Do not edit the live theme first. New work should:
-
-1. start from this baseline;
-2. happen on a dedicated branch;
-3. be tested on a Micro.blog test/preview blog;
-4. be checked for homepage, blog index, post URLs, feeds, navigation and mobile rendering;
-5. only then be applied to the live site.
+1. Keep this GitHub repository as the documented source of truth.
+2. Make meaningful changes on a dedicated branch/PR where practical.
+3. Test theme changes only against a genuinely separate test custom theme.
+4. Check homepage, `/blog/`, archive, posts, feeds, navigation, mobile rendering and light/dark appearance as relevant.
+5. Apply approved changes to the production custom theme deliberately and record material changes here or in `CHANGELOG.md`.
