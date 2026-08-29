@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ with .Site.GetPage "/photos" }}
 <main class="photo-showcase">
   <header class="photo-showcase-header">
     <p class="photo-showcase-kicker">Photography</p>
@@ -10,4 +11,13 @@
     {{ .Content }}
   </div>
 </main>
+{{ else }}
+<main class="photo-showcase">
+  <header class="photo-showcase-header">
+    <p class="photo-showcase-kicker">Photography</p>
+    <h1>Photos</h1>
+  </header>
+  <p>The Photos page could not be loaded.</p>
+</main>
+{{ end }}
 {{ end }}
