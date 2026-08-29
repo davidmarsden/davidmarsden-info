@@ -9,6 +9,12 @@
   <div class="photo-showcase-gallery">
     {{ .Content }}
   </div>
+
+  {{ with .Site.Data.photo_showcase }}
+  <script>
+    window.photoShowcaseCaptions = {{ .photos | jsonify | safeJS }};
+  </script>
+  {{ end }}
 </main>
 {{ else }}
 <main class="photo-showcase">
