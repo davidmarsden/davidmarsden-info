@@ -50,18 +50,14 @@
     <h1><a class="site-title p-name u-url" href="/">{{ .Site.Title }}</a></h1>
     </div>
 
-    <nav class="site-nav">
+    <nav class="site-nav" aria-label="Primary">
       <ul>
         <li><a class="page-link Blog" href="{{ "blog/" | relURL }}">Blog</a></li>
-        {{ range .Site.Menus.main }}
-        {{ if and (ne .Name "Blog") (ne .Name "Replies") }}
-        {{ if .Page.Params.redirect_url }}
-        <li><a class="page-link {{ .Name }}" href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a></li>
-        {{ else }}
-        <li><a class="page-link {{ .Name }}" href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
-        {{ end }}
-        {{ end }}
-        {{ end }}
+        <li><a class="page-link About" href="{{ "about/" | relURL }}">About</a></li>
+        <li><a class="page-link Photos" href="{{ "photos/" | relURL }}">Photos</a></li>
+        <li><a class="page-link Library" href="{{ "library/" | relURL }}">Library</a></li>
+        <li><a class="page-link Archive" href="{{ "archive/" | relURL }}">Archive</a></li>
+        <li><a class="page-link Subscribe" href="{{ "subscribe/" | relURL }}">Subscribe</a></li>
       </ul>
     </nav>
   </header>
