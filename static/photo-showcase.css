@@ -14,16 +14,89 @@
   margin: 0 !important;
 }
 
-.photo-showcase-gallery .microblog_collection img.is-featured-landscape {
+.photo-showcase-item {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  line-height: normal;
+}
+
+.photo-showcase-item > a,
+.photo-showcase-item > img {
+  display: block;
+  width: 100%;
+}
+
+.photo-showcase-item img {
+  display: block;
+}
+
+.photo-showcase-caption {
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 0.65rem;
+  padding-bottom: 0.8rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: left !important;
+}
+
+.photo-showcase-caption-title,
+.photo-showcase-caption-text {
+  display: block !important;
+  width: 100%;
+  line-height: 1.4;
+  text-align: left !important;
+}
+
+.photo-showcase-caption-title {
+  font-family: var(--font-secondary), sans-serif;
+  font-size: 0.95rem;
+  font-style: normal !important;
+  font-weight: 800;
+}
+
+.photo-showcase-caption-text {
+  margin-top: 0.22rem;
+  font-size: 0.86rem;
+  font-style: normal !important;
+  opacity: 0.72;
+}
+
+.photo-showcase-gallery .microblog_collection img.is-featured-landscape,
+.photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape,
+.photo-showcase-gallery .microblog_collection a.is-featured-landscape {
   grid-column: span 2;
+}
+
+.photo-showcase-gallery .microblog_collection img.is-featured-landscape {
   width: 100% !important;
   height: 100% !important;
   aspect-ratio: 16 / 10;
   object-fit: cover;
 }
 
-.photo-showcase-gallery .microblog_collection img.is-featured-panorama {
+.photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape img,
+.photo-showcase-gallery .microblog_collection a.is-featured-landscape img {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.photo-showcase-gallery .microblog_collection img.is-featured-panorama,
+.photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-panorama,
+.photo-showcase-gallery .microblog_collection a.is-featured-panorama {
   grid-column: 1 / -1;
+}
+
+.photo-showcase-gallery .microblog_collection img.is-featured-panorama,
+.photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-panorama img,
+.photo-showcase-gallery .microblog_collection a.is-featured-panorama img {
   width: 100% !important;
   height: auto !important;
   aspect-ratio: auto;
@@ -39,15 +112,29 @@
     gap: 0.9rem;
   }
 
-  .photo-showcase-gallery .microblog_collection img.is-featured-landscape {
+  .photo-showcase-gallery .microblog_collection img.is-featured-landscape,
+  .photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape,
+  .photo-showcase-gallery .microblog_collection a.is-featured-landscape {
     grid-column: span 2;
   }
 }
 
 @media (max-width: 460px) {
   .photo-showcase-gallery .microblog_collection img.is-featured-landscape,
-  .photo-showcase-gallery .microblog_collection img.is-featured-panorama {
+  .photo-showcase-gallery .microblog_collection img.is-featured-panorama,
+  .photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape,
+  .photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-panorama,
+  .photo-showcase-gallery .microblog_collection a.is-featured-landscape,
+  .photo-showcase-gallery .microblog_collection a.is-featured-panorama {
     grid-column: auto;
+  }
+
+  .photo-showcase-gallery .microblog_collection img.is-featured-landscape,
+  .photo-showcase-gallery .microblog_collection img.is-featured-panorama,
+  .photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape img,
+  .photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-panorama img,
+  .photo-showcase-gallery .microblog_collection a.is-featured-landscape img,
+  .photo-showcase-gallery .microblog_collection a.is-featured-panorama img {
     height: auto !important;
     aspect-ratio: auto;
     object-fit: contain;
