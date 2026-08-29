@@ -2,7 +2,7 @@
 
 This roadmap records the planned second phase of the davidmarsden.info redesign. The guiding principle is to keep Micro.blog as the publishing/content layer while making the public site feel deliberately edited, personal and easy to explore.
 
-Status legend: **Done** · **Next** · **Later**
+Status legend: **Done** · **In progress** · **Next** · **Later**
 
 ## Phase 1 — Favourite Photos — Done
 
@@ -15,13 +15,15 @@ Completed 2026-08-29.
 
 This phase established the pattern for later curated sections: Micro.blog remains the source of content; the custom theme controls presentation.
 
-## Phase 2 — Core navigation, About and Archive — Next
+## Phase 2 — Core navigation, About and Archive — In progress
+
+Started 2026-08-29 on branch `phase-2-navigation-about-archive`.
 
 Treat these together as an information-architecture pass rather than a collection of unrelated page tweaks.
 
 ### 2.1 Main navigation
 
-Target public navigation:
+Final target public navigation:
 
 - About
 - Writing
@@ -30,7 +32,16 @@ Target public navigation:
 - Archive
 - Subscribe
 
-Search and other useful utilities should remain available but do not need equal weight in the primary navigation.
+While the Writing hub remains a Phase 3 task, the Phase 2 implementation uses `Blog` as the temporary first item:
+
+- Blog
+- About
+- Photos
+- Library
+- Archive
+- Subscribe
+
+The primary navigation is now deliberately defined by the theme rather than exposing every Micro.blog page marked for navigation. Search and other useful utilities should remain available but do not need equal weight in the primary navigation.
 
 Existing secondary, legacy, experimental and infrastructure pages may continue to exist at their current URLs without appearing in the main navigation.
 
