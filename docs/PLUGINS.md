@@ -18,12 +18,24 @@ These are dependencies of the live site. Their generated files are not maintaine
 - Tweet archive 1.0.4
 - Microblog Theme Shortcodes 1.0.0
 - Search Space 1.0.3
-- Sidebar for Bayou 1.0.0
 - Bandcamp Shortcode 1.0.1
 - Micro.blog Open External Links 1.0.12
 - Postlist 1.4.0
 - Video streaming 1.0
 - Bookshelf shortcode 0.9.2
+
+## Removed after homepage redesign
+
+- Sidebar for Bayou 1.0.0 — removed 2026-08-29. This plug-in independently injects the Bayou sidebar, including blogroll/recommendations. It is not required for a standalone blogroll page.
+
+## Blogroll architecture
+
+The two blogroll-related plug-ins had different jobs:
+
+- **Blogroll shortcode** renders Micro.blog recommendation data only where `{{< blogroll >}}` is placed, so it remains installed for the dedicated `/blogroll/` page.
+- **Sidebar for Bayou** added a sidebar independently and could render the same recommendation data there. Removing a local `layouts/partials/sidebar.html` override was therefore not enough to remove the visible blogroll sidebar while this plug-in remained installed.
+
+The current intended setup is: keep **Blogroll shortcode**, do not reinstall **Sidebar for Bayou**, and keep the homepage/sidebar-free design.
 
 ## Why record this
 
