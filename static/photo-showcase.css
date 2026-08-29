@@ -14,16 +14,58 @@
   margin: 0 !important;
 }
 
-.photo-showcase-gallery .microblog_collection img.is-featured-landscape {
+.photo-showcase-item {
+  margin: 0;
+  min-width: 0;
+}
+
+.photo-showcase-item img {
+  display: block;
+}
+
+.photo-showcase-caption {
+  display: block;
+  padding-top: 0.55rem;
+  line-height: 1.4;
+}
+
+.photo-showcase-caption-title,
+.photo-showcase-caption-text {
+  display: block;
+}
+
+.photo-showcase-caption-title {
+  font-family: var(--font-secondary), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.photo-showcase-caption-text {
+  margin-top: 0.18rem;
+  font-size: 0.88rem;
+  opacity: 0.82;
+}
+
+.photo-showcase-gallery .microblog_collection img.is-featured-landscape,
+.photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape {
   grid-column: span 2;
+}
+
+.photo-showcase-gallery .microblog_collection img.is-featured-landscape,
+.photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape img {
   width: 100% !important;
   height: 100% !important;
   aspect-ratio: 16 / 10;
   object-fit: cover;
 }
 
-.photo-showcase-gallery .microblog_collection img.is-featured-panorama {
+.photo-showcase-gallery .microblog_collection img.is-featured-panorama,
+.photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-panorama {
   grid-column: 1 / -1;
+}
+
+.photo-showcase-gallery .microblog_collection img.is-featured-panorama,
+.photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-panorama img {
   width: 100% !important;
   height: auto !important;
   aspect-ratio: auto;
@@ -39,15 +81,24 @@
     gap: 0.9rem;
   }
 
-  .photo-showcase-gallery .microblog_collection img.is-featured-landscape {
+  .photo-showcase-gallery .microblog_collection img.is-featured-landscape,
+  .photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape {
     grid-column: span 2;
   }
 }
 
 @media (max-width: 460px) {
   .photo-showcase-gallery .microblog_collection img.is-featured-landscape,
-  .photo-showcase-gallery .microblog_collection img.is-featured-panorama {
+  .photo-showcase-gallery .microblog_collection img.is-featured-panorama,
+  .photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape,
+  .photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-panorama {
     grid-column: auto;
+  }
+
+  .photo-showcase-gallery .microblog_collection img.is-featured-landscape,
+  .photo-showcase-gallery .microblog_collection img.is-featured-panorama,
+  .photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-landscape img,
+  .photo-showcase-gallery .microblog_collection .photo-showcase-item.is-featured-panorama img {
     height: auto !important;
     aspect-ratio: auto;
     object-fit: contain;
