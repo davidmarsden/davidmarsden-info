@@ -1,0 +1,12 @@
+# Optional titles and captions for Favourite Photos.
+#
+# Use the image filename as the key. Photos without an entry here remain
+# image-only, and their existing Micro.blog alt text is left untouched.
+#
+# Example:
+# photos:
+#   example-photo.jpg:
+#     title: "A short title"
+#     caption: "A personal note about the photograph."
+
+photos: {}
