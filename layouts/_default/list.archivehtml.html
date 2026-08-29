@@ -1,0 +1,62 @@
+{{ define "main" }}
+<main class="site-archive">
+  <header class="site-archive-header">
+    <p class="site-archive-kicker">The whole lot</p>
+    <h1>Archive</h1>
+    <p class="site-archive-intro">The complete chronological record of this blog. Jump to a year, browse a category, or open the older sections and have a rummage.</p>
+  </header>
+
+  {{ $posts := where .Site.RegularPages.ByDate.Reverse "Type" "post" }}
+  {{ $years := $posts.GroupByDate "2006" }}
+
+  <nav class="archive-years" aria-label="Archive by year">
+    <p class="archive-label">Jump to year</p>
+    <div class="archive-year-links">
+      {{ range $years }}
+        <a href="#year-{{ .Key }}">{{ .Key }}</a>
+      {{ end }}
+    </div>
+  </nav>
+
+  {{ $categories := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+  {{ if gt (len $categories) 0 }}
+  <details class="archive-categories">
+    <summary>Browse by category <span>{{ len $categories }} categories</span></summary>
+    <div class="archive-category-links">
+      {{ range sort $categories "Title" "asc" }}
+        <a href="{{ .Permalink }}">{{ .Title }} <span>{{ len .Pages }}</span></a>
+      {{ end }}
+    </div>
+  </details>
+  {{ end }}
+
+  <div class="archive-timeline h-feed">
+    {{ $currentYear := now.Format "2006" }}
+    {{ range $years }}
+      <section class="archive-year" id="year-{{ .Key }}">
+        <details {{ if eq .Key $currentYear }}open{{ end }}>
+          <summary>
+            <span class="archive-year-title">{{ .Key }}</span>
+            <span class="archive-year-count">{{ len .Pages }} {{ if eq (len .Pages) 1 }}post{{ else }}posts{{ end }}</span>
+          </summary>
+          <ol class="archive-post-list">
+            {{ range .Pages }}
+              <li class="archive-post h-entry">
+                <time class="dt-published archive-post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">{{ .Date.Format "02 Jan" }}</time>
+                <div class="archive-post-body">
+                  {{ if .Title }}
+                    <a class="p-name u-url archive-post-title" href="{{ .Permalink }}">{{ .Title }}</a>
+                  {{ else }}
+                    <a class="p-summary u-url archive-post-summary" href="{{ .Permalink }}">{{ .Summary | plainify | truncate 135 }}</a>
+                  {{ end }}
+                </div>
+              </li>
+            {{ end }}
+          </ol>
+          <p class="archive-back"><a href="#top">Back to top ↑</a></p>
+        </details>
+      </section>
+    {{ end }}
+  </div>
+</main>
+{{ end }}
