@@ -16,15 +16,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  const directGridChildFor = (node) => {
+    let child = node;
+    while (child.parentElement && child.parentElement !== gallery) {
+      child = child.parentElement;
+    }
+    return child;
+  };
+
   const addCaption = (img) => {
     const metadata = captions[filenameFor(img)];
     if (!metadata || (!metadata.title && !metadata.caption)) return;
 
+    const media = directGridChildFor(img);
     const figure = document.createElement("figure");
     figure.className = "photo-showcase-item";
 
-    img.parentNode.insertBefore(figure, img);
-    figure.appendChild(img);
+    gallery.insertBefore(figure, media);
+    figure.appendChild(media);
 
     const figcaption = document.createElement("figcaption");
     figcaption.className = "photo-showcase-caption";
@@ -48,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   images.forEach(addCaption);
 
-  const gridItemFor = (img) => img.closest(".photo-showcase-item") || img;
+  const gridItemFor = (img) => img.closest(".photo-showcase-item") || directGridChildFor(img);
 
   const classify = () => {
     const landscapes = [];
