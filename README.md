@@ -19,16 +19,19 @@ See `docs/CURRENT-SETUP.md` and `docs/PLUGINS.md` for the preserved baseline.
 
 See `docs/ROADMAP.md` for the current site-development plan. Phase 1 (Favourite Photos) is complete; Phase 2 covers core navigation plus the About and Archive revamps.
 
-## Homepage work
+## Current site state
 
-The `homepage-hub` branch is the active redesign branch. It now contains:
+The homepage redesign is complete, merged to `main`, and live. The repository now includes:
 
 - a custom personal hub at `/`;
 - a custom content type for `/blog/`;
 - a latest-posts blog page linking through to the full archive;
-- homepage styling in `static/custom.css`.
+- a curated Favourite Photos showcase at `/photos/`;
+- homepage and site-specific styling in `static/custom.css`.
 
-The architecture was tested successfully on `davidmarsden-test.micro.blog` before the full homepage design was added.
+`main` should be treated as the current source of truth for the live customisation layer.
+
+The earlier redesign work was tested on `davidmarsden-test.micro.blog`, but production and test were later found to share the same custom Bayou theme. The test site must therefore not be treated as an isolated staging environment until it has its own cloned custom theme.
 
 ## Safety / rollback
 
