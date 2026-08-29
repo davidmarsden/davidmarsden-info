@@ -1,0 +1,13 @@
+{{ define "main" }}
+<main class="photo-showcase">
+  <header class="photo-showcase-header">
+    <p class="photo-showcase-kicker">Photography</p>
+    <h1>{{ .Title }}</h1>
+    <p class="photo-showcase-intro">A selection of favourite photographs.</p>
+  </header>
+
+  <div class="photo-showcase-gallery">
+    {{ .Content }}
+  </div>
+</main>
+{{ end }}
