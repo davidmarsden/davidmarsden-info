@@ -5,7 +5,6 @@
 
 .photo-showcase-gallery .microblog_collection {
   gap: 1.15rem;
-  grid-auto-flow: dense;
 }
 
 .photo-showcase-gallery .microblog_collection a.is-featured-landscape {
