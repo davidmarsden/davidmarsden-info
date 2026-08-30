@@ -2,6 +2,18 @@
 
 Significant changes to the site customisation layer are recorded here.
 
+## 2026-08-30
+
+### Phase 2 complete: navigation, About and Archive
+
+- Replaced menu-driven primary navigation with a deliberately controlled six-item navigation: Blog, About, Photos, Library, Archive and Subscribe.
+- Revamped `/about/` with a site-specific presentation and fuller authored introduction while keeping the Micro.blog profile bio separate.
+- Added dedicated About styling and an Explore links section.
+- Redesigned `/archive/` around year navigation, collapsible yearly sections, category browsing with counts, and readable handling of untitled microposts.
+- Preserved complete chronological access and existing post/category URLs.
+- Added both `_default` and root-level archive template overrides after confirming Micro.blog/Hugo template precedence could otherwise leave the Bayou archive template in use.
+- Marked Phase 2 complete in `docs/ROADMAP.md`; Phase 3 (Writing hub) is next.
+
 ## 2026-08-29
 
 ### Homepage v1 live and sidebar removed
