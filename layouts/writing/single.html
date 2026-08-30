@@ -41,7 +41,7 @@
         (dict "name" "Football" "slug" "football")
         (dict "name" "Family" "slug" "family")
         (dict "name" "Food" "slug" "food")
-        (dict "name" "Trees" "slug" "trees")
+        (dict "name" "Health" "slug" "health")
       ) }}
         {{ $term := $.Site.GetPage (printf "/categories/%s" .slug) }}
         <a class="writing-subject-card" href="{{ printf "/categories/%s/" .slug | relURL }}">
