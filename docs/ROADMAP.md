@@ -15,9 +15,9 @@ Completed 2026-08-29.
 
 This phase established the pattern for later curated sections: Micro.blog remains the source of content; the custom theme controls presentation.
 
-## Phase 2 — Core navigation, About and Archive — In progress
+## Phase 2 — Core navigation, About and Archive — Done
 
-Started 2026-08-29 on branch `phase-2-navigation-about-archive`.
+Completed 2026-08-30 on branch `phase-2-navigation-about-archive`.
 
 Treat these together as an information-architecture pass rather than a collection of unrelated page tweaks.
 
@@ -41,44 +41,38 @@ While the Writing hub remains a Phase 3 task, the Phase 2 implementation uses `B
 - Archive
 - Subscribe
 
-The primary navigation is now deliberately defined by the theme rather than exposing every Micro.blog page marked for navigation. Search and other useful utilities should remain available but do not need equal weight in the primary navigation.
-
-Existing secondary, legacy, experimental and infrastructure pages may continue to exist at their current URLs without appearing in the main navigation.
+The primary navigation is now deliberately defined by the theme rather than exposing every Micro.blog page marked for navigation. Search and other useful utilities remain available without taking equal weight in the primary navigation.
 
 ### 2.2 About
 
-Revamp `/about/` as a proper authored introduction to David and the site rather than relying on the short Micro.blog profile biography.
+`/about/` has been revamped as a proper authored introduction to David and the site, distinct from the short Micro.blog profile biography.
 
-The hosted About page and the Micro.blog account/profile bio should be treated as separate surfaces:
+The hosted About page and the Micro.blog account/profile bio are now treated as separate surfaces:
 
-- **Micro.blog profile bio:** short plain-text identity/description suitable for the social profile.
-- **`/about/`:** richer site page with Markdown/HTML, room for context, projects, links and a fuller introduction.
+- **Micro.blog profile bio:** short identity/description suitable for the social profile.
+- **`/about/`:** richer site page with context, projects, links and a fuller introduction.
 
-Design goals:
-
-- match the new homepage and Photos presentation;
-- explain the different strands of the site without turning it into a CV dump;
-- provide useful routes to major projects/sites where appropriate;
-- keep the page personal and concise enough to be read rather than merely scanned;
-- avoid automatically injecting unrelated plugin output such as the old recommendations/sidebar material.
+The About page now matches the visual language of the homepage and Photos, explains the different strands of the site, and links naturally to major projects and destinations without becoming a CV dump.
 
 ### 2.3 Archive
 
-Keep `/archive/` because it is the exhaustive historical record, but redesign it so that thousands of posts are easier to navigate.
+`/archive/` has been redesigned as the exhaustive historical record rather than a single long undifferentiated list.
 
-Likely goals:
+Implemented:
 
-- retain complete chronological access;
-- improve hierarchy and readability;
-- provide useful year/date navigation;
-- decide how much category filtering belongs here versus the future Writing page;
-- avoid presenting every category as if it has equal editorial importance;
-- preserve direct links and existing post URLs;
-- make mobile browsing practical.
+- complete chronological access;
+- jump-to-year navigation;
+- collapsible yearly sections, with the current year open by default;
+- an optional Browse by category disclosure with post counts;
+- readable handling of both titled posts and untitled microposts;
+- responsive/mobile-friendly layout;
+- preserved direct links and existing post URLs.
 
-The Archive should answer **“find something from the history of the blog”**, while the later Writing page should answer **“what should I read?”**
+A Micro.blog/Hugo compatibility quirk required both `layouts/_default/list.archivehtml.html` and a root-level `layouts/list.archivehtml.html` override, because the root-level archive template can take precedence in the merged theme environment.
 
-## Phase 3 — Writing hub — Later
+The Archive answers **“find something from the history of the blog”**, while the later Writing page will answer **“what should I read?”**
+
+## Phase 3 — Writing hub — Next
 
 Create `/writing/` as the reader-facing route into the written archive rather than expecting visitors to understand the full Micro.blog taxonomy.
 
