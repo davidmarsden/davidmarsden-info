@@ -6,6 +6,8 @@ The aim is not to force the historical archive into a new taxonomy. Micro.blog c
 
 Post counts are snapshots and will change over time. Because posts can have more than one category, counts are not mutually exclusive.
 
+An important caveat is that some Micro.blog categories may contain auto-categorised posts. Those categories should not automatically be treated as reliable editorial subjects: a category can become noisy if it is being inferred from words in the text or generated image tags rather than deliberately assigned.
+
 ## Reader-facing subjects
 
 These six categories are surfaced on `/writing/`:
@@ -15,7 +17,7 @@ These six categories are surfaced on `/writing/`:
 - **Football** — football, Soccer Manager worlds and the surrounding culture.
 - **Family** — personal and family-life writing.
 - **Food** — food, cooking, eating out and the domestic/social stories around it.
-- **Trees** — nature, place and a distinctive long-running strand of the personal blog.
+- **Health** — personal health, care, wellbeing and related reflections.
 
 Why six: they are clear to a reader, sufficiently distinct from one another, already have meaningful archives, and fit the compact six-card Writing layout. They are not intended to describe everything David writes about.
 
@@ -23,12 +25,12 @@ Why six: they are clear to a reader, sufficiently distinct from one another, alr
 
 These remain useful categories but are not promoted as primary routes on `/writing/`:
 
-- **Health** — a legitimate subject archive, but often personal and overlapping with Family/Home.
 - **Home** — broad domestic material, much of which overlaps with Family, Food and practical notes.
 - **Kids** — a large historical category but substantially overlaps with Family; Family is the cleaner reader-facing route.
 - **Tools** — useful but currently narrower and more utilitarian than the six primary subjects; reconsider if the building/web-tools strand grows.
 - **TV and Film** — clear but comparatively small.
 - **Work** — meaningful historically, but broad and context-dependent rather than a strong public subject label.
+- **Trees** — not reliable enough for reader-facing use because Micro.blog auto-categorisation has pulled in many posts that merely contain the word “tree” or whose images generated a tree tag. Keep the existing category/archive for historical access, but do not treat it as an editorially coherent subject unless its contents are cleaned up later.
 
 These categories should remain available in the Archive and on their existing category URLs. No bulk recategorisation is required.
 
@@ -58,5 +60,6 @@ They should not be promoted in the reader-facing subject taxonomy. They may rema
 2. Treat format/workflow categories separately from subjects.
 3. A post may belong to multiple categories; the taxonomy is intentionally faceted, not hierarchical.
 4. Do not delete or merge historical categories merely to make the category screen look tidy.
-5. Review the six reader-facing subjects occasionally as the site evolves. Changing the Writing hub does not require destructive changes to the archive.
-6. New workflow categories should not automatically become public navigation.
+5. Do not promote an auto-generated/noisy category merely because it has a large post count; editorial coherence matters more than volume.
+6. Review the six reader-facing subjects occasionally as the site evolves. Changing the Writing hub does not require destructive changes to the archive.
+7. New workflow categories should not automatically become public navigation.
