@@ -72,17 +72,26 @@ A Micro.blog/Hugo compatibility quirk required both `layouts/_default/list.archi
 
 The Archive answers **“find something from the history of the blog”**, while the later Writing page will answer **“what should I read?”**
 
-## Phase 3 — Writing hub — Next
+## Phase 3 — Writing hub — In progress
+
+Started 2026-08-30 on branch `phase-3-writing-hub`.
 
 Create `/writing/` as the reader-facing route into the written archive rather than expecting visitors to understand the full Micro.blog taxonomy.
 
-Potential structure:
+Initial structure:
 
-- Selected Writing — a deliberately chosen small set of pieces;
-- Browse by subject — only the categories useful to readers;
-- Recent longform — automatically generated recent substantial posts.
+- **Selected Writing** — a deliberately chosen small set of pieces;
+- **Browse by subject** — only the categories useful to readers;
+- **Recent longform** — automatically generated recent substantial posts;
+- a clear route to the complete Archive.
 
-Use a lightweight editorial marker/category such as `Selected Writing` or `Featured` rather than maintaining duplicate content.
+Implementation approach:
+
+- keep Micro.blog as the source of posts and categories;
+- use a lightweight editorial marker/category such as `Selected Writing` rather than duplicate content;
+- keep the category list curated on this page rather than exposing the entire taxonomy;
+- once `/writing/` exists, replace the temporary `Blog` item in the main navigation with `Writing`;
+- preserve `/blog/` as the chronological recent-posts page unless there is a strong reason to change it later.
 
 ## Phase 4 — Category audit — Later
 
