@@ -15,10 +15,18 @@
     {{ if gt (len $selected) 0 }}
       <div class="writing-selected-grid">
         {{ range first 6 $selected }}
+          {{ $summary := .Summary | plainify }}
+          {{ $summary = replace $summary "â€™" "’" }}
+          {{ $summary = replace $summary "â€˜" "‘" }}
+          {{ $summary = replace $summary "â€œ" "“" }}
+          {{ $summary = replace $summary "â€" "”" }}
+          {{ $summary = replace $summary "â€“" "–" }}
+          {{ $summary = replace $summary "â€”" "—" }}
+          {{ $summary = replace $summary "â€¦" "…" }}
           <article class="writing-selected-card">
             <p class="writing-meta">{{ .Date.Format "2 January 2006" }}</p>
-            <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | truncate 70 }}{{ end }}</a></h3>
-            {{ with .Summary }}<p>{{ . | plainify | truncate 180 }}</p>{{ end }}
+            <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ $summary | truncate 70 }}{{ end }}</a></h3>
+            {{ with $summary }}<p>{{ . | truncate 180 }}</p>{{ end }}
           </article>
         {{ end }}
       </div>
@@ -59,9 +67,17 @@
     </div>
     <ol class="writing-recent-list">
       {{ range first 10 $longform }}
+        {{ $summary := .Summary | plainify }}
+        {{ $summary = replace $summary "â€™" "’" }}
+        {{ $summary = replace $summary "â€˜" "‘" }}
+        {{ $summary = replace $summary "â€œ" "“" }}
+        {{ $summary = replace $summary "â€" "”" }}
+        {{ $summary = replace $summary "â€“" "–" }}
+        {{ $summary = replace $summary "â€”" "—" }}
+        {{ $summary = replace $summary "â€¦" "…" }}
         <li>
           <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
-          <a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | truncate 100 }}{{ end }}</a>
+          <a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ $summary | truncate 100 }}{{ end }}</a>
         </li>
       {{ end }}
     </ol>
