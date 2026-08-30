@@ -1,0 +1,75 @@
+{{ define "main" }}
+<main class="writing-hub">
+  <header class="writing-header">
+    <p class="writing-kicker">A way in</p>
+    <h1>Writing</h1>
+    <p class="writing-intro">A way into the things I’ve written, rather than the whole lot. Start with a few selected pieces, browse by subject, or see the most recent longer posts.</p>
+  </header>
+
+  {{ $selected := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Selected Writing") }}
+  <section class="writing-section" aria-labelledby="selected-writing-heading">
+    <div class="writing-section-heading">
+      <p class="writing-section-number">01</p>
+      <h2 id="selected-writing-heading">Selected writing</h2>
+    </div>
+    {{ if gt (len $selected) 0 }}
+      <div class="writing-selected-grid">
+        {{ range first 6 $selected }}
+          <article class="writing-selected-card">
+            <p class="writing-meta">{{ .Date.Format "2 January 2006" }}</p>
+            <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | truncate 70 }}{{ end }}</a></h3>
+            {{ with .Summary }}<p>{{ . | plainify | truncate 180 }}</p>{{ end }}
+          </article>
+        {{ end }}
+      </div>
+    {{ else }}
+      <p class="writing-empty">Nothing has been marked as Selected Writing yet. Once a post gets that category, it will appear here automatically.</p>
+    {{ end }}
+  </section>
+
+  <section class="writing-section" aria-labelledby="subjects-heading">
+    <div class="writing-section-heading">
+      <p class="writing-section-number">02</p>
+      <h2 id="subjects-heading">Browse by subject</h2>
+    </div>
+    <p class="writing-section-intro">A provisional reader-facing set for now. The full category taxonomy stays in the Archive until the category audit.</p>
+    <div class="writing-subject-grid">
+      {{ range (slice
+        (dict "name" "Politics" "slug" "politics")
+        (dict "name" "Music" "slug" "music")
+        (dict "name" "Football" "slug" "football")
+        (dict "name" "Family" "slug" "family")
+        (dict "name" "Food" "slug" "food")
+        (dict "name" "Trees" "slug" "trees")
+      ) }}
+        {{ $term := $.Site.GetPage (printf "/categories/%s" .slug) }}
+        <a class="writing-subject-card" href="{{ printf "/categories/%s/" .slug | relURL }}">
+          <span class="writing-subject-name">{{ .name }}</span>
+          {{ with $term }}<span class="writing-subject-count">{{ len .Pages }} posts</span>{{ end }}
+        </a>
+      {{ end }}
+    </div>
+  </section>
+
+  {{ $longform := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Longform") }}
+  <section class="writing-section" aria-labelledby="recent-writing-heading">
+    <div class="writing-section-heading">
+      <p class="writing-section-number">03</p>
+      <h2 id="recent-writing-heading">Recent longform</h2>
+    </div>
+    <ol class="writing-recent-list">
+      {{ range first 10 $longform }}
+        <li>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+          <a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | truncate 100 }}{{ end }}</a>
+        </li>
+      {{ end }}
+    </ol>
+  </section>
+
+  <nav class="writing-more" aria-label="More writing">
+    <a href="{{ "blog/" | relURL }}">Latest blog posts →</a>
+    <a href="{{ "archive/" | relURL }}">Full archive →</a>
+  </nav>
+</main>
+{{ end }}
