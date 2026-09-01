@@ -93,17 +93,27 @@ Implemented:
 
 Future candidates such as **Letters from America** can use the same pattern where they add genuine context rather than clutter.
 
-## Phase 5 — Library — Next
+## Phase 5 — Library — In progress
 
-Keep `/library/` and the existing Micro.blog Bookshelves data/plugin as the content source.
+Started 2026-09-01 on branch `phase-5-library`.
 
-Later, give it a site-specific presentation rather than replacing the underlying system. Possible sections include:
+Keep `/library/` and Micro.blog Bookshelves as the source of truth, but replace the generic shelf output with a site-specific reader-facing presentation.
 
-- Currently reading;
-- Recently finished;
-- Favourite/notable books;
-- selected shelves such as Fiction, Non-fiction and Kids;
-- route to the complete finished-reading collection.
+Initial implementation:
+
+- **Currently reading** — cover-led grid from `.Site.Data.bookshelves.currentlyreading`;
+- **Finished reading** — latest 12 books, plus a collapsible complete finished-reading record;
+- **A few shelves** — Fiction, Non-fiction, Kids and Sport as optional browse routes when those shelf data files exist;
+- reusable book-card and book-grid partials;
+- links retain the canonical `micro.blog/books/{isbn}` form so Micro.blog's new own-domain book-detail setting can rewrite them automatically when enabled;
+- responsive styling consistent with About, Writing and the rest of the redesigned site.
+
+Next checks:
+
+- test the real bookshelf data/order on the live site;
+- enable **Bookshelves → Settings → Link books to detail pages on your blog** if desired;
+- inspect Micro.blog's generated local book-detail pages and decide whether to override their basic template to match the site;
+- decide whether any additional shelves or a favourites/notable-books collection add enough value to surface publicly.
 
 ## Phase 6 — Secondary utilities — Later
 
