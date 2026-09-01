@@ -46,9 +46,9 @@ A Micro.blog/Hugo compatibility quirk required both `layouts/_default/list.archi
 
 The Archive answers **“find something from the history of the blog”**, while Writing answers **“what should I read?”**
 
-## Phase 3 — Writing hub — In progress
+## Phase 3 — Writing hub — Done
 
-Started 2026-08-30 on branch `phase-3-writing-hub`; rotation/collections work continues on `phase-3b-random-selected-collections`.
+Completed 2026-09-01 across branches `phase-3-writing-hub` and `phase-3b-random-selected-collections`.
 
 `/writing/` is the reader-facing route into the written archive.
 
@@ -59,7 +59,7 @@ Implemented:
 - **Recent longform** — recent posts David has deliberately marked as proper writing;
 - clear routes to the latest Blog posts and complete Archive;
 - primary navigation now uses `Writing` while `/blog/` remains the chronological recent-posts page;
-- Selected Writing now displays a random six from the pool on each static site rebuild, allowing older pieces to resurface without manual rotation.
+- Selected Writing displays a random six from the pool on each static site rebuild, allowing older pieces to resurface without manual rotation.
 
 ## Phase 4 — Category audit and curated taxonomy — Done
 
@@ -77,11 +77,13 @@ Current rules:
 
 See `docs/CATEGORY-AUDIT.md` for the working model.
 
-## Phase 4.5 — Collections integration — In progress
+## Phase 4.5 — Collections integration — Done
 
-Use curated Micro.blog categories as reusable content sources for contextual card sections across the site.
+Completed 2026-09-01 on branch `phase-3b-random-selected-collections`.
 
-Initial implementation:
+Curated Micro.blog categories can now act as reusable content sources for contextual card sections across the site.
+
+Implemented:
 
 - reusable `collection-cards.html` partial;
 - shared collection-card styling;
@@ -89,9 +91,9 @@ Initial implementation:
 - category membership and category intro text remain managed in Micro.blog;
 - Hugo controls placement and presentation.
 
-Future candidates include themed collections such as **Letters from America**, plus selective collection modules on Writing, Photos or the homepage where they add genuine context rather than clutter.
+Future candidates such as **Letters from America** can use the same pattern where they add genuine context rather than clutter.
 
-## Phase 5 — Library — Later
+## Phase 5 — Library — Next
 
 Keep `/library/` and the existing Micro.blog Bookshelves data/plugin as the content source.
 
