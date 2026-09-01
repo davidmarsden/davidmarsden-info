@@ -1,65 +1,57 @@
 # Category audit and reader-facing taxonomy
 
-Audit completed 2026-08-30 as part of the Writing hub work.
+Audit completed and manually curated by David in Micro.blog by 2026-09-01.
 
-The aim is not to force the historical archive into a new taxonomy. Micro.blog categories remain useful as overlapping labels, and the complete set continues to be available from the Archive. The reader-facing taxonomy is deliberately smaller: it exists to give visitors a few understandable routes into the writing.
+The category system is now intentional rather than driven by broad keyword or post-length filters. Categories may overlap, but each should have a clear editorial purpose.
 
-Post counts are snapshots and will change over time. Because posts can have more than one category, counts are not mutually exclusive.
+## Reader-facing writing subjects
 
-An important caveat is that some Micro.blog categories may contain auto-categorised posts. Those categories should not automatically be treated as reliable editorial subjects: a category can become noisy if it is being inferred from words in the text or generated image tags rather than deliberately assigned.
-
-## Reader-facing subjects
-
-These six categories are surfaced on `/writing/`:
+The compact subject grid on `/writing/` currently surfaces:
 
 - **Politics** — local democracy, government, development, accountability and wider politics.
 - **Music** — listening, making music, Hovercraft and related writing.
 - **Football** — football, Soccer Manager worlds and the surrounding culture.
 - **Family** — personal and family-life writing.
 - **Food** — food, cooking, eating out and the domestic/social stories around it.
-- **Health** — personal health, care, wellbeing and related reflections.
+- **Health** — health, care, wellbeing and related reflections.
 
-Why six: they are clear to a reader, sufficiently distinct from one another, already have meaningful archives, and fit the compact six-card Writing layout. They are not intended to describe everything David writes about.
+These are entry points, not an exhaustive classification of everything on the site. The full category taxonomy remains available through the Archive.
 
-## Valid subjects kept in the full taxonomy
+## Editorial categories
 
-These remain useful categories but are not promoted as primary routes on `/writing/`:
+- **Longform** — manually assigned to posts David considers proper/substantial writing. It is an editorial judgement, not a word-count or title test. It powers Recent longform on `/writing/`.
+- **Selected Writing** — manually curated recommendation pool. `/writing/` displays a random six from this category on each static site rebuild.
 
-- **Home** — broad domestic material, much of which overlaps with Family, Food and practical notes.
-- **Kids** — a large historical category but substantially overlaps with Family; Family is the cleaner reader-facing route.
-- **Tools** — useful but currently narrower and more utilitarian than the six primary subjects; reconsider if the building/web-tools strand grows.
-- **TV and Film** — clear but comparatively small.
-- **Work** — meaningful historically, but broad and context-dependent rather than a strong public subject label.
-- **Trees** — not reliable enough for reader-facing use because Micro.blog auto-categorisation has pulled in many posts that merely contain the word “tree” or whose images generated a tree tag. Keep the existing category/archive for historical access, but do not treat it as an editorially coherent subject unless its contents are cleaned up later.
+`Microposts` is no longer required as an active editorial category. The custom Bayou homepage runs correctly with its built-in Micropost/Longform counts set to `0 / 0`, so the old length-based filters are unnecessary.
 
-These categories should remain available in the Archive and on their existing category URLs. No bulk recategorisation is required.
+## Curated collections
 
-## Formats / content types
+Some categories are deliberately collections rather than broad subjects. They can be used as content sources for card sections elsewhere on the site.
 
-These describe *what kind of post it is* rather than *what it is about* and should not be presented as subjects:
+Examples include:
 
-- **Longform** — substantial/titled posts; also powers the Recent longform section on `/writing/`.
-- **Microposts** — short posts and notes.
-- **Podcast** — podcast-related posts/content.
-- **Quotes** — quotation posts.
+- **Favourite Photos** — the photo showcase selection.
+- **Trees** — intentionally curated tree photographs/posts; no automatic `tree` keyword filter.
+- **The Story of My Life** — personal archive collection, surfaced on the About page.
+- **Letters from America** — a themed collection of actual letters and postcards from America.
 
-They remain useful for filtering and automation.
+This collection pattern is intentionally reusable: Micro.blog owns membership and category intros; Hugo decides where and how selected collections are presented.
 
-## Editorial / workflow categories
+## Filters
 
-These are operational markers rather than reader subjects:
+Default rule: **automate deterministic metadata; curate meaning manually.**
 
-- **Selected Writing** — editorial flag used to populate the curated Selected writing section on `/writing/`.
-- **Writing Hand posts** — workflow/source marker for posts created through the handwriting publishing workflow.
+Do not use broad ordinary-word filters such as `tree`, `home`, `kid`, `son` or `lad` to infer subjects. Do not use Micro.blog's short/long post-length filters to assign `Microposts` or `Longform`.
 
-They should not be promoted in the reader-facing subject taxonomy. They may remain visible in the exhaustive Archive category disclosure for transparency and historical access.
+A narrow proper-noun/project filter may still be reasonable when it is effectively unambiguous, but the preferred default is no subject filter unless repeated manual use proves one is worthwhile.
 
 ## Principles going forward
 
-1. Prefer adding an existing clear subject category over creating a new one for every recurring idea.
-2. Treat format/workflow categories separately from subjects.
-3. A post may belong to multiple categories; the taxonomy is intentionally faceted, not hierarchical.
-4. Do not delete or merge historical categories merely to make the category screen look tidy.
-5. Do not promote an auto-generated/noisy category merely because it has a large post count; editorial coherence matters more than volume.
-6. Review the six reader-facing subjects occasionally as the site evolves. Changing the Writing hub does not require destructive changes to the archive.
-7. New workflow categories should not automatically become public navigation.
+1. Categories should exist because their editorial purpose is understood.
+2. Subject, editorial-marker and collection categories may overlap on the same post.
+3. `Longform` is manual and means proper writing, regardless of length or title.
+4. `Selected Writing` is a curated pool, not a fixed six-post feature list.
+5. Collections can power page-specific shelves/cards without becoming primary navigation.
+6. Large post counts do not automatically make a category useful; editorial coherence matters more than volume.
+7. Prefer an existing meaningful category over inventing a near-duplicate.
+8. Keep Micro.blog as the content/category editor and the custom theme as the presentation layer.
