@@ -32,78 +32,64 @@ Final target public navigation:
 - Archive
 - Subscribe
 
-While the Writing hub remains a Phase 3 task, the Phase 2 implementation uses `Blog` as the temporary first item:
-
-- Blog
-- About
-- Photos
-- Library
-- Archive
-- Subscribe
-
-The primary navigation is now deliberately defined by the theme rather than exposing every Micro.blog page marked for navigation. Search and other useful utilities remain available without taking equal weight in the primary navigation.
+The primary navigation is deliberately defined by the theme rather than exposing every Micro.blog page marked for navigation. Search and other useful utilities remain available without taking equal weight in the primary navigation.
 
 ### 2.2 About
 
 `/about/` has been revamped as a proper authored introduction to David and the site, distinct from the short Micro.blog profile biography.
 
-The hosted About page and the Micro.blog account/profile bio are now treated as separate surfaces:
-
-- **Micro.blog profile bio:** short identity/description suitable for the social profile.
-- **`/about/`:** richer site page with context, projects, links and a fuller introduction.
-
-The About page now matches the visual language of the homepage and Photos, explains the different strands of the site, and links naturally to major projects and destinations without becoming a CV dump.
-
 ### 2.3 Archive
 
-`/archive/` has been redesigned as the exhaustive historical record rather than a single long undifferentiated list.
+`/archive/` has been redesigned as the exhaustive historical record rather than a single long undifferentiated list, with year navigation, collapsible yearly sections and optional category browsing.
 
-Implemented:
+A Micro.blog/Hugo compatibility quirk required both `layouts/_default/list.archivehtml.html` and a root-level `layouts/list.archivehtml.html` override.
 
-- complete chronological access;
-- jump-to-year navigation;
-- collapsible yearly sections, with the current year open by default;
-- an optional Browse by category disclosure with post counts;
-- readable handling of both titled posts and untitled microposts;
-- responsive/mobile-friendly layout;
-- preserved direct links and existing post URLs.
-
-A Micro.blog/Hugo compatibility quirk required both `layouts/_default/list.archivehtml.html` and a root-level `layouts/list.archivehtml.html` override, because the root-level archive template can take precedence in the merged theme environment.
-
-The Archive answers **“find something from the history of the blog”**, while the later Writing page will answer **“what should I read?”**
+The Archive answers **“find something from the history of the blog”**, while Writing answers **“what should I read?”**
 
 ## Phase 3 — Writing hub — In progress
 
-Started 2026-08-30 on branch `phase-3-writing-hub`.
+Started 2026-08-30 on branch `phase-3-writing-hub`; rotation/collections work continues on `phase-3b-random-selected-collections`.
 
-Create `/writing/` as the reader-facing route into the written archive rather than expecting visitors to understand the full Micro.blog taxonomy.
+`/writing/` is the reader-facing route into the written archive.
 
-Initial structure:
+Implemented:
 
-- **Selected Writing** — a deliberately chosen small set of pieces;
-- **Browse by subject** — only the categories useful to readers;
-- **Recent longform** — automatically generated recent substantial posts;
-- a clear route to the complete Archive.
+- **Selected Writing** — a manually curated recommendation pool;
+- **Browse by subject** — a compact reader-facing set of categories;
+- **Recent longform** — recent posts David has deliberately marked as proper writing;
+- clear routes to the latest Blog posts and complete Archive;
+- primary navigation now uses `Writing` while `/blog/` remains the chronological recent-posts page;
+- Selected Writing now displays a random six from the pool on each static site rebuild, allowing older pieces to resurface without manual rotation.
 
-Implementation approach:
+## Phase 4 — Category audit and curated taxonomy — Done
 
-- keep Micro.blog as the source of posts and categories;
-- use a lightweight editorial marker/category such as `Selected Writing` rather than duplicate content;
-- keep the category list curated on this page rather than exposing the entire taxonomy;
-- once `/writing/` exists, replace the temporary `Blog` item in the main navigation with `Writing`;
-- preserve `/blog/` as the chronological recent-posts page unless there is a strong reason to change it later.
+Completed manually in Micro.blog by 2026-09-01.
 
-## Phase 4 — Category audit — Later
+The historical category set has been reviewed and deliberately curated. Broad automatic subject filters and the old short/long post-length filters are no longer the basis of the taxonomy.
 
-Audit the existing category list before deleting or merging anything.
+Current rules:
 
-Classify categories broadly as:
+- **Longform** is a manual editorial judgement, not a length/title test;
+- **Selected Writing** is a curated recommendation pool;
+- subject categories are deliberately assigned rather than inferred from broad words;
+- collection categories such as **Favourite Photos**, **Trees**, **The Story of My Life** and **Letters from America** are valid curated content sources in their own right;
+- the custom Bayou homepage works with its built-in Micropost/Longform counts set to `0 / 0`, so technical length buckets are not required.
 
-- subjects/topics;
-- formats/content types;
-- workflow/internal classifications.
+See `docs/CATEGORY-AUDIT.md` for the working model.
 
-Create a smaller reader-facing taxonomy without requiring a destructive recategorisation of the whole historical archive. A category may remain useful internally even if it is not displayed prominently to visitors.
+## Phase 4.5 — Collections integration — In progress
+
+Use curated Micro.blog categories as reusable content sources for contextual card sections across the site.
+
+Initial implementation:
+
+- reusable `collection-cards.html` partial;
+- shared collection-card styling;
+- **The Story of My Life** appears as a four-card section on `/about/`;
+- category membership and category intro text remain managed in Micro.blog;
+- Hugo controls placement and presentation.
+
+Future candidates include themed collections such as **Letters from America**, plus selective collection modules on Writing, Photos or the homepage where they add genuine context rather than clutter.
 
 ## Phase 5 — Library — Later
 
@@ -134,7 +120,8 @@ Only after the destination pages are strong, add restrained homepage teasers suc
 
 - selected writing;
 - favourite photographs;
-- currently reading/recent books.
+- currently reading/recent books;
+- occasional contextual curated collections where they genuinely improve discovery.
 
 The homepage should remain a concise personal hub, not revert to being a directory or sidebar-heavy portal.
 
@@ -144,7 +131,7 @@ The homepage should remain a concise personal hub, not revert to being a directo
 2. Prefer small Hugo/theme overrides over additional plugins when the presentation needs to be site-specific.
 3. Keep Micro.blog responsible for publishing and content management wherever possible.
 4. Separate editorial curation from exhaustive archives.
-5. Do not delete legacy pages/categories merely to simplify navigation.
+5. Treat categories as potential subjects, editorial markers or curated collections — but give each a clear purpose.
 6. Protect existing URLs and feeds.
 7. Test meaningful theme changes against a genuinely isolated test theme before production where practical.
 8. Update this roadmap and `CHANGELOG.md` as phases are completed or materially changed.
