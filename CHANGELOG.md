@@ -2,6 +2,21 @@
 
 Significant changes to the site customisation layer are recorded here.
 
+## 2026-09-01
+
+### Writing hub, curated taxonomy and collection cards complete
+
+- Added `/writing/` as the reader-facing route into the written archive.
+- Added Selected Writing cards, Browse by subject, Recent longform, and routes to the chronological Blog and full Archive.
+- Changed the primary navigation from Blog to Writing while keeping `/blog/` as the recent-posts page.
+- Made Selected Writing rotate six posts at random from the curated pool on each static site rebuild.
+- Completed a manual category audit in Micro.blog and documented the resulting subject/editorial/collection model in `docs/CATEGORY-AUDIT.md`.
+- Made Longform a manual editorial category rather than a post-length/title classification.
+- Confirmed the custom Bayou homepage works with its built-in Micropost and Longform display counts set to `0 / 0`, removing the need for technical length buckets.
+- Added reusable `collection-cards.html` and shared collection styling so curated Micro.blog categories can power contextual card sections around the site.
+- Added The Story of My Life as the first category-powered collection on the About page.
+- Marked Phases 3, 4 and 4.5 complete in `docs/ROADMAP.md`; Library is next.
+
 ## 2026-08-30
 
 ### Phase 2 complete: navigation, About and Archive
