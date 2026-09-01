@@ -1,0 +1,25 @@
+{{- $page := .page -}}
+{{- $category := .category -}}
+{{- $limit := .limit | default 4 -}}
+{{- $random := .random | default false -}}
+{{- $showAll := .showAll | default true -}}
+{{- $posts := where $page.Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice $category) -}}
+
+{{- if gt (len $posts) 0 -}}
+  {{- if $random -}}
+    {{- $posts = shuffle $posts -}}
+  {{- end -}}
+  <div class="collection-card-grid">
+    {{- range first $limit $posts -}}
+      {{- $excerpt := .Plain | htmlUnescape -}}
+      <article class="collection-card">
+        <p class="collection-card-meta">{{ .Date.Format "2 January 2006" }}</p>
+        <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ $excerpt | truncate 72 }}{{ end }}</a></h3>
+        {{ with $excerpt }}<p>{{ . | truncate 160 }}</p>{{ end }}
+      </article>
+    {{- end -}}
+  </div>
+  {{- if $showAll -}}
+    <p class="collection-card-more"><a href="{{ printf "/categories/%s/" ($category | urlize) | relURL }}">See all {{ $category }} →</a></p>
+  {{- end -}}
+{{- end -}}
