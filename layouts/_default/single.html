@@ -10,6 +10,16 @@
     {{ .Content }}
   </article>
 
+  {{ $storyPosts := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "The Story of My Life") }}
+  {{ if gt (len $storyPosts) 0 }}
+  <section class="about-page-collection" aria-labelledby="about-story-heading">
+    <p class="about-page-kicker">From the archive</p>
+    <h2 id="about-story-heading">The Story of My Life</h2>
+    <p>Posts from the personal archive — the bits that explain how I got here, or at least some of them.</p>
+    {{ partial "collection-cards.html" (dict "page" . "category" "The Story of My Life" "limit" 4 "showAll" true) }}
+  </section>
+  {{ end }}
+
   <nav class="about-page-explore" aria-label="Explore David Marsden's site">
     <p class="about-page-explore-label">Explore</p>
     <a href="{{ "blog/" | relURL }}">Blog</a>
