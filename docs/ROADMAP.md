@@ -100,13 +100,42 @@ Create a smaller reader-facing taxonomy without requiring a destructive recatego
 
 Keep `/library/` and the existing Micro.blog Bookshelves data/plugin as the content source.
 
-Later, give it a site-specific presentation rather than replacing the underlying system. Possible sections include:
+Build the Library around Micro.blog's new local book-detail-page support announced on 2026-08-31, rather than sending book-cover links away from davidmarsden.info.
+
+When this phase begins:
+
+1. Enable **Bookshelves → Settings → “Link books to detail pages on your blog”** in Micro.blog.
+2. Allow Micro.blog to install/use the Book reading goals plug-in if needed to provide the initial Hugo book-page template.
+3. Run a full rebuild (and, where necessary, re-save older book posts) so existing reading history produces local detail pages consistently.
+4. Inspect the generated Hugo book metadata/data before designing custom templates around it.
+5. Override the default book-detail presentation in the custom Bayou theme so individual book pages feel native to davidmarsden.info.
+
+The target structure is:
+
+- `/library/` — the visual overview and browsing layer;
+- `/books/<isbn>/` — individual book detail pages on davidmarsden.info;
+- book-related posts — link naturally into those local detail pages where possible.
+
+The `/library/` overview may include:
 
 - Currently reading;
 - Recently finished;
 - Favourite/notable books;
 - selected shelves such as Fiction, Non-fiction and Kids;
 - route to the complete finished-reading collection.
+
+Individual book pages should aim to include, where the underlying Micro.blog data makes it practical:
+
+- a prominent cover;
+- title and author;
+- reading status/dates;
+- useful bibliographic metadata such as page count or genre;
+- links to relevant external book services where useful;
+- David's own posts, notes or reviews about that book.
+
+The goal is not to recreate Goodreads or maintain a second book database. Micro.blog remains the source of reading data; the custom theme turns that data into a personal reading history on davidmarsden.info.
+
+Reference: Manton Reece, “Book detail pages”, 2026-08-31: https://www.manton.org/2026/08/31/book-detail-pages.html
 
 ## Phase 6 — Secondary utilities — Later
 
