@@ -1,0 +1,15 @@
+{{- $book := .book -}}
+{{- $bookURL := printf "https://micro.blog/books/%s" $book.isbn -}}
+<article class="library-book-card">
+  <a class="library-book-cover-link" href="{{ $bookURL }}">
+    {{- if $book.cover_url -}}
+      <img class="library-book-cover" src="{{ $book.cover_url }}" alt="Cover of {{ $book.title }}" loading="lazy">
+    {{- else -}}
+      <div class="library-book-cover library-book-cover-placeholder" aria-hidden="true"></div>
+    {{- end -}}
+  </a>
+  <div class="library-book-copy">
+    <h3><a href="{{ $bookURL }}">{{ $book.title }}</a></h3>
+    {{ with $book.author }}<p>{{ . }}</p>{{ end }}
+  </div>
+</article>
