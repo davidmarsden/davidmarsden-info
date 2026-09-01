@@ -14,7 +14,7 @@
     </div>
     {{ if gt (len $selected) 0 }}
       <div class="writing-selected-grid">
-        {{ range first 6 $selected }}
+        {{ range first 6 (shuffle $selected) }}
           {{ $excerpt := .Plain | htmlUnescape }}
           <article class="writing-selected-card">
             <p class="writing-meta">{{ .Date.Format "2 January 2006" }}</p>
