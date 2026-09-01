@@ -1,0 +1,47 @@
+.collection-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.collection-card {
+  padding: 1rem;
+  border: 1px solid var(--tertiary);
+}
+
+.collection-card-meta {
+  margin: 0 0 0.35rem;
+  opacity: 0.72;
+  font-size: 0.78rem;
+}
+
+.collection-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.18;
+}
+
+.collection-card h3 a {
+  text-decoration: none;
+}
+
+.collection-card > p:last-child {
+  margin: 0.6rem 0 0;
+  line-height: 1.5;
+}
+
+.collection-card-more {
+  margin: 1rem 0 0;
+  font-weight: 700;
+}
+
+.collection-card-more a {
+  text-underline-offset: 0.16em;
+}
+
+@media (max-width: 640px) {
+  .collection-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
