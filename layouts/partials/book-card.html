@@ -1,33 +1,29 @@
 {{- $book := .book -}}
 {{- $page := .page -}}
-{{- $localReviews := slice -}}
-{{- $manualBookLink := false -}}
+{{- $hasLocalBookPage := false -}}
+
 {{- if and $page $page.Site.Data.bookReviewLinks -}}
   {{- with index $page.Site.Data.bookReviewLinks.books $book.isbn -}}
-    {{- $manualBookLink = true -}}
+    {{- $hasLocalBookPage = true -}}
   {{- end -}}
 {{- end -}}
-{{- if $page -}}
+
+{{- if and $page (not $hasLocalBookPage) -}}
   {{- $reviews := where $page.Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews" "Book Review") -}}
   {{- range $reviews -}}
-    {{- $hasStructuredBook := false -}}
     {{- with .Params.books -}}
       {{- if intersect . (slice $book.isbn) -}}
-        {{- $hasStructuredBook = true -}}
+        {{- $hasLocalBookPage = true -}}
       {{- end -}}
-    {{- end -}}
-    {{- $raw := .RawContent | default "" -}}
-    {{- $matchesISBN := in $raw $book.isbn -}}
-    {{- $matchesTitle := in (lower $raw) (lower $book.title) -}}
-    {{- if or $hasStructuredBook $matchesISBN $matchesTitle -}}
-      {{- $localReviews = $localReviews | append . -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
+
 {{- $bookURL := printf "//micro.blog/books/%s" $book.isbn -}}
-{{- if or $manualBookLink (gt (len $localReviews) 0) -}}
+{{- if $hasLocalBookPage -}}
   {{- $bookURL = printf "/books/%s/" $book.isbn -}}
 {{- end -}}
+
 <article class="library-book-card">
   <a class="library-book-cover-link" href="{{ $bookURL }}">
     {{- if $book.cover_url -}}
