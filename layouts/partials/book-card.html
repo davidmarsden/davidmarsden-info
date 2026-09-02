@@ -3,7 +3,18 @@
 {{- $localReviews := slice -}}
 {{- if $page -}}
   {{- $reviews := where $page.Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews" "Book Review") -}}
-  {{- $localReviews = where $reviews "Params.books" "intersect" (slice $book.isbn) -}}
+  {{- range $reviews -}}
+    {{- $matchesBookParam := false -}}
+    {{- with .Params.books -}}
+      {{- if intersect . (slice $book.isbn) -}}
+        {{- $matchesBookParam = true -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $matchesContent := or (in .RawContent $book.isbn) (in .Content $book.isbn) -}}
+    {{- if or $matchesBookParam $matchesContent -}}
+      {{- $localReviews = $localReviews | append . -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 {{- $bookURL := printf "//micro.blog/books/%s" $book.isbn -}}
 {{- if gt (len $localReviews) 0 -}}
