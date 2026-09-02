@@ -1,5 +1,5 @@
 {{- $book := .book -}}
-{{- $bookURL := printf "https://micro.blog/books/%s" $book.isbn -}}
+{{- $bookURL := printf "/books/%s/" $book.isbn | relURL -}}
 <article class="library-book-card">
   <a class="library-book-cover-link" href="{{ $bookURL }}">
     {{- if $book.cover_url -}}
