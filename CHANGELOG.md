@@ -2,6 +2,19 @@
 
 Significant changes to the site customisation layer are recorded here.
 
+## 2026-09-02
+
+### Library substantially implemented
+
+- Reworked `/library/` around the existing Micro.blog Bookshelves data rather than replacing the underlying reading system.
+- Clarified current/unfinished reading versus finished books.
+- Added a dedicated Book Reviews presentation using David's own review posts where available.
+- Made reviewed books prefer the matching `davidmarsden.info` review while retaining Micro.blog book pages as the fallback for books without local reviews.
+- Enabled local `/books/<isbn>/` detail-page behaviour and resolved routing edge cases involving reviewed and currently-reading titles.
+- Updated the Micro.blog-managed Library introduction to: `What I’m reading now, or what I started reading and haven't finished, as well as books I did actually read.`
+- Marked Phase 5 **In progress** in `docs/ROADMAP.md`; remaining work is to rotate Book Review cards, do a final visual/mobile check, and document any final settings needed for reproducibility.
+- Promoted secondary utilities to Phase 6 **Next** and added a later final-polish/maintenance phase.
+
 ## 2026-09-01
 
 ### Writing hub, curated taxonomy and collection cards complete
