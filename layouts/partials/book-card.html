@@ -1,6 +1,12 @@
 {{- $book := .book -}}
 {{- $page := .page -}}
 {{- $localReviews := slice -}}
+{{- $manualBookLink := false -}}
+{{- if and $page $page.Site.Data.bookReviewLinks -}}
+  {{- with index $page.Site.Data.bookReviewLinks.books $book.isbn -}}
+    {{- $manualBookLink = true -}}
+  {{- end -}}
+{{- end -}}
 {{- if $page -}}
   {{- $reviews := where $page.Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews" "Book Review") -}}
   {{- range $reviews -}}
@@ -19,7 +25,7 @@
   {{- end -}}
 {{- end -}}
 {{- $bookURL := printf "//micro.blog/books/%s" $book.isbn -}}
-{{- if gt (len $localReviews) 0 -}}
+{{- if or $manualBookLink (gt (len $localReviews) 0) -}}
   {{- $bookURL = printf "/books/%s/" $book.isbn -}}
 {{- end -}}
 <article class="library-book-card">
