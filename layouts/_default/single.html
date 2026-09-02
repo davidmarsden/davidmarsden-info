@@ -52,7 +52,7 @@
   <section class="library-section" aria-labelledby="currently-reading-heading">
     <p class="library-section-kicker">Now</p>
     <h2 id="currently-reading-heading">Currently reading</h2>
-    {{ partial "book-grid.html" (dict "books" $currently "limit" 8) }}
+    {{ partial "book-grid.html" (dict "page" . "books" $currently "limit" 8) }}
   </section>
   {{ end }}
 
@@ -61,11 +61,11 @@
     <p class="library-section-kicker">Recently</p>
     <h2 id="recently-finished-heading">Finished reading</h2>
     <p class="library-section-intro">The latest additions to the finished shelf. There are {{ len $finished }} books in the full reading record.</p>
-    {{ partial "book-grid.html" (dict "books" $finished "limit" 12) }}
+    {{ partial "book-grid.html" (dict "page" . "books" $finished "limit" 12) }}
 
     <details class="library-all-finished">
       <summary>Browse all {{ len $finished }} finished books</summary>
-      {{ partial "book-grid.html" (dict "books" $finished) }}
+      {{ partial "book-grid.html" (dict "page" . "books" $finished) }}
     </details>
   </section>
   {{ end }}
@@ -93,16 +93,16 @@
     </div>
 
     {{ if gt (len $fiction) 0 }}
-    <details class="library-shelf-detail" id="shelf-fiction"><summary>Fiction — {{ len $fiction }} books</summary>{{ partial "book-grid.html" (dict "books" $fiction) }}</details>
+    <details class="library-shelf-detail" id="shelf-fiction"><summary>Fiction — {{ len $fiction }} books</summary>{{ partial "book-grid.html" (dict "page" . "books" $fiction) }}</details>
     {{ end }}
     {{ if gt (len $nonfiction) 0 }}
-    <details class="library-shelf-detail" id="shelf-non-fiction"><summary>Non-fiction — {{ len $nonfiction }} books</summary>{{ partial "book-grid.html" (dict "books" $nonfiction) }}</details>
+    <details class="library-shelf-detail" id="shelf-non-fiction"><summary>Non-fiction — {{ len $nonfiction }} books</summary>{{ partial "book-grid.html" (dict "page" . "books" $nonfiction) }}</details>
     {{ end }}
     {{ if gt (len $kids) 0 }}
-    <details class="library-shelf-detail" id="shelf-kids"><summary>Kids — {{ len $kids }} books</summary>{{ partial "book-grid.html" (dict "books" $kids) }}</details>
+    <details class="library-shelf-detail" id="shelf-kids"><summary>Kids — {{ len $kids }} books</summary>{{ partial "book-grid.html" (dict "page" . "books" $kids) }}</details>
     {{ end }}
     {{ if gt (len $sport) 0 }}
-    <details class="library-shelf-detail" id="shelf-sport"><summary>Sport — {{ len $sport }} books</summary>{{ partial "book-grid.html" (dict "books" $sport) }}</details>
+    <details class="library-shelf-detail" id="shelf-sport"><summary>Sport — {{ len $sport }} books</summary>{{ partial "book-grid.html" (dict "page" . "books" $sport) }}</details>
     {{ end }}
   </section>
   {{ end }}
