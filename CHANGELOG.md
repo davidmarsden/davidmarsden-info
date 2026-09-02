@@ -4,6 +4,17 @@ Significant changes to the site customisation layer are recorded here.
 
 ## 2026-09-02
 
+### Phase 6 started: secondary utilities and reply styling
+
+- Audited the surviving Micro.blog secondary pages and plug-ins in `docs/SECONDARY-UTILITIES-AUDIT.md`.
+- Kept Search, Blogroll and Surprise me as the core Explore candidates, with RSS and GitHub as secondary links.
+- Kept Replies, Trees and the Twitter/X archive quietly available rather than promoting them globally.
+- Confirmed `/.well-known/atproto-did` is technical AT Protocol identity plumbing and must remain unpromoted but intact.
+- Confirmed Reply by email, Conversation on Micro.blog and Reply on Mastodon are active features rather than unused plug-ins.
+- Added `static/replies.css` to restyle federated replies and the reply form so they fit the site in light/dark mode and on mobile without changing reply behaviour.
+- Removed the stale `layouts/partials/sidebar.html` override that no longer matched the live architecture.
+- Consolidated the completed Phase 5 Library implementation from `phase-5-library` onto `main`, including Library/book templates, local review routing data, and Library/book-detail styling.
+
 ### Phase 5 complete: Library
 
 - Reworked `/library/` around the existing Micro.blog Bookshelves data rather than replacing the underlying reading system.
@@ -12,7 +23,7 @@ Significant changes to the site customisation layer are recorded here.
 - Rotated the visible Book Reviews from the review pool rather than always showing the four most recent.
 - Made reviewed books prefer the matching `davidmarsden.info` review while retaining Micro.blog book pages as the fallback for books without local reviews.
 - Enabled local `/books/<isbn>/` detail-page behaviour and resolved routing edge cases involving reviewed and currently-reading titles.
-- Updated the Micro.blog-managed Library introduction to: `What I’m reading now, or what I started reading and haven't finished, as well as books I did actually read.`
+- Updated the Library introduction to: `What I’m reading now, or what I started reading and haven't finished, as well as books I did actually read.`
 - Marked Phase 5 **Done** in `docs/ROADMAP.md`; Phase 6 (secondary utilities) is now next.
 
 ## 2026-09-01
@@ -49,7 +60,7 @@ Significant changes to the site customisation layer are recorded here.
 - Confirmed the new personal hub design is live at `davidmarsden.info`.
 - Corrected homepage copy to **Helping Hand** and **The Kings Centre Southall**.
 - Removed the local `layouts/partials/sidebar.html` override.
-- Removed **Sidebar for Bayou 1.0.0** after confirming that it independently injected the remaining blogroll/recommendations sidebar.
+- Removed **Sidebar for Bayou 1.0.0** after confirming it was independently injecting the remaining blogroll/recommendations sidebar.
 - Kept **Blogroll shortcode 1.2.2** for the dedicated `/blogroll/` page; the shortcode itself only renders where explicitly placed.
 - Documented the distinction between the Blogroll shortcode and Sidebar for Bayou plug-ins in `docs/PLUGINS.md`.
 - Discovered that `davidmarsden.info` and `davidmarsden-test.micro.blog` were using the same custom Bayou theme, so theme edits affected both sites. The test blog should not be treated as isolated staging until it has its own cloned custom theme.
