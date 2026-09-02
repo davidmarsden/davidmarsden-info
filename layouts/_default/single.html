@@ -35,6 +35,12 @@
 {{ $nonfiction := default (slice) (index .Site.Data.bookshelves "non-fiction") }}
 {{ $kids := default (slice) (index .Site.Data.bookshelves "kids") }}
 {{ $sport := default (slice) (index .Site.Data.bookshelves "sport") }}
+{{ $bookReviewCategory := "Book Reviews" }}
+{{ $bookReviews := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice $bookReviewCategory) }}
+{{ if eq (len $bookReviews) 0 }}
+  {{ $bookReviewCategory = "Book Review" }}
+  {{ $bookReviews = where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice $bookReviewCategory) }}
+{{ end }}
 <main class="library-page">
   <header class="library-header">
     <p class="library-kicker">On the shelves</p>
@@ -61,6 +67,15 @@
       <summary>Browse all {{ len $finished }} finished books</summary>
       {{ partial "book-grid.html" (dict "books" $finished) }}
     </details>
+  </section>
+  {{ end }}
+
+  {{ if gt (len $bookReviews) 0 }}
+  <section class="library-section" aria-labelledby="book-reviews-heading">
+    <p class="library-section-kicker">From the blog</p>
+    <h2 id="book-reviews-heading">Book reviews</h2>
+    <p class="library-section-intro">Books I’ve actually written about, rather than merely moved from one shelf to another.</p>
+    {{ partial "collection-cards.html" (dict "page" . "category" $bookReviewCategory "limit" 4 "showAll" true) }}
   </section>
   {{ end }}
 
