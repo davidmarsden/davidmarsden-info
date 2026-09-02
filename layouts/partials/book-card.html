@@ -1,5 +1,14 @@
 {{- $book := .book -}}
-{{- $bookURL := printf "https://micro.blog/books/%s" $book.isbn -}}
+{{- $page := .page -}}
+{{- $localReviews := slice -}}
+{{- if $page -}}
+  {{- $reviews := where $page.Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews" "Book Review") -}}
+  {{- $localReviews = where $reviews "Params.books" "intersect" (slice $book.isbn) -}}
+{{- end -}}
+{{- $bookURL := printf "//micro.blog/books/%s" $book.isbn -}}
+{{- if gt (len $localReviews) 0 -}}
+  {{- $bookURL = printf "/books/%s/" $book.isbn -}}
+{{- end -}}
 <article class="library-book-card">
   <a class="library-book-cover-link" href="{{ $bookURL }}">
     {{- if $book.cover_url -}}
