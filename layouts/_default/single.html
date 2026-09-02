@@ -75,7 +75,7 @@
     <p class="library-section-kicker">From the blog</p>
     <h2 id="book-reviews-heading">Book reviews</h2>
     <p class="library-section-intro">Books, reading notes and occasional detours I’ve actually written about.</p>
-    {{ partial "collection-cards.html" (dict "page" . "category" $bookReviewCategory "limit" 4 "showAll" true) }}
+    {{ partial "collection-cards.html" (dict "page" . "category" $bookReviewCategory "limit" 4 "random" true "showAll" true) }}
   </section>
   {{ end }}
 
