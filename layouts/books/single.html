@@ -1,0 +1,58 @@
+{{ define "main" }}
+{{ $isbn := .Params.isbn }}
+{{ if not $isbn }}
+  {{ $parts := split (strings.TrimSuffix "/" .RelPermalink) "/" }}
+  {{ $isbn = index (last 1 $parts) 0 }}
+{{ end }}
+{{ $author := .Params.author }}
+{{ $cover := .Params.cover_url }}
+{{ if not $cover }}{{ $cover = .Params.cover }}{{ end }}
+{{ $description := .Params.description }}
+
+{{ $reviewPosts := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews") }}
+{{ if eq (len $reviewPosts) 0 }}
+  {{ $reviewPosts = where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Review") }}
+{{ end }}
+{{ $matches := slice }}
+{{ range $reviewPosts }}
+  {{ $postBooks := default (slice) .Params.books }}
+  {{ if in $postBooks $isbn }}
+    {{ $matches = $matches | append . }}
+  {{ end }}
+{{ end }}
+
+<main class="book-detail-page">
+  <p class="book-detail-kicker"><a href="{{ "library/" | relURL }}">Library</a></p>
+
+  <article class="book-detail-main">
+    <div class="book-detail-cover-wrap">
+      {{ with $cover }}<img class="book-detail-cover" src="{{ . }}" alt="Cover of {{ $.Title }}">{{ end }}
+    </div>
+    <div class="book-detail-copy">
+      <h1>{{ .Title }}</h1>
+      {{ with $author }}<p class="book-detail-author">by {{ . }}</p>{{ end }}
+      {{ with $description }}<div class="book-detail-description">{{ . | markdownify }}</div>{{ end }}
+      {{ with .Params.pages }}<p class="book-detail-meta">{{ . }} pages</p>{{ end }}
+      {{ with .Params.genre }}<p class="book-detail-meta">{{ . }}</p>{{ end }}
+      {{ with $isbn }}<p class="book-detail-isbn">ISBN {{ . }}</p>{{ end }}
+    </div>
+  </article>
+
+  {{ if gt (len $matches) 0 }}
+  <section class="book-detail-writing" aria-labelledby="writing-about-book-heading">
+    <p class="book-detail-kicker">From the blog</p>
+    <h2 id="writing-about-book-heading">Writing about this book</h2>
+    <div class="collection-card-grid">
+      {{ range first 4 $matches }}
+        {{ $excerpt := .Plain | htmlUnescape }}
+        <article class="collection-card">
+          <p class="collection-card-meta">{{ .Date.Format "2 January 2006" }}</p>
+          <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ $excerpt | truncate 72 }}{{ end }}</a></h3>
+          {{ with $excerpt }}<p>{{ . | truncate 180 }}</p>{{ end }}
+        </article>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+</main>
+{{ end }}
