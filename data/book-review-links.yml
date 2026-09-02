@@ -1,0 +1,9 @@
+# Legacy/manual book-to-post links.
+#
+# Modern Micro.blog posts may expose a `books` front-matter field that lets the
+# Library detect a local book detail page automatically. Older posts do not
+# always carry that metadata consistently, so keep explicit exceptions here.
+
+books:
+  "9780241703113":
+    post: "/2024/12/21/at-the-heart-of-neoliberalism.html"
