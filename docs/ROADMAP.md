@@ -1,6 +1,6 @@
 # davidmarsden.info roadmap
 
-This roadmap records the planned second phase of the davidmarsden.info redesign. The guiding principle is to keep Micro.blog as the publishing/content layer while making the public site feel deliberately edited, personal and easy to explore.
+This roadmap records the continuing redesign of davidmarsden.info. The guiding principle is to keep Micro.blog as the publishing/content layer while making the public site feel deliberately edited, personal and easy to explore.
 
 Status legend: **Done** · **In progress** · **Next** · **Later**
 
@@ -93,19 +93,29 @@ Implemented:
 
 Future candidates such as **Letters from America** can use the same pattern where they add genuine context rather than clutter.
 
-## Phase 5 — Library — Next
+## Phase 5 — Library — In progress
 
-Keep `/library/` and the existing Micro.blog Bookshelves data/plugin as the content source.
+Substantially implemented by 2026-09-02.
 
-Later, give it a site-specific presentation rather than replacing the underlying system. Possible sections include:
+Keep `/library/` and Micro.blog Bookshelves as the underlying content source, while making the page feel like part of davidmarsden.info rather than a generic plug-in screen.
 
-- Currently reading;
-- Recently finished;
-- Favourite/notable books;
-- selected shelves such as Fiction, Non-fiction and Kids;
-- route to the complete finished-reading collection.
+Implemented:
 
-## Phase 6 — Secondary utilities — Later
+- a site-specific Library presentation built around the existing Micro.blog reading data;
+- clear separation of current/unfinished reading from finished books;
+- a dedicated book-reviews section using David's own posts where a review exists;
+- reviewed books resolve to the davidmarsden.info review rather than unnecessarily sending readers to Micro.blog's generic book page;
+- non-reviewed books retain the useful Micro.blog book-page fallback;
+- local `/books/<isbn>/` detail-page behaviour has been enabled and routing edge cases around reviewed/currently-reading books have been resolved;
+- Library intro copy is maintained in Micro.blog (`What I’m reading now, or what I started reading and haven't finished, as well as books I did actually read.`).
+
+Remaining before calling Phase 5 complete:
+
+- rotate the visible Book Reviews cards from the review pool rather than always showing the four most recent;
+- final small-screen/visual sanity check after the rotation change;
+- record any final theme files/settings needed to reproduce the Library customisation from GitHub documentation.
+
+## Phase 6 — Secondary utilities — Next
 
 Review useful secondary destinations such as:
 
@@ -114,18 +124,28 @@ Review useful secondary destinations such as:
 - On This Day;
 - other surviving utility/experimental pages.
 
-Keep worthwhile rabbit holes without allowing them to crowd the primary navigation. A footer or small Explore area may be a better home for these.
+The Blogroll already has a deliberate role as a dedicated page rather than a homepage/sidebar widget. The broader job in this phase is to decide which remaining rabbit holes are genuinely worth keeping and give them a coherent secondary home — probably a small **Explore** area and/or footer — without crowding the primary navigation.
 
 ## Phase 7 — Homepage integration — Later
 
-Only after the destination pages are strong, add restrained homepage teasers such as:
+The homepage hub itself is already live. This phase is specifically about deciding whether to add restrained discovery teasers from the stronger destination pages now built, for example:
 
-- selected writing;
-- favourite photographs;
+- rotating Selected Writing;
+- Favourite Photos;
 - currently reading/recent books;
 - occasional contextual curated collections where they genuinely improve discovery.
 
 The homepage should remain a concise personal hub, not revert to being a directory or sidebar-heavy portal.
+
+## Phase 8 — Final polish and maintenance model — Later
+
+Once the main destinations are settled:
+
+- review responsive behaviour and dark/light presentation across the whole site;
+- remove or document obsolete overrides/plugins/pages;
+- confirm important URLs, feeds and Micro.blog integrations remain intact;
+- make the distinction between Micro.blog-managed content/settings and GitHub-managed presentation explicit in the documentation;
+- keep future curation lightweight enough that the site does not become a second CMS to maintain.
 
 ## Implementation principles
 
