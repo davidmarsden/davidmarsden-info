@@ -1,10 +1,5 @@
 {{- $book := .book -}}
-{{- $localPath := printf "/books/%s/" $book.isbn -}}
-{{- $localPage := $.page.Site.GetPage $localPath -}}
 {{- $bookURL := printf "https://micro.blog/books/%s" $book.isbn -}}
-{{- with $localPage -}}
-  {{- $bookURL = .RelPermalink -}}
-{{- end -}}
 <article class="library-book-card">
   <a class="library-book-cover-link" href="{{ $bookURL }}">
     {{- if $book.cover_url -}}
