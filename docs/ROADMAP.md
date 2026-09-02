@@ -93,9 +93,9 @@ Implemented:
 
 Future candidates such as **Letters from America** can use the same pattern where they add genuine context rather than clutter.
 
-## Phase 5 — Library — In progress
+## Phase 5 — Library — Done
 
-Substantially implemented by 2026-09-02.
+Completed 2026-09-02.
 
 Keep `/library/` and Micro.blog Bookshelves as the underlying content source, while making the page feel like part of davidmarsden.info rather than a generic plug-in screen.
 
@@ -103,17 +103,14 @@ Implemented:
 
 - a site-specific Library presentation built around the existing Micro.blog reading data;
 - clear separation of current/unfinished reading from finished books;
-- a dedicated book-reviews section using David's own posts where a review exists;
+- a dedicated Book Reviews section using David's own posts where a review exists;
+- Book Reviews rotate from the review pool rather than always showing the most recent four;
 - reviewed books resolve to the davidmarsden.info review rather than unnecessarily sending readers to Micro.blog's generic book page;
 - non-reviewed books retain the useful Micro.blog book-page fallback;
 - local `/books/<isbn>/` detail-page behaviour has been enabled and routing edge cases around reviewed/currently-reading books have been resolved;
 - Library intro copy is maintained in Micro.blog (`What I’m reading now, or what I started reading and haven't finished, as well as books I did actually read.`).
 
-Remaining before calling Phase 5 complete:
-
-- rotate the visible Book Reviews cards from the review pool rather than always showing the four most recent;
-- final small-screen/visual sanity check after the rotation change;
-- record any final theme files/settings needed to reproduce the Library customisation from GitHub documentation.
+The Library now follows the same editorial model as Writing and Photos: Micro.blog remains the source of truth, while the theme provides the curated presentation.
 
 ## Phase 6 — Secondary utilities — Next
 
