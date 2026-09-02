@@ -21,59 +21,98 @@ Primary navigation remains deliberately unchanged:
 - Archive
 - Subscribe
 
-## Confirmed public utilities
+## Live Pages review — 2026-09-02
 
-### Search Space — Explore
+A review of the current Micro.blog Pages screen confirmed the remaining special pages include:
+
+- `/about`
+- `/subscribe`
+- `/blogroll`
+- `/search-space/`
+- `/library`
+- `/photos`
+- `/replies`
+- `/stargate`
+- `/trees`
+- `/x`
+- `/tweets`
+- `/.well-known/atproto-did`
+
+Several older pages had already been deleted manually before this review. The remaining list now consists mainly of pages we deliberately want to keep, pages that are useful but should not be promoted, and one technical endpoint.
+
+## Explore
+
+### Search Space
 
 Current path: `/search-space/`
 
 Keep. Search Space searches both posts and replies and supports suggestions and linkable results. That makes it substantially more useful than a simple post-title search, especially on a long-running Micro.blog archive.
 
-Proposed public label: **Search**.
+Public label: **Search**.
 
-### Blogroll — Explore
+### Blogroll
 
 Keep the dedicated blogroll/recommendations page. It belongs in the personal-web layer of the site and says something useful about what David reads and follows.
 
 Do not restore the former Bayou recommendations sidebar. The blogroll should remain a destination rather than site-wide furniture.
 
-### Stargate / Surprise me! — Explore
+### Stargate / Surprise me!
 
 Current path: `/stargate/`, supplied by the **Surprise me!** plug-in.
 
 Keep. It provides a random-post route into the archive and fits the intended 'rabbit hole' role extremely well.
 
-The current name **Stargate** is fun but opaque. Consider exposing it in Explore as **Surprise me** or **Random post**, while preserving `/stargate/` unless there is a strong reason to change the URL.
+Expose it as **Surprise me** while preserving `/stargate/`.
 
-### RSS — Explore
+### RSS
 
 Keep `/feed.xml` visible as a first-class independent-web subscription option. It does not need primary-navigation status.
 
-### GitHub — Explore or quietly keep
+### GitHub
 
-The existing footer links to David's GitHub profile. Keep this if the footer is framed as a broader Explore/elsewhere area; otherwise it can remain a lower-priority utility link.
+Keep the existing GitHub link if the footer is framed as a broader Explore/elsewhere area. It remains lower priority than the site-native discovery links.
 
-## Likely retire
+## Quietly keep
 
-### Tweets archive — Retire
+### Tweets archive
 
 Current path: `/tweets/`, supplied by **Tweet archive 1.0.4**.
 
-The page is a dedicated archive interface for old tweets. It no longer contributes much to the site's current editorial structure, while the site's own archive and Writing hub now provide much stronger historical discovery.
+The archive contains David's full Twitter/X archive up to the date the export was saved, around 2025. It has genuine archival value and should **not** be discarded merely because it is no longer part of the public-facing site structure.
 
-Recommendation: remove the Tweet archive plug-in once confirmed that no material worth preserving exists only through that interface. If the underlying imported tweets are ordinary site content, keep that content and retire only the special archive UI.
+Decision: preserve the archive but do not promote it in navigation or Explore.
+
+Important distinction: an unlinked static page is still publicly reachable if someone knows or discovers the URL. If the archive should be genuinely private rather than merely unobtrusive, it needs to be moved to private/offline storage or otherwise access-controlled; `noindex`/removing links is not privacy.
+
+### Replies
+
+Keep available because replies form part of David's Micro.blog history and Search Space can search them, but do not surface `/replies` as a main destination unless there is a later editorial reason to do so.
+
+### Trees
+
+Keep as a curated collection/content source. It does not need global navigation because the category/collection model already provides contextual routes where useful.
+
+### X
+
+Keep only if it still serves a deliberate archival or technical purpose. Do not surface it globally. Revisit if it proves to duplicate `/tweets/` or another integration.
+
+### `/.well-known/atproto-did`
+
+**Technical endpoint — keep. Do not treat as a user-facing page.**
+
+This is an AT Protocol identity-resolution endpoint. AT Protocol handles are domain names that resolve to a stable DID (decentralized identifier); one supported method is an HTTPS endpoint at `/.well-known/atproto-did`. It is machine-readable infrastructure used by AT Protocol/Bluesky-style identity systems, not content or navigation.
+
+Do not delete it merely because it appears in Micro.blog's Pages screen, and never add it to navigation or Explore.
 
 ## Not currently installed / not yet present
 
 ### On This Day
 
-The earlier roadmap listed On This Day as a candidate, but the baseline plug-in inventory does not contain an On This Day/MicroMemories plug-in and no current page has yet been confirmed.
+The earlier roadmap listed On This Day as a candidate, but no current On This Day/MicroMemories plug-in or page is present.
 
-Recommendation: do **not** add it merely to fill the Explore area. Reconsider only if it adds a genuinely different discovery experience after Search and Surprise me are in place.
+Decision: do **not** add it merely to fill the Explore area. Search and Surprise me already provide two distinct archive-discovery routes.
 
-## Plug-in audit — first pass
-
-The 2026-08-27 plug-in inventory should also be reviewed during Phase 6. Initial positions:
+## Plug-in audit
 
 ### Clearly retained / currently useful
 
@@ -83,15 +122,17 @@ The 2026-08-27 plug-in inventory should also be reviewed during Phase 6. Initial
 - Photo collections
 - Blogroll shortcode
 - Search Space
+- Surprise me!
 - Lite YouTube for Micro.blog
 - Bandcamp Shortcode
 - Micro.blog Open External Links
 - Video streaming
 - Bookshelf shortcode
+- Tweet archive — retain while it is required to preserve the Twitter archive unless/until that archive is moved elsewhere
 
-### Review before touching
+### Reported unused — candidates for removal after checking for hidden template/content dependencies
 
-These may be useful dependencies or post-level helpers and should not be removed without checking actual usage:
+David reports no known current use for:
 
 - Reply by email
 - Conversation on Micro.blog
@@ -100,13 +141,7 @@ These may be useful dependencies or post-level helpers and should not be removed
 - Microblog Theme Shortcodes
 - Postlist
 
-### Candidate for removal
-
-- Tweet archive
-
-### Keep as secondary discovery
-
-- Surprise me!
+These should be treated as likely removals, but uninstall one at a time and rebuild/check the site rather than removing the group blindly. Some shortcode/helper plug-ins can fail only on older posts that contain their markup.
 
 ## Repository cleanup discovered during audit
 
@@ -114,13 +149,13 @@ These may be useful dependencies or post-level helpers and should not be removed
 
 It was deleted from `main` on 2026-09-02 so the repository once again matches the intended live architecture.
 
-## Proposed Explore footer — first draft
+## Proposed Explore footer
 
-Keep this compact. No separate Explore page is necessary at present.
+No separate Explore page is necessary at present.
 
 **Explore:** Search · Blogroll · Surprise me · RSS · GitHub
 
-Possible final variation if GitHub feels too 'developer-facing':
+Possible tighter variation:
 
 **Explore:** Search · Blogroll · Surprise me · RSS
 
@@ -128,9 +163,9 @@ The chronological Blog remains reachable prominently from the homepage and Writi
 
 ## Next actions
 
-1. Confirm the current Micro.blog Pages list and identify any additional special/plugin pages not visible in the primary navigation.
-2. Confirm the dedicated blogroll URL and presentation.
-3. Check whether the Tweet archive contains anything that is not preserved elsewhere; if not, uninstall **Tweet archive 1.0.4** in Micro.blog.
-4. Audit the ambiguous plug-ins for actual usage before removing any.
-5. Implement the small Explore footer after the inventory is settled.
-6. Re-test primary pages and feeds after any plug-in removals.
+1. Remove the six reported-unused plug-ins one at a time, rebuilding and checking for breakage after each removal.
+2. Confirm whether `All photos` remains necessary alongside the current curated Photos implementation.
+3. Decide whether the Twitter archive merely needs to be unpromoted or should be genuinely private; if private, preserve it outside the public static site before removing the public route/plugin.
+4. Confirm what `/x` currently does and whether it duplicates the Twitter archive or another integration.
+5. Implement the small Explore footer once the plug-in cleanup is settled.
+6. Re-test homepage, Writing, Photos, Library, Archive, Search, feeds, older shortcode-heavy posts, and dark/mobile presentation after removals.
