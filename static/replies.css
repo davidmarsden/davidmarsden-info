@@ -1,0 +1,190 @@
+/* Federated replies and reply controls
+ *
+ * Keep Micro.blog's conversation/reply machinery intact while making the
+ * generated UI feel like part of davidmarsden.info in both light and dark mode.
+ */
+
+/* Small reply-option links supplied by plug-ins. */
+.reply-by-email,
+.conversation-on-mb,
+.reply-on-mastodon {
+  display: inline-block;
+  margin: 0.35rem 0.35rem 0.35rem 0;
+  padding: 0.38rem 0.7rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent !important;
+  color: var(--primary) !important;
+  font-family: var(--font-secondary), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none !important;
+}
+
+.reply-by-email:hover,
+.reply-by-email:focus-visible,
+.conversation-on-mb:hover,
+.conversation-on-mb:focus-visible,
+.reply-on-mastodon:hover,
+.reply-on-mastodon:focus-visible {
+  background: var(--primary) !important;
+  border-color: var(--primary);
+  color: var(--white) !important;
+  text-decoration: none !important;
+}
+
+/* Conversation.js output. */
+.microblog_conversation {
+  max-width: 46rem;
+  margin: 2.25rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--tertiary);
+  color: var(--text-color);
+}
+
+.microblog_conversation .microblog_post {
+  margin: 0 0 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--tertiary);
+  border-radius: 0.8rem;
+  background: transparent;
+}
+
+.microblog_conversation .microblog_user {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.7rem;
+  font-family: var(--font-secondary), sans-serif;
+  font-weight: 700;
+}
+
+.microblog_conversation .microblog_avatar {
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  max-width: 2.25rem !important;
+  margin: 0 !important;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.microblog_conversation .microblog_text,
+.microblog_conversation .microblog_text p {
+  margin-top: 0;
+  line-height: 1.55;
+}
+
+.microblog_conversation .microblog_text p:last-child {
+  margin-bottom: 0;
+}
+
+.microblog_conversation .microblog_time {
+  margin-top: 0.7rem;
+  padding-top: 0;
+  font-size: 0.78rem;
+  opacity: 0.72;
+}
+
+.microblog_conversation .microblog_time a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Micro.blog's built-in reply form lives inside the conversation block. */
+.microblog_conversation form {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 1.35rem 0 0;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--tertiary);
+  border-radius: 0.8rem;
+  background: var(--background) !important;
+  color: var(--text-color) !important;
+}
+
+.microblog_conversation form p {
+  margin: 0 0 0.8rem;
+  color: inherit !important;
+  line-height: 1.45;
+}
+
+.microblog_conversation form a {
+  color: var(--primary) !important;
+}
+
+.microblog_conversation textarea {
+  box-sizing: border-box;
+  display: block;
+  width: 100% !important;
+  min-height: 7rem;
+  max-height: 18rem;
+  margin: 0.55rem 0 0.85rem;
+  padding: 0.75rem;
+  resize: vertical;
+  border: 1px solid var(--tertiary) !important;
+  border-radius: 0.55rem;
+  background: var(--background) !important;
+  color: var(--text-color) !important;
+  font: inherit;
+  line-height: 1.45;
+}
+
+.microblog_conversation textarea:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.microblog_conversation textarea:disabled {
+  opacity: 0.58;
+}
+
+.microblog_conversation button,
+.microblog_conversation input[type="submit"] {
+  appearance: none;
+  padding: 0.42rem 0.8rem;
+  border: 1px solid var(--primary) !important;
+  border-radius: 999px;
+  background: transparent !important;
+  color: var(--primary) !important;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.microblog_conversation button:hover,
+.microblog_conversation button:focus-visible,
+.microblog_conversation input[type="submit"]:hover,
+.microblog_conversation input[type="submit"]:focus-visible {
+  background: var(--primary) !important;
+  color: var(--white) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .reply-by-email,
+  .conversation-on-mb,
+  .reply-on-mastodon {
+    color: var(--text-color) !important;
+  }
+
+  .microblog_conversation form,
+  .microblog_conversation textarea {
+    background: var(--black) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .microblog_conversation {
+    margin-top: 1.75rem;
+  }
+
+  .microblog_conversation .microblog_post,
+  .microblog_conversation form {
+    padding: 0.9rem;
+    border-radius: 0.65rem;
+  }
+
+  .microblog_conversation textarea {
+    min-height: 6rem;
+  }
+}
