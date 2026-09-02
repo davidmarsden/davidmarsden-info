@@ -29,12 +29,12 @@
   </nav>
 </main>
 {{ else if eq .RelPermalink "/library/" }}
-{{ $currently := index .Site.Data.bookshelves "currentlyreading" }}
-{{ $finished := index .Site.Data.bookshelves "finishedreading" }}
-{{ $fiction := index .Site.Data.bookshelves "fiction" }}
-{{ $nonfiction := index .Site.Data.bookshelves "non-fiction" }}
-{{ $kids := index .Site.Data.bookshelves "kids" }}
-{{ $sport := index .Site.Data.bookshelves "sport" }}
+{{ $currently := default (slice) (index .Site.Data.bookshelves "currentlyreading") }}
+{{ $finished := default (slice) (index .Site.Data.bookshelves "finishedreading") }}
+{{ $fiction := default (slice) (index .Site.Data.bookshelves "fiction") }}
+{{ $nonfiction := default (slice) (index .Site.Data.bookshelves "non-fiction") }}
+{{ $kids := default (slice) (index .Site.Data.bookshelves "kids") }}
+{{ $sport := default (slice) (index .Site.Data.bookshelves "sport") }}
 <main class="library-page">
   <header class="library-header">
     <p class="library-kicker">On the shelves</p>
@@ -64,6 +64,7 @@
   </section>
   {{ end }}
 
+  {{ if or (gt (len $fiction) 0) (gt (len $nonfiction) 0) (gt (len $kids) 0) (gt (len $sport) 0) }}
   <section class="library-section" aria-labelledby="browse-shelves-heading">
     <p class="library-section-kicker">Browse</p>
     <h2 id="browse-shelves-heading">A few shelves</h2>
@@ -89,6 +90,7 @@
     <details class="library-shelf-detail" id="shelf-sport"><summary>Sport — {{ len $sport }} books</summary>{{ partial "book-grid.html" (dict "books" $sport) }}</details>
     {{ end }}
   </section>
+  {{ end }}
 </main>
 {{ else }}
 <div class="page">
