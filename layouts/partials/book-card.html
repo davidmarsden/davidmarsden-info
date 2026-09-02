@@ -4,14 +4,16 @@
 {{- if $page -}}
   {{- $reviews := where $page.Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews" "Book Review") -}}
   {{- range $reviews -}}
-    {{- $matchesBookParam := false -}}
+    {{- $hasStructuredBook := false -}}
     {{- with .Params.books -}}
       {{- if intersect . (slice $book.isbn) -}}
-        {{- $matchesBookParam = true -}}
+        {{- $hasStructuredBook = true -}}
       {{- end -}}
     {{- end -}}
-    {{- $matchesContent := or (in .RawContent $book.isbn) (in .Content $book.isbn) -}}
-    {{- if or $matchesBookParam $matchesContent -}}
+    {{- $raw := .RawContent | default "" -}}
+    {{- $matchesISBN := in $raw $book.isbn -}}
+    {{- $matchesTitle := in (lower $raw) (lower $book.title) -}}
+    {{- if or $hasStructuredBook $matchesISBN $matchesTitle -}}
       {{- $localReviews = $localReviews | append . -}}
     {{- end -}}
   {{- end -}}
