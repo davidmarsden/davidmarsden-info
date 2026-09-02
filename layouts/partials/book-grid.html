@@ -1,0 +1,17 @@
+{{- $books := .books -}}
+{{- $page := .page -}}
+{{- $limit := .limit | default 0 -}}
+{{- $class := .class | default "library-book-grid" -}}
+{{- if gt (len $books) 0 -}}
+<div class="{{ $class }}">
+  {{- if gt $limit 0 -}}
+    {{- range first $limit $books -}}
+      {{- partial "book-card.html" (dict "book" . "page" $page) -}}
+    {{- end -}}
+  {{- else -}}
+    {{- range $books -}}
+      {{- partial "book-card.html" (dict "book" . "page" $page) -}}
+    {{- end -}}
+  {{- end -}}
+</div>
+{{- end -}}
