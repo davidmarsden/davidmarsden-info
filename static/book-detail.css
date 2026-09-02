@@ -1,0 +1,86 @@
+.book-detail-page {
+  max-width: 58rem;
+  margin: 0 auto;
+}
+
+.book-detail-kicker {
+  margin: 0 0 0.55rem;
+  color: var(--primary);
+  font-family: var(--font-secondary), sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.book-detail-kicker a {
+  text-decoration: none;
+}
+
+.book-detail-main {
+  display: grid;
+  grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+  padding-top: 0.6rem;
+}
+
+.book-detail-cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border: 1px solid var(--tertiary);
+}
+
+.book-detail-copy h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.book-detail-author {
+  margin: 0.65rem 0 0;
+  font-size: 1.15rem;
+  opacity: 0.78;
+}
+
+.book-detail-description {
+  margin-top: 1.5rem;
+  line-height: 1.65;
+}
+
+.book-detail-description p:first-child {
+  margin-top: 0;
+}
+
+.book-detail-meta,
+.book-detail-isbn {
+  margin: 0.5rem 0 0;
+  opacity: 0.68;
+  font-size: 0.9rem;
+}
+
+.book-detail-writing {
+  margin-top: 3rem;
+  padding-top: 2.2rem;
+  border-top: 2px solid var(--tertiary);
+}
+
+.book-detail-writing h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+@media (max-width: 640px) {
+  .book-detail-main {
+    grid-template-columns: 1fr;
+  }
+
+  .book-detail-cover-wrap {
+    max-width: 12rem;
+  }
+}
