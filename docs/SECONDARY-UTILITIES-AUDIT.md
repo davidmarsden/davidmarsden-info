@@ -74,13 +74,13 @@ Keep the existing GitHub link if the footer is framed as a broader Explore/elsew
 
 ## Quietly keep
 
-### Tweets archive
+### Tweets / X archive
 
-Current path: `/tweets/`, supplied by **Tweet archive 1.0.4**.
+Current paths: `/tweets/` and `/x`.
 
-The archive contains David's full Twitter/X archive up to the date the export was saved, around 2025. It has genuine archival value and should **not** be discarded merely because it is no longer part of the public-facing site structure.
+These are two routes into the same preserved Twitter/X archive rather than separate utilities. The archive contains David's full Twitter/X history up to the date the export was saved, around 2025. It has genuine archival value and should **not** be discarded merely because it is no longer part of the public-facing site structure.
 
-Decision: preserve the archive but do not promote it in navigation or Explore.
+Decision: preserve the archive but do not promote either route in navigation or Explore. If practical, retain only one canonical public route later to avoid needless duplication.
 
 Important distinction: an unlinked static page is still publicly reachable if someone knows or discovers the URL. If the archive should be genuinely private rather than merely unobtrusive, it needs to be moved to private/offline storage or otherwise access-controlled; `noindex`/removing links is not privacy.
 
@@ -91,10 +91,6 @@ Keep available because replies form part of David's Micro.blog history and Searc
 ### Trees
 
 Keep as a curated collection/content source. It does not need global navigation because the category/collection model already provides contextual routes where useful.
-
-### X
-
-Keep only if it still serves a deliberate archival or technical purpose. Do not surface it globally. Revisit if it proves to duplicate `/tweets/` or another integration.
 
 ### `/.well-known/atproto-did`
 
@@ -119,29 +115,41 @@ Decision: do **not** add it merely to fill the Explore area. Search and Surprise
 - Bayou Theme
 - Photos page
 - All photos — subject to confirming it still serves the current curated Photos architecture
-- Photo collections
+- Photo collections — actively used by the `/photos` page via `{{< collection "Favourite Photos" >}}`
 - Blogroll shortcode
 - Search Space
 - Surprise me!
+- Reply by email — visibly active on post pages
+- Conversation on Micro.blog — visibly active on post pages and provides the federated/sign-in reply UI
+- Reply on Mastodon — retain; live replies include Mastodon participants and the federated reply surface is part of the intended Micro.blog experience
 - Lite YouTube for Micro.blog
 - Bandcamp Shortcode
 - Micro.blog Open External Links
 - Video streaming
 - Bookshelf shortcode
-- Tweet archive — retain while it is required to preserve the Twitter archive unless/until that archive is moved elsewhere
+- Tweet archive — retain while it is required to preserve the Twitter/X archive unless/until that archive is moved elsewhere
 
-### Reported unused — candidates for removal after checking for hidden template/content dependencies
+### Keep for now / no cleanup benefit proven
 
-David reports no known current use for:
+David reports no known deliberate current use for the following, but there is little value in removing them merely for tidiness while the site is stable:
 
-- Reply by email
-- Conversation on Micro.blog
 - Podcast title
-- Reply on Mastodon
 - Microblog Theme Shortcodes
 - Postlist
 
-These should be treated as likely removals, but uninstall one at a time and rebuild/check the site rather than removing the group blindly. Some shortcode/helper plug-ins can fail only on older posts that contain their markup.
+Revisit only if they cause conflicts, performance/build issues, or a later export confirms they are genuinely redundant.
+
+### Reply UI styling issue
+
+The reply/conversation feature is functionally valuable but visually poorly integrated with the custom Bayou colour scheme, especially in dark mode/mobile. Current symptoms include:
+
+- bright white reply panel against the black page;
+- oversized empty textarea/vertical space;
+- typography and button treatment that feel unrelated to the rest of the site;
+- plugin badges/controls visually competing with the article footer;
+- federated reply content itself is useful and should be preserved.
+
+Decision: **keep the functionality and restyle it**, preferably with narrowly scoped CSS overrides rather than forking the plug-ins. This belongs in Phase 6 because it affects the quality of a retained secondary/social utility.
 
 ## Repository cleanup discovered during audit
 
@@ -163,9 +171,9 @@ The chronological Blog remains reachable prominently from the homepage and Writi
 
 ## Next actions
 
-1. Remove the six reported-unused plug-ins one at a time, rebuilding and checking for breakage after each removal.
-2. Confirm whether `All photos` remains necessary alongside the current curated Photos implementation.
-3. Decide whether the Twitter archive merely needs to be unpromoted or should be genuinely private; if private, preserve it outside the public static site before removing the public route/plugin.
-4. Confirm what `/x` currently does and whether it duplicates the Twitter archive or another integration.
-5. Implement the small Explore footer once the plug-in cleanup is settled.
-6. Re-test homepage, Writing, Photos, Library, Archive, Search, feeds, older shortcode-heavy posts, and dark/mobile presentation after removals.
+1. Confirm whether `All photos` remains necessary alongside the current curated Photos implementation.
+2. Restyle the retained Reply by email / Conversation on Micro.blog UI so it fits the site's dark/light and mobile presentation without breaking federated replies.
+3. Decide whether the Twitter/X archive merely needs to be unpromoted or should be genuinely private; if private, preserve it outside the public static site before removing the public routes/plugin.
+4. Consider whether `/x` and `/tweets/` should remain duplicate routes or whether one can become canonical/retired later.
+5. Implement the small Explore footer once the utility inventory is settled.
+6. Re-test homepage, Writing, Photos, Library, Archive, Search, feeds, replies, older shortcode-heavy posts, and dark/mobile presentation after changes.
