@@ -28,6 +28,85 @@
     <a href="{{ "archive/" | relURL }}">Archive</a>
   </nav>
 </main>
+{{ else if eq .RelPermalink "/library/" }}
+{{ $currently := default (slice) (index .Site.Data.bookshelves "currentlyreading") }}
+{{ $finished := default (slice) (index .Site.Data.bookshelves "finishedreading") }}
+{{ $fiction := default (slice) (index .Site.Data.bookshelves "fiction") }}
+{{ $nonfiction := default (slice) (index .Site.Data.bookshelves "non-fiction") }}
+{{ $kids := default (slice) (index .Site.Data.bookshelves "kids") }}
+{{ $sport := default (slice) (index .Site.Data.bookshelves "sport") }}
+{{ $bookReviewCategory := "Book Reviews" }}
+{{ $bookReviews := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice $bookReviewCategory) }}
+{{ if eq (len $bookReviews) 0 }}
+  {{ $bookReviewCategory = "Book Review" }}
+  {{ $bookReviews = where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice $bookReviewCategory) }}
+{{ end }}
+<main class="library-page">
+  <header class="library-header">
+    <p class="library-kicker">On the shelves</p>
+    <h1>Library</h1>
+    <p class="library-intro">What I’m reading now, or what I started reading and haven't finished, as well as books I did actually read.</p>
+  </header>
+
+  {{ if gt (len $currently) 0 }}
+  <section class="library-section" aria-labelledby="currently-reading-heading">
+    <p class="library-section-kicker">Now</p>
+    <h2 id="currently-reading-heading">Currently reading</h2>
+    {{ partial "book-grid.html" (dict "page" . "books" $currently "limit" 8) }}
+  </section>
+  {{ end }}
+
+  {{ if gt (len $finished) 0 }}
+  <section class="library-section" aria-labelledby="recently-finished-heading">
+    <p class="library-section-kicker">Recently</p>
+    <h2 id="recently-finished-heading">Finished reading</h2>
+    <p class="library-section-intro">The latest additions to the finished shelf. There are {{ len $finished }} books in the full reading record.</p>
+    {{ partial "book-grid.html" (dict "page" . "books" $finished "limit" 12) }}
+
+    <details class="library-all-finished">
+      <summary>Browse all {{ len $finished }} finished books</summary>
+      {{ partial "book-grid.html" (dict "page" . "books" $finished) }}
+    </details>
+  </section>
+  {{ end }}
+
+  {{ if gt (len $bookReviews) 0 }}
+  <section class="library-section" aria-labelledby="book-reviews-heading">
+    <p class="library-section-kicker">From the blog</p>
+    <h2 id="book-reviews-heading">Book reviews</h2>
+    <p class="library-section-intro">Books, reading notes and occasional detours I’ve actually written about.</p>
+    {{ partial "collection-cards.html" (dict "page" . "category" $bookReviewCategory "limit" 4 "random" true "showAll" true) }}
+  </section>
+  {{ end }}
+
+  {{ if or (gt (len $fiction) 0) (gt (len $nonfiction) 0) (gt (len $kids) 0) (gt (len $sport) 0) }}
+  <section class="library-section" aria-labelledby="browse-shelves-heading">
+    <p class="library-section-kicker">Browse</p>
+    <h2 id="browse-shelves-heading">A few shelves</h2>
+    <p class="library-section-intro">Some overlapping routes through the reading pile.</p>
+
+    <div class="library-shelf-links">
+      {{ if gt (len $fiction) 0 }}<a class="library-shelf-link" href="#shelf-fiction"><span>Fiction</span><span>{{ len $fiction }}</span></a>{{ end }}
+      {{ if gt (len $nonfiction) 0 }}<a class="library-shelf-link" href="#shelf-non-fiction"><span>Non-fiction</span><span>{{ len $nonfiction }}</span></a>{{ end }}
+      {{ if gt (len $kids) 0 }}<a class="library-shelf-link" href="#shelf-kids"><span>Kids</span><span>{{ len $kids }}</span></a>{{ end }}
+      {{ if gt (len $sport) 0 }}<a class="library-shelf-link" href="#shelf-sport"><span>Sport</span><span>{{ len $sport }}</span></a>{{ end }}
+    </div>
+
+    {{ if gt (len $fiction) 0 }}
+    <details class="library-shelf-detail" id="shelf-fiction"><summary>Fiction — {{ len $fiction }} books</summary>{{ partial "book-grid.html" (dict "page" . "books" $fiction) }}</details>
+    {{ end }}
+    {{ if gt (len $nonfiction) 0 }}
+    <details class="library-shelf-detail" id="shelf-non-fiction"><summary>Non-fiction — {{ len $nonfiction }} books</summary>{{ partial "book-grid.html" (dict "page" . "books" $nonfiction) }}</details>
+    {{ end }}
+    {{ if gt (len $kids) 0 }}
+    <details class="library-shelf-detail" id="shelf-kids"><summary>Kids — {{ len $kids }} books</summary>{{ partial "book-grid.html" (dict "page" . "books" $kids) }}</details>
+    {{ end }}
+    {{ if gt (len $sport) 0 }}
+    <details class="library-shelf-detail" id="shelf-sport"><summary>Sport — {{ len $sport }} books</summary>{{ partial "book-grid.html" (dict "page" . "books" $sport) }}</details>
+    {{ end }}
+  </section>
+  {{ end }}
+</main>
 {{ else }}
 <div class="page">
   {{ if .Title }}
