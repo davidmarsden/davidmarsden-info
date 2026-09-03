@@ -1,11 +1,14 @@
 {{ define "main" }}
+{{ $selectedWriting := where .Site.RegularPages "Params.categories" "intersect" (slice "Selected Writing") }}
+{{ $favouritePhotos := where .Site.RegularPages "Params.categories" "intersect" (slice "Favourite Photos") }}
+{{ $currentlyReading := default (slice) (index .Site.Data.bookshelves "currentlyreading") }}
 <main class="hub-home">
   <section class="hub-hero" aria-labelledby="hub-title">
     <p class="hub-kicker">David Marsden</p>
     <h1 id="hub-title">Writing, investigating, building things and occasionally making a racket.</h1>
     <p class="hub-intro">I write about local democracy and place, build online communities and odd little web projects, make music with Hovercraft, and have spent an unreasonable number of years running multiplayer football worlds.</p>
     <p class="hub-intro hub-intro-last">This is the front door to all of it.</p>
-    <p class="hub-primary-link"><a href="{{ "blog/" | relURL }}">Read my personal blog →</a></p>
+    <p class="hub-primary-link"><a href="{{ "writing/" | relURL }}">Explore my writing →</a></p>
   </section>
 
   <section class="hub-section" aria-labelledby="writing-heading">
@@ -22,11 +25,16 @@
     </article>
 
     <div class="hub-project-grid">
-      <article class="hub-project">
-        <p class="hub-label">Civic infrastructure</p>
-        <h3><a href="https://commons.southallstories.uk/">Ealing Civic Commons</a></h3>
-        <p>Gathering what’s happening to Ealing — and who’s deciding it.</p>
-        <p class="hub-status">Incubated by Southall Stories.</p>
+      <article class="hub-project hub-project-visual">
+        <a class="hub-project-mark-link" href="https://ealing.civiccommons.co.uk/" aria-label="Visit Ealing Civic Commons">
+          <img class="hub-project-mark hub-civic-mark" src="https://ealing.civiccommons.co.uk/brand/ealing-oak-approved.webp" alt="Ealing Civic Commons oak mark" loading="lazy">
+        </a>
+        <div>
+          <p class="hub-label">Civic infrastructure</p>
+          <h3><a href="https://ealing.civiccommons.co.uk/">Ealing Civic Commons</a></h3>
+          <p>Gathering what’s happening to Ealing — and who’s deciding it.</p>
+          <p class="hub-status">Incubated by Southall Stories.</p>
+        </div>
       </article>
 
       <article class="hub-project">
@@ -87,7 +95,15 @@
       <p class="hub-label">Punk music · 1995 → now</p>
       <h3 class="hub-hovercraft"><a href="https://hovercraft.band/">HOVERCRAFT</a></h3>
       <p>A retro-space punk band formed in Grimsby in the mid-1990s, resurrected thirty years later with songs recreated from dusty old cassette tapes, and unfinished business.</p>
-      <p class="hub-project-link"><a href="https://hovercraft.band/">Music, artwork and archive →</a></p>
+      <div class="hub-listen" aria-label="Featured Hovercraft track">
+        <span class="hub-listen-icon" aria-hidden="true">▶</span>
+        <div>
+          <span class="hub-listen-label">Listen</span>
+          <a href="https://hovercraftuk.bandcamp.com/album/mr-tooting-brown">Mr Tooting Brown</a>
+          <span class="hub-listen-note">original 1995 recording</span>
+        </div>
+      </div>
+      <p class="hub-project-link"><a href="https://hovercraft.band/jukebox/">Open the Hovercraft Jukebox →</a></p>
     </article>
   </section>
 
@@ -97,7 +113,14 @@
       <h2 id="build-heading">Things I build</h2>
     </div>
 
-    <article class="hub-project hub-project-featured">
+    <article class="hub-project hub-project-featured hub-helping-hand">
+      <div class="hub-hand-icons" aria-label="Helping Hand tools">
+        <img src="https://hand.davidmarsden.info/brand/helping-hand.svg" alt="Helping Hand" loading="lazy">
+        <img src="https://hand.davidmarsden.info/brand/writing-hand.svg" alt="Writing Hand" loading="lazy">
+        <img src="https://hand.davidmarsden.info/brand/markdown-hand.svg" alt="Markdown Hand" loading="lazy">
+        <img src="https://hand.davidmarsden.info/brand/bum-hand.svg" alt="BUM" loading="lazy">
+        <img src="https://hand.davidmarsden.info/brand/publish-hand.svg" alt="Publish Hand" loading="lazy">
+      </div>
       <p class="hub-label">Human-first publishing tools</p>
       <h3><a href="https://hand.davidmarsden.info/">Helping Hand</a></h3>
       <p>A family of small publishing tools for getting material from paper, tablets and local files onto the web with as little machinery in the way as possible.</p>
@@ -105,9 +128,54 @@
     </article>
   </section>
 
-  <section class="hub-section hub-about" aria-labelledby="about-heading">
+  {{ if or (gt (len $selectedWriting) 0) (gt (len $favouritePhotos) 0) (gt (len $currentlyReading) 0) }}
+  <section class="hub-section hub-now" aria-labelledby="now-heading">
     <div class="hub-section-heading">
       <p class="hub-section-number">05</p>
+      <h2 id="now-heading">Now</h2>
+    </div>
+    <p class="hub-section-intro">A few changing glimpses from around the site.</p>
+
+    <div class="hub-now-grid">
+      {{ range first 1 (shuffle $selectedWriting) }}
+      <article class="hub-now-writing">
+        <p class="hub-label">Selected writing</p>
+        <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 78 }}{{ end }}</a></h3>
+        <p>{{ .Plain | htmlUnescape | truncate 180 }}</p>
+        <p class="hub-project-link"><a href="{{ "writing/" | relURL }}">More writing →</a></p>
+      </article>
+      {{ end }}
+
+      <div class="hub-now-visuals">
+        {{ range first 1 (shuffle $favouritePhotos) }}
+          {{ with .Params.photos }}
+            {{ $photo := index . 0 }}
+            <article class="hub-now-photo">
+              <a href="{{ $.Permalink }}"><img src="{{ $photo }}" alt="Favourite photo" loading="lazy"></a>
+              <p><span class="hub-label">Favourite photo</span> <a href="{{ "photos/" | relURL }}">See the showcase →</a></p>
+            </article>
+          {{ end }}
+        {{ end }}
+
+        {{ range first 1 $currentlyReading }}
+        <article class="hub-now-book">
+          {{ with .cover_url }}<a href="{{ printf "https://micro.blog/books/%s" $.isbn }}"><img src="{{ . }}" alt="Cover of {{ $.title }}" loading="lazy"></a>{{ end }}
+          <div>
+            <p class="hub-label">Currently reading</p>
+            <h3>{{ .title }}</h3>
+            {{ with .author }}<p>{{ . }}</p>{{ end }}
+            <p class="hub-project-link"><a href="{{ "library/" | relURL }}">Visit the Library →</a></p>
+          </div>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <section class="hub-section hub-about" aria-labelledby="about-heading">
+    <div class="hub-section-heading">
+      <p class="hub-section-number">06</p>
       <h2 id="about-heading">About</h2>
     </div>
     <p>I’m based in Southall, west London. I’m an investigative journalist, community researcher, web tinkerer, former, and apparently current-again, punk musician, and administrator of online football worlds that should probably have died decades ago but stubbornly refuse to.</p>
