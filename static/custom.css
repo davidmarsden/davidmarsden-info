@@ -233,10 +233,11 @@
 
 .hub-project-banner img {
   display: block;
-  width: calc(100% + 2.5rem);
-  max-width: none;
+  width: 100%;
+  max-width: 100%;
   height: auto;
   margin: 0;
+  object-fit: contain;
 }
 
 .hub-listen {
