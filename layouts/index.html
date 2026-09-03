@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $selectedWriting := where .Site.RegularPages "Params.categories" "intersect" (slice "Selected Writing") }}
-{{ $favouritePhotos := where .Site.RegularPages "Params.categories" "intersect" (slice "Favourite Photos") }}
+{{ $favouritePhotos := default (slice) (index .Site.Data.collections "favouritephotos") }}
 {{ $currentlyReading := default (slice) (index .Site.Data.bookshelves "currentlyreading") }}
 <main class="hub-home">
   <section class="hub-hero" aria-labelledby="hub-title">
@@ -160,21 +160,10 @@
 
       <div class="hub-now-visuals">
         {{ range first 1 (shuffle $favouritePhotos) }}
-          {{ $photoPost := . }}
-          {{ $photoURL := "" }}
-          {{ with .Params.photos }}{{ $photoURL = index . 0 }}{{ end }}
-          {{ if eq $photoURL "" }}
-            {{ $photoMatches := findRE `<img[^>]+src=["'][^"']+["'][^>]*>` .Content 1 }}
-            {{ if gt (len $photoMatches) 0 }}
-              {{ $photoURL = replaceRE `.*src=["']([^"']+)["'].*` "$1" (index $photoMatches 0) }}
-            {{ end }}
-          {{ end }}
-          {{ if ne $photoURL "" }}
-            <article class="hub-now-photo">
-              <a href="{{ $photoPost.Permalink }}"><img src="{{ $photoURL }}" alt="Favourite photo" loading="lazy"></a>
-              <p><span class="hub-label">Favourite photo</span> <a href="{{ "photos/" | relURL }}">See the showcase →</a></p>
-            </article>
-          {{ end }}
+        <article class="hub-now-photo">
+          <a href="{{ "photos/" | relURL }}"><img src="{{ .url }}" alt="Favourite photo" loading="lazy"></a>
+          <p><span class="hub-label">Favourite photo</span> <a href="{{ "photos/" | relURL }}">See the showcase →</a></p>
+        </article>
         {{ end }}
 
         {{ range first 1 (shuffle $currentlyReading) }}
@@ -193,16 +182,5 @@
     </div>
   </section>
   {{ end }}
-
-  <section class="hub-section hub-about" aria-labelledby="about-heading">
-    <div class="hub-section-heading">
-      <p class="hub-section-number">06</p>
-      <h2 id="about-heading">About</h2>
-    </div>
-    <p>I’m based in Southall, west London. I’m an investigative journalist, community researcher, web tinkerer, former, and apparently current-again, punk musician, and administrator of online football worlds that should probably have died decades ago but stubbornly refuse to.</p>
-    <p>Much of my current writing concerns local government, development, environment and community power in Southall and Ealing.</p>
-    <p>By day I work in charity administration and project development at <a href="https://kingscentresouthall.org.uk/">The Kings Centre Southall</a>.</p>
-    <p class="hub-disclaimer">This is my personal website. The views, writing and projects here are my own unless explicitly stated otherwise.</p>
-  </section>
 </main>
 {{ end }}
