@@ -1,0 +1,131 @@
+<style>
+  .microblog_email {
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.55;
+    color: #111111;
+  }
+
+  .microblog_email a {
+    color: #b42318;
+  }
+
+  .microblog_header {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .newsletter-title {
+    margin-left: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    vertical-align: middle;
+  }
+
+  .newsletter-intro {
+    padding: 18px 0 4px;
+  }
+
+  .newsletter-post {
+    padding: 22px 0;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .newsletter-post-title {
+    margin: 0 0 10px;
+    font-size: 22px;
+  }
+
+  .microblog_permalink {
+    color: #666666 !important;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .microblog_footer {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 2px solid #dddddd;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555555;
+  }
+
+  .newsletter-explore {
+    margin-bottom: 10px;
+  }
+
+  .newsletter-explore strong {
+    color: #111111;
+  }
+
+  .microblog_divider {
+    color: #999999;
+  }
+
+  {{ .CustomCSS }}
+</style>
+
+<div class="microblog_email">
+  <div class="microblog_header">
+    <a href="{{ .Site.BaseURL }}" style="text-decoration:none;">
+      <img src="{{ .Site.Author.avatar }}" width="48" height="48" alt="David Marsden" style="border-radius: 10px; vertical-align: middle;">
+      <span class="newsletter-title">{{ .Site.Title }}</span>
+    </a>
+  </div>
+
+  {{ if gt (len .Intro) 0 }}
+  <div class="newsletter-intro">
+    {{ .Intro }}
+  </div>
+  {{ end }}
+
+  {{ range .Pages }}
+  <div class="newsletter-post">
+    {{ if .Title }}
+      <h2 class="newsletter-post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    {{ end }}
+
+    {{ .Content }}
+
+    {{ if gt (len .Params.audio) 0 }}
+      <p><a href="{{ .Permalink }}">Listen to audio</a></p>
+    {{ end }}
+
+    {{ if gt (len .Params.video) 0 }}
+      <p><a href="{{ .Permalink }}">Watch video</a></p>
+    {{ end }}
+
+    <p><a href="{{ .Permalink }}" class="microblog_permalink">{{ .Date.Format "2 January 2006" }} →</a></p>
+  </div>
+  {{ end }}
+
+  <div class="microblog_footer">
+    <div class="newsletter-explore">
+      <strong>Explore:</strong>
+      <a href="{{ .Site.BaseURL }}search-space/">Search</a>
+      <span class="microblog_divider"> · </span>
+      <a href="{{ .Site.BaseURL }}blogroll/">Blogroll</a>
+      <span class="microblog_divider"> · </span>
+      <a href="{{ .Site.BaseURL }}stargate/">Surprise me</a>
+      <span class="microblog_divider"> · </span>
+      <a href="{{ .Site.BaseURL }}feed.xml">RSS</a>
+    </div>
+
+    <div>
+      <a href="{{ .Site.BaseURL }}">{{ .Site.Hostname }}</a>
+      <span class="microblog_divider"> · </span>
+      <a href="{{ .Footer.UnsubscribeURL }}">Unsubscribe</a>
+      {{ if eq (len .Pages) 1 }}
+        {{ with index .Pages 0 }}
+          <span class="microblog_divider"> · </span>
+          <a href="{{ .Permalink }}">View in browser</a>
+        {{ end }}
+      {{ end }}
+      {{ if gt (len .Footer.MailingAddress) 0 }}
+        <br>{{ .Footer.MailingAddress }}
+      {{ end }}
+    </div>
+  </div>
+</div>
