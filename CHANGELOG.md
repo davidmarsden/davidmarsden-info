@@ -4,17 +4,20 @@ Significant changes to the site customisation layer are recorded here.
 
 ## 2026-09-03
 
-### Phase 7 started: homepage integration
+### Phase 7 complete: homepage integration
 
-- Changed the homepage hero CTA from the chronological Blog to **Explore my writing →** linking to `/writing/`.
+- Completed the homepage as a restrained personal hub rather than a chronological feed or project dashboard.
+- Changed the hero CTA from the chronological Blog to **Explore my writing →** linking to `/writing/`.
+- Refined the homepage introduction and section copy while preserving David's own current wording as the source of truth.
 - Updated **Ealing Civic Commons** to `ealing.civiccommons.co.uk` and added the approved revived Ealing oak mark from the Commons brand assets.
-- Added a restrained Hovercraft listening treatment featuring **Mr Tooting Brown** plus a route into the Hovercraft Jukebox.
 - Added the Helping Hand family of tool icons using the canonical project brand assets.
+- Added a Hovercraft release preview with artwork, native audio for **To The Grave**, and a route into the Hovercraft Jukebox.
 - Added a compact **Now** section between Things I build and About.
 - Now rotates one **Selected Writing** item and one **Favourite Photo** at build time and shows the current Micro.blog reading item/book cover.
+- Added wide branded homepage banners for **The Beautiful Game** and **The Pink Final** and corrected their responsive sizing so the full artwork remains visible.
 - Renumbered About to section 06.
-- Added responsive homepage styling for the new visual elements and dynamic content.
-- Marked Phase 7 **In progress** in `docs/ROADMAP.md` pending a live Micro.blog build and visual review.
+- Confirmed the new homepage visual layer live in dark mode and kept the overall treatment editorial rather than adding more feeds, category clouds or social widgets.
+- Marked Phase 7 **Done** in `docs/ROADMAP.md`; remaining cosmetic and maintenance work moves to Phase 8.
 
 ### Phase 6 complete: secondary utilities, replies and newsletter
 
