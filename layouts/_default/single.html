@@ -19,14 +19,6 @@
     {{ partial "collection-cards.html" (dict "page" . "category" "The Story of My Life" "limit" 4 "showAll" true) }}
   </section>
   {{ end }}
-
-  <nav class="about-page-explore" aria-label="Explore David Marsden's site">
-    <p class="about-page-explore-label">Explore</p>
-    <a href="{{ "blog/" | relURL }}">Blog</a>
-    <a href="{{ "photos/" | relURL }}">Favourite photos</a>
-    <a href="{{ "library/" | relURL }}">Library</a>
-    <a href="{{ "archive/" | relURL }}">Archive</a>
-  </nav>
 </main>
 {{ else if eq .RelPermalink "/library/" }}
 {{ $currently := default (slice) (index .Site.Data.bookshelves "currentlyreading") }}
