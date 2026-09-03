@@ -4,6 +4,18 @@ Significant changes to the site customisation layer are recorded here.
 
 ## 2026-09-03
 
+### Phase 7 started: homepage integration
+
+- Changed the homepage hero CTA from the chronological Blog to **Explore my writing →** linking to `/writing/`.
+- Updated **Ealing Civic Commons** to `ealing.civiccommons.co.uk` and added the approved revived Ealing oak mark from the Commons brand assets.
+- Added a restrained Hovercraft listening treatment featuring **Mr Tooting Brown** plus a route into the Hovercraft Jukebox.
+- Added the Helping Hand family of tool icons using the canonical project brand assets.
+- Added a compact **Now** section between Things I build and About.
+- Now rotates one **Selected Writing** item and one **Favourite Photo** at build time and shows the current Micro.blog reading item/book cover.
+- Renumbered About to section 06.
+- Added responsive homepage styling for the new visual elements and dynamic content.
+- Marked Phase 7 **In progress** in `docs/ROADMAP.md` pending a live Micro.blog build and visual review.
+
 ### Phase 6 complete: secondary utilities, replies and newsletter
 
 - Completed the secondary-pages and plug-in audit in `docs/SECONDARY-UTILITIES-AUDIT.md`.
