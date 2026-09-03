@@ -2,6 +2,16 @@
 
 Significant changes to the site customisation layer are recorded here.
 
+## 2026-09-03
+
+### Phase 6 implementation: Explore footer
+
+- Added a site-wide secondary **Explore** footer with Search, Blogroll, Surprise me, RSS and GitHub.
+- Kept the primary six-item navigation unchanged.
+- Added `static/secondary-utils.css` so the Explore links read as a restrained secondary discovery layer rather than another navigation bar.
+- Loaded the new secondary-utilities stylesheet from `microhook-head.html` alongside the existing site-specific styles.
+- Marked Phase 6 **In progress** in `docs/ROADMAP.md` and recorded the remaining live-theme testing, reply refinement, archive-privacy and plug-in-cleanup tasks.
+
 ## 2026-09-02
 
 ### Phase 6 started: secondary utilities and reply styling
