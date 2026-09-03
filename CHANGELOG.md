@@ -4,13 +4,21 @@ Significant changes to the site customisation layer are recorded here.
 
 ## 2026-09-03
 
-### Phase 6 implementation: Explore footer
+### Phase 6 complete: secondary utilities, replies and newsletter
 
+- Completed the secondary-pages and plug-in audit in `docs/SECONDARY-UTILITIES-AUDIT.md`.
 - Added a site-wide secondary **Explore** footer with Search, Blogroll, Surprise me, RSS and GitHub.
-- Kept the primary six-item navigation unchanged.
+- Removed the homepage-only legacy Blog / Archive / RSS / GitHub footer so the homepage now uses the shared site footer.
+- Kept the primary six-item navigation unchanged: Writing, About, Photos, Library, Archive and Subscribe.
 - Added `static/secondary-utils.css` so the Explore links read as a restrained secondary discovery layer rather than another navigation bar.
-- Loaded the new secondary-utilities stylesheet from `microhook-head.html` alongside the existing site-specific styles.
-- Marked Phase 6 **In progress** in `docs/ROADMAP.md` and recorded the remaining live-theme testing, reply refinement, archive-privacy and plug-in-cleanup tasks.
+- Retained Search, Blogroll, Surprise me, RSS, Replies and the useful personal-web/archive plumbing while leaving the Twitter/X archive unpromoted.
+- Confirmed `/.well-known/atproto-did` is technical AT Protocol identity plumbing and kept it intact but absent from navigation.
+- Confirmed Reply by email, Conversation on Micro.blog and Reply on Mastodon are active features rather than unused plug-ins.
+- Added `static/replies.css` and confirmed the federated reply cards/form now integrate cleanly in light and dark modes without changing reply behaviour.
+- Added a custom newsletter template and applied the same Explore vocabulary to email while retaining Unsubscribe and View in browser controls.
+- Reset the stale deleted newsletter category to Any category and retained the monthly newsletter schedule.
+- Removed the stale `layouts/partials/sidebar.html` override that no longer matched the live architecture.
+- Marked Phase 6 **Done** in `docs/ROADMAP.md`; Phase 7 (homepage integration) is now next.
 
 ## 2026-09-02
 
@@ -19,9 +27,7 @@ Significant changes to the site customisation layer are recorded here.
 - Audited the surviving Micro.blog secondary pages and plug-ins in `docs/SECONDARY-UTILITIES-AUDIT.md`.
 - Kept Search, Blogroll and Surprise me as the core Explore candidates, with RSS and GitHub as secondary links.
 - Kept Replies, Trees and the Twitter/X archive quietly available rather than promoting them globally.
-- Confirmed `/.well-known/atproto-did` is technical AT Protocol identity plumbing and must remain unpromoted but intact.
 - Confirmed Reply by email, Conversation on Micro.blog and Reply on Mastodon are active features rather than unused plug-ins.
-- Added `static/replies.css` to restyle federated replies and the reply form so they fit the site in light/dark mode and on mobile without changing reply behaviour.
 - Removed the stale `layouts/partials/sidebar.html` override that no longer matched the live architecture.
 - Consolidated the completed Phase 5 Library implementation from `phase-5-library` onto `main`, including Library/book templates, local review routing data, and Library/book-detail styling.
 
@@ -34,7 +40,7 @@ Significant changes to the site customisation layer are recorded here.
 - Made reviewed books prefer the matching `davidmarsden.info` review while retaining Micro.blog book pages as the fallback for books without local reviews.
 - Enabled local `/books/<isbn>/` detail-page behaviour and resolved routing edge cases involving reviewed and currently-reading titles.
 - Updated the Library introduction to: `What I’m reading now, or what I started reading and haven't finished, as well as books I did actually read.`
-- Marked Phase 5 **Done** in `docs/ROADMAP.md`; Phase 6 (secondary utilities) is now next.
+- Marked Phase 5 **Done** in `docs/ROADMAP.md`.
 
 ## 2026-09-01
 
