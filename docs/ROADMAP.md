@@ -134,16 +134,29 @@ Implemented and confirmed live:
 
 The Twitter/X archive remains intentionally quiet rather than promoted. Whether it should eventually be genuinely private or consolidated to one route is a separate archival/privacy decision and does not block the site-organisation work.
 
-## Phase 7 — Homepage integration — Next
+## Phase 7 — Homepage integration — In progress
 
-The homepage hub itself is already live. This phase is specifically about deciding whether to add restrained discovery teasers from the stronger destination pages now built, for example:
+Started 2026-09-03.
 
-- rotating Selected Writing;
-- Favourite Photos;
-- currently reading/recent books;
-- occasional contextual curated collections where they genuinely improve discovery.
+Keep the homepage as a concise personal hub while adding a small amount of changing content and visual identity from the destination pages built in earlier phases.
 
-The homepage should remain a concise personal hub, not revert to being a directory or sidebar-heavy portal.
+Implemented in GitHub, pending live-theme review:
+
+- changed the hero CTA from the chronological Blog to **Explore my writing →** linking to `/writing/`;
+- updated **Ealing Civic Commons** to the main `ealing.civiccommons.co.uk` home and added the approved revived Ealing oak mark;
+- added a restrained Hovercraft listening treatment featuring **Mr Tooting Brown** and a route into the Hovercraft Jukebox;
+- added the real Helping Hand family of tool icons from the Helping Hand project;
+- added a compact **Now** section between Things I build and About;
+- Now rotates one **Selected Writing** item and one **Favourite Photo** at build time, and shows the current Micro.blog reading item/book cover;
+- renumbered About to section 06;
+- added responsive styling so the new visual layer remains editorial rather than turning the homepage into a dashboard.
+
+Remaining before Phase 7 is complete:
+
+- apply/rebuild on the live Micro.blog theme and review desktop/mobile plus light/dark presentation;
+- confirm the remote Civic Commons and Helping Hand brand assets load reliably from their canonical project sites;
+- check the dynamic Favourite Photo and currently-reading data against real Micro.blog build output;
+- make one small visual refinement pass if needed, then stop rather than adding more homepage furniture.
 
 ## Phase 8 — Final polish and maintenance model — Later
 
