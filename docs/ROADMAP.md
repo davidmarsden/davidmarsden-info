@@ -112,36 +112,29 @@ Implemented:
 
 The Library now follows the same editorial model as Writing and Photos: Micro.blog remains the source of truth, while the theme provides the curated presentation.
 
-## Phase 6 — Secondary utilities — In progress
+## Phase 6 — Secondary utilities — Done
 
-Started 2026-09-02; implementation began 2026-09-03.
+Completed 2026-09-03.
 
 The secondary-pages and plug-in audit is recorded in `docs/SECONDARY-UTILITIES-AUDIT.md`.
 
-Current decisions:
+Implemented and confirmed live:
 
-- keep **Search**, **Blogroll**, **Surprise me**, **RSS** and **GitHub** as the small secondary discovery layer;
-- keep Replies and the Twitter/X archive available without promoting them globally;
-- keep the AT Protocol `/.well-known/atproto-did` endpoint as technical infrastructure, not navigation;
-- keep the reply/conversation plug-ins because they support real Micro.blog, Mastodon and Bluesky participation;
-- preserve the curated Photos/collections plug-ins that the current site relies on.
+- retained **Search**, **Blogroll**, **Surprise me**, **RSS** and **GitHub** as a small secondary discovery layer;
+- added one consistent site-wide **Explore** footer: Search · Blogroll · Surprise me · RSS · GitHub;
+- removed the homepage-only legacy Blog · Archive · RSS · GitHub footer so the homepage now uses the same shared footer as the rest of the site;
+- retained Replies and the Twitter/X archive without promoting them globally;
+- retained the AT Protocol `/.well-known/atproto-did` endpoint as technical infrastructure rather than navigation;
+- retained the reply/conversation plug-ins because they support real Micro.blog, Mastodon and Bluesky participation;
+- restyled the reply/conversation UI for consistent light/dark presentation and sensible sizing;
+- retained the photo/collection plug-ins required by the curated Photos page;
+- added and configured a site-matched newsletter template, with the same Explore vocabulary plus email-specific Unsubscribe/View in browser controls;
+- confirmed the Subscribe page and monthly newsletter configuration are working as intended;
+- removed the stale old Bayou sidebar override from GitHub.
 
-Implemented so far:
+The Twitter/X archive remains intentionally quiet rather than promoted. Whether it should eventually be genuinely private or consolidated to one route is a separate archival/privacy decision and does not block the site-organisation work.
 
-- removed the stale old Bayou sidebar override from GitHub;
-- added a site-wide **Explore** footer: Search · Blogroll · Surprise me · RSS · GitHub;
-- added narrow site-specific styling for the Explore footer;
-- added site-specific reply/conversation styling, including dark-mode and mobile treatment.
-
-Remaining before Phase 6 is complete:
-
-- apply/test the Explore footer and reply styling on the live Micro.blog theme;
-- refine reply UI selectors if the real generated markup needs a second pass;
-- decide how private the Twitter/X archive should actually be, since unlinked is not private;
-- document any remaining plug-in/page decisions and remove only genuinely obsolete items;
-- run a final smoke test of Search, Blogroll, Surprise me, RSS, replies and primary destinations.
-
-## Phase 7 — Homepage integration — Later
+## Phase 7 — Homepage integration — Next
 
 The homepage hub itself is already live. This phase is specifically about deciding whether to add restrained discovery teasers from the stronger destination pages now built, for example:
 
