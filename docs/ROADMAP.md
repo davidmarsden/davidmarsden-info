@@ -153,14 +153,26 @@ Implemented and confirmed live:
 - renumbered About to section 06;
 - confirmed the new visual layer works live in dark mode and remains responsive without turning the homepage into a dashboard.
 
-The homepage is deliberately considered complete at this point. Further cosmetic cleanup belongs in Phase 8 rather than adding more homepage furniture.
+Post-completion refinement on 2026-09-03:
 
-## Phase 8 — Final polish and maintenance model — Later
+- added the existing **Top 100** and **Top 100 Regen** identities to their football cards using contained, non-cropped logo panels;
+- made the Currently Reading card rotate from the current-reading shelf at build time;
+- made Favourite Photo extraction more robust by falling back to the first rendered post image when Micro.blog does not expose `.Params.photos`.
 
-Once the main destinations are settled:
+The homepage remains deliberately considered complete. Further cleanup belongs in Phase 8 rather than adding more homepage furniture.
+
+## Phase 8 — Final polish and maintenance model — In progress
+
+Started 2026-09-03.
+
+First cleanup completed:
+
+- removed the old About-page-specific **Explore** links after the Phase 6 site-wide Explore footer made them redundant, fixing the duplicate-footer presentation on `/about/`.
+
+Remaining polish/maintenance work:
 
 - review responsive behaviour and dark/light presentation across the whole site;
-- remove or document obsolete overrides/plugins/pages;
+- remove or document obsolete overrides, CSS, plugins and pages;
 - confirm important URLs, feeds and Micro.blog integrations remain intact;
 - make the distinction between Micro.blog-managed content/settings and GitHub-managed presentation explicit in the documentation;
 - keep future curation lightweight enough that the site does not become a second CMS to maintain.
