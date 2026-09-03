@@ -221,7 +221,8 @@
   max-width: 5.25rem;
 }
 
-.hub-project-poster {
+.hub-project-poster,
+.hub-project-logo-card {
   overflow: hidden;
 }
 
@@ -236,6 +237,26 @@
   width: 100%;
   max-width: 100%;
   height: auto;
+  margin: 0;
+  object-fit: contain;
+}
+
+.hub-project-logo {
+  display: flex;
+  height: 14rem;
+  margin: -1.25rem -1.25rem 1rem;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  line-height: 0;
+}
+
+.hub-project-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
   margin: 0;
   object-fit: contain;
 }
@@ -472,6 +493,10 @@
 
   .hub-section {
     padding: 2.1rem 0 2.35rem;
+  }
+
+  .hub-project-logo {
+    height: 12rem;
   }
 
   .hub-now-grid {
