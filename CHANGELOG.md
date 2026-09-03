@@ -4,6 +4,17 @@ Significant changes to the site customisation layer are recorded here.
 
 ## 2026-09-03
 
+### Phase 8 started: final polish and maintenance
+
+- Removed the old About-page-specific **Explore** links now that the shared site-wide Explore footer is the canonical secondary navigation, fixing the duplicate-footer presentation on `/about/`.
+- Marked Phase 8 **In progress** in `docs/ROADMAP.md`.
+
+### Post-Phase 7 homepage refinements
+
+- Added the existing **Top 100** and **Top 100 Regen** identities to their football-world cards using contained logo panels rather than cropped banners.
+- Made the **Currently Reading** card rotate from the current Micro.blog reading shelf at static rebuild time.
+- Kept **Favourite Photo** rotation and added a fallback that extracts the first rendered post image when Micro.blog does not expose `.Params.photos`.
+
 ### Phase 7 complete: homepage integration
 
 - Completed the homepage as a restrained personal hub rather than a chronological feed or project dashboard.
