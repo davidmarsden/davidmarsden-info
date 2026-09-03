@@ -112,16 +112,34 @@ Implemented:
 
 The Library now follows the same editorial model as Writing and Photos: Micro.blog remains the source of truth, while the theme provides the curated presentation.
 
-## Phase 6 — Secondary utilities — Next
+## Phase 6 — Secondary utilities — In progress
 
-Review useful secondary destinations such as:
+Started 2026-09-02; implementation began 2026-09-03.
 
-- Search;
-- Blogroll;
-- On This Day;
-- other surviving utility/experimental pages.
+The secondary-pages and plug-in audit is recorded in `docs/SECONDARY-UTILITIES-AUDIT.md`.
 
-The Blogroll already has a deliberate role as a dedicated page rather than a homepage/sidebar widget. The broader job in this phase is to decide which remaining rabbit holes are genuinely worth keeping and give them a coherent secondary home — probably a small **Explore** area and/or footer — without crowding the primary navigation.
+Current decisions:
+
+- keep **Search**, **Blogroll**, **Surprise me**, **RSS** and **GitHub** as the small secondary discovery layer;
+- keep Replies and the Twitter/X archive available without promoting them globally;
+- keep the AT Protocol `/.well-known/atproto-did` endpoint as technical infrastructure, not navigation;
+- keep the reply/conversation plug-ins because they support real Micro.blog, Mastodon and Bluesky participation;
+- preserve the curated Photos/collections plug-ins that the current site relies on.
+
+Implemented so far:
+
+- removed the stale old Bayou sidebar override from GitHub;
+- added a site-wide **Explore** footer: Search · Blogroll · Surprise me · RSS · GitHub;
+- added narrow site-specific styling for the Explore footer;
+- added site-specific reply/conversation styling, including dark-mode and mobile treatment.
+
+Remaining before Phase 6 is complete:
+
+- apply/test the Explore footer and reply styling on the live Micro.blog theme;
+- refine reply UI selectors if the real generated markup needs a second pass;
+- decide how private the Twitter/X archive should actually be, since unlinked is not private;
+- document any remaining plug-in/page decisions and remove only genuinely obsolete items;
+- run a final smoke test of Search, Blogroll, Surprise me, RSS, replies and primary destinations.
 
 ## Phase 7 — Homepage integration — Later
 
