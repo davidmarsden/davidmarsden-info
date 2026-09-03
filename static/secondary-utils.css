@@ -1,0 +1,44 @@
+/* Phase 6: secondary utilities and Explore footer */
+.site-explore {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.55rem 1rem;
+  margin: 0 0 1.15rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--tertiary);
+  border-bottom: 1px solid var(--tertiary);
+  font-family: var(--font-secondary), sans-serif;
+}
+
+.site-explore-label {
+  margin-right: 0.15rem;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.site-explore a {
+  font-weight: 700;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.15em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .site-explore-label {
+    color: var(--white);
+  }
+}
+
+@media (max-width: 520px) {
+  .site-explore {
+    gap: 0.55rem 0.85rem;
+    padding: 1rem 0;
+  }
+
+  .site-explore-label {
+    flex-basis: 100%;
+  }
+}
