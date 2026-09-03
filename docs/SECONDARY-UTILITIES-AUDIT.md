@@ -1,14 +1,14 @@
 # Secondary utilities audit
 
-Phase 6 reviews the site's secondary pages and plug-in-generated utilities. The aim is to preserve useful personal-web rabbit holes without allowing them to compete with the six-item primary navigation.
+Phase 6 reviewed the site's secondary pages and plug-in-generated utilities. The aim was to preserve useful personal-web rabbit holes without allowing them to compete with the six-item primary navigation.
 
-Status: **In progress — started 2026-09-02**
+Status: **Done — completed 2026-09-03**
 
 ## Decision rule
 
-Every secondary destination should fall into one of three groups:
+Every secondary destination falls into one of three groups:
 
-1. **Explore** — genuinely useful or enjoyable for a curious visitor; surface it in a small secondary Explore/footer area.
+1. **Explore** — genuinely useful or enjoyable for a curious visitor; surfaced in the secondary Explore/footer area.
 2. **Quietly keep** — preserve the URL/function because it has archival, technical or contextual value, but do not promote it globally.
 3. **Retire** — obsolete, duplicative, abandoned or no longer worth the maintenance/plugin cost.
 
@@ -21,56 +21,37 @@ Primary navigation remains deliberately unchanged:
 - Archive
 - Subscribe
 
-## Live Pages review — 2026-09-02
+## Explore — implemented
 
-A review of the current Micro.blog Pages screen confirmed the remaining special pages include:
+The shared site footer now exposes:
 
-- `/about`
-- `/subscribe`
-- `/blogroll`
-- `/search-space/`
-- `/library`
-- `/photos`
-- `/replies`
-- `/stargate`
-- `/trees`
-- `/x`
-- `/tweets`
-- `/.well-known/atproto-did`
-
-Several older pages had already been deleted manually before this review. The remaining list now consists mainly of pages we deliberately want to keep, pages that are useful but should not be promoted, and one technical endpoint.
-
-## Explore
+**Search · Blogroll · Surprise me · RSS · GitHub**
 
 ### Search Space
 
 Current path: `/search-space/`
 
-Keep. Search Space searches both posts and replies and supports suggestions and linkable results. That makes it substantially more useful than a simple post-title search, especially on a long-running Micro.blog archive.
+Kept. Search Space searches both posts and replies and supports suggestions and linkable results.
 
 Public label: **Search**.
 
 ### Blogroll
 
-Keep the dedicated blogroll/recommendations page. It belongs in the personal-web layer of the site and says something useful about what David reads and follows.
-
-Do not restore the former Bayou recommendations sidebar. The blogroll should remain a destination rather than site-wide furniture.
+Kept as a dedicated destination rather than restoring the former Bayou recommendations sidebar.
 
 ### Stargate / Surprise me!
 
-Current path: `/stargate/`, supplied by the **Surprise me!** plug-in.
+Current path: `/stargate/`.
 
-Keep. It provides a random-post route into the archive and fits the intended 'rabbit hole' role extremely well.
-
-Expose it as **Surprise me** while preserving `/stargate/`.
+Kept as a random-post route into the archive and exposed publicly as **Surprise me**.
 
 ### RSS
 
-Keep `/feed.xml` visible as a first-class independent-web subscription option. It does not need primary-navigation status.
+`/feed.xml` remains a first-class independent-web subscription option in the secondary footer.
 
 ### GitHub
 
-Keep the existing GitHub link if the footer is framed as a broader Explore/elsewhere area. It remains lower priority than the site-native discovery links.
+Kept as the lower-priority external link in the Explore layer.
 
 ## Quietly keep
 
@@ -78,102 +59,97 @@ Keep the existing GitHub link if the footer is framed as a broader Explore/elsew
 
 Current paths: `/tweets/` and `/x`.
 
-These are two routes into the same preserved Twitter/X archive rather than separate utilities. The archive contains David's full Twitter/X history up to the date the export was saved, around 2025. It has genuine archival value and should **not** be discarded merely because it is no longer part of the public-facing site structure.
+These are routes into the same preserved Twitter/X archive, containing David's history up to the saved export around 2025. The archive has genuine archival value but is not promoted in site navigation or Explore.
 
-Decision: preserve the archive but do not promote either route in navigation or Explore. If practical, retain only one canonical public route later to avoid needless duplication.
-
-Important distinction: an unlinked static page is still publicly reachable if someone knows or discovers the URL. If the archive should be genuinely private rather than merely unobtrusive, it needs to be moved to private/offline storage or otherwise access-controlled; `noindex`/removing links is not privacy.
+An unlinked static page is still publicly reachable. If David later decides the archive should be genuinely private, it should be moved to private/offline storage or access-controlled first. Consolidating `/x` and `/tweets/` to one route can also be revisited later. Neither decision blocks Phase 6.
 
 ### Replies
 
-Keep available because replies form part of David's Micro.blog history and Search Space can search them, but do not surface `/replies` as a main destination unless there is a later editorial reason to do so.
+Kept available because replies form part of the Micro.blog history and Search Space can search them. They are not a main navigation destination.
 
 ### Trees
 
-Keep as a curated collection/content source. It does not need global navigation because the category/collection model already provides contextual routes where useful.
+Kept as a curated collection/content source rather than global navigation.
 
 ### `/.well-known/atproto-did`
 
-**Technical endpoint — keep. Do not treat as a user-facing page.**
+Technical AT Protocol identity endpoint. Kept intact and intentionally absent from human-facing navigation.
 
-This is an AT Protocol identity-resolution endpoint. AT Protocol handles are domain names that resolve to a stable DID (decentralized identifier); one supported method is an HTTPS endpoint at `/.well-known/atproto-did`. It is machine-readable infrastructure used by AT Protocol/Bluesky-style identity systems, not content or navigation.
+## Plug-in decisions
 
-Do not delete it merely because it appears in Micro.blog's Pages screen, and never add it to navigation or Explore.
-
-## Not currently installed / not yet present
-
-### On This Day
-
-The earlier roadmap listed On This Day as a candidate, but no current On This Day/MicroMemories plug-in or page is present.
-
-Decision: do **not** add it merely to fill the Explore area. Search and Surprise me already provide two distinct archive-discovery routes.
-
-## Plug-in audit
-
-### Clearly retained / currently useful
+### Retained / useful
 
 - Bayou Theme
 - Photos page
-- All photos — subject to confirming it still serves the current curated Photos architecture
-- Photo collections — actively used by the `/photos` page via `{{< collection "Favourite Photos" >}}`
+- All photos
+- Photo collections — actively used by `/photos` via `{{< collection "Favourite Photos" >}}`
 - Blogroll shortcode
 - Search Space
 - Surprise me!
-- Reply by email — visibly active on post pages
-- Conversation on Micro.blog — visibly active on post pages and provides the federated/sign-in reply UI
-- Reply on Mastodon — retain; live replies include Mastodon participants and the federated reply surface is part of the intended Micro.blog experience
+- Reply by email
+- Conversation on Micro.blog
+- Reply on Mastodon
 - Lite YouTube for Micro.blog
 - Bandcamp Shortcode
 - Micro.blog Open External Links
 - Video streaming
 - Bookshelf shortcode
-- Tweet archive — retain while it is required to preserve the Twitter/X archive unless/until that archive is moved elsewhere
+- Tweet archive — retained while it preserves the Twitter/X archive
 
-### Keep for now / no cleanup benefit proven
+### Kept for now
 
-David reports no known deliberate current use for the following, but there is little value in removing them merely for tidiness while the site is stable:
+No cleanup benefit was demonstrated for removing these, so they remain installed unless they later cause conflicts or prove genuinely redundant:
 
 - Podcast title
 - Microblog Theme Shortcodes
 - Postlist
 
-Revisit only if they cause conflicts, performance/build issues, or a later export confirms they are genuinely redundant.
+## Reply/conversation presentation — completed
 
-### Reply UI styling issue
+The federated reply UI was functionally useful but visually disconnected from the custom Bayou design. Phase 6 retained the functionality and added narrowly scoped site styling instead of forking the plug-ins.
 
-The reply/conversation feature is functionally valuable but visually poorly integrated with the custom Bayou colour scheme, especially in dark mode/mobile. Current symptoms include:
+Confirmed result:
 
-- bright white reply panel against the black page;
-- oversized empty textarea/vertical space;
-- typography and button treatment that feel unrelated to the rest of the site;
-- plugin badges/controls visually competing with the article footer;
-- federated reply content itself is useful and should be preserved.
+- reply cards and form now fit both light and dark modes;
+- textarea sizing and spacing are substantially improved;
+- federated replies from Micro.blog/Mastodon/Bluesky remain intact;
+- reply controls no longer look like a separate application bolted onto the page.
 
-Decision: **keep the functionality and restyle it**, preferably with narrowly scoped CSS overrides rather than forking the plug-ins. This belongs in Phase 6 because it affects the quality of a retained secondary/social utility.
+## Footer consistency — completed
 
-## Repository cleanup discovered during audit
+The homepage previously had a separate `Blog · Archive · RSS · GitHub` footer row. This was removed so the homepage now uses the same shared Explore footer as other site pages.
 
-`layouts/partials/sidebar.html` was still present in GitHub even though the live sidebar was removed on 2026-08-29 and the repository documentation already described the local sidebar override as removed. The stale file contained the old recommendations and Links sidebar widgets.
+The website footer architecture is therefore consistent across the site:
 
-It was deleted from `main` on 2026-09-02 so the repository once again matches the intended live architecture.
+- **Primary navigation:** Writing · About · Photos · Library · Archive · Subscribe
+- **Secondary Explore footer:** Search · Blogroll · Surprise me · RSS · GitHub
 
-## Proposed Explore footer
+## Newsletter — completed
 
-No separate Explore page is necessary at present.
+The Micro.blog newsletter was brought into the same design language without pretending email HTML is identical to a website footer.
 
-**Explore:** Search · Blogroll · Surprise me · RSS · GitHub
+Implemented/configured:
 
-Possible tighter variation:
+- a custom newsletter template matching the David Marsden site identity;
+- newsletter Explore links use the same Search / Blogroll / Surprise me / RSS vocabulary;
+- email-specific controls such as **Unsubscribe** and **View in browser** remain present;
+- monthly newsletter setting is retained;
+- stale deleted-category selection was reset to **Any category**;
+- the settings-level newsletter HTML was updated so it no longer overrides the intended design with the old default template.
 
-**Explore:** Search · Blogroll · Surprise me · RSS
+## Repository cleanup
 
-The chronological Blog remains reachable prominently from the homepage and Writing, so it does not need to be duplicated here unless usability testing suggests otherwise.
+The stale `layouts/partials/sidebar.html` override was deleted from `main` after the visible sidebar had already been removed. This brought GitHub back into line with the intended live architecture.
 
-## Next actions
+## Phase 6 outcome
 
-1. Confirm whether `All photos` remains necessary alongside the current curated Photos implementation.
-2. Restyle the retained Reply by email / Conversation on Micro.blog UI so it fits the site's dark/light and mobile presentation without breaking federated replies.
-3. Decide whether the Twitter/X archive merely needs to be unpromoted or should be genuinely private; if private, preserve it outside the public static site before removing the public routes/plugin.
-4. Consider whether `/x` and `/tweets/` should remain duplicate routes or whether one can become canonical/retired later.
-5. Implement the small Explore footer once the utility inventory is settled.
-6. Re-test homepage, Writing, Photos, Library, Archive, Search, feeds, replies, older shortcode-heavy posts, and dark/mobile presentation after changes.
+Phase 6 is complete. The secondary structure now has a clear hierarchy rather than a collection of leftover Micro.blog pages:
+
+- strong six-item primary navigation;
+- one compact Explore footer;
+- useful personal-web discovery tools retained;
+- archival/technical pages kept quietly where appropriate;
+- federated replies visually integrated;
+- newsletter and website use consistent navigation/footer language.
+
+Further archival privacy decisions or plug-in pruning can be handled during later maintenance rather than blocking the redesign roadmap.
