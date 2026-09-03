@@ -54,13 +54,19 @@
     <p class="hub-section-intro">I’ve been running online multiplayer football-management communities for many years. These are the worlds, archives and tools that have grown out of them.</p>
 
     <div class="hub-project-grid">
-      <article class="hub-project">
+      <article class="hub-project hub-project-logo-card">
+        <a class="hub-project-logo" href="https://smtop100.blog/" aria-label="Visit Top 100">
+          <img src="https://top100regen.website/uploads/2026/original-logo3.png" alt="Top 100 — Probably the best GW in SM" loading="lazy">
+        </a>
         <p class="hub-label">Community</p>
         <h3><a href="https://smtop100.blog/">Top 100</a></h3>
         <p>The original multiplayer Soccer Manager community: five divisions, promotion, relegation, cups, rivalries, statistics and an alarming amount of history.</p>
       </article>
 
-      <article class="hub-project">
+      <article class="hub-project hub-project-logo-card">
+        <a class="hub-project-logo" href="https://top100regen.website/" aria-label="Visit Top 100 Regen">
+          <img src="https://top100regen.website/uploads/2025/high-resolution-logo-black-on-white-background.png" alt="Top 100 Regen — Ten Years At The Top" loading="lazy">
+        </a>
         <p class="hub-label">Community</p>
         <h3><a href="https://top100regen.website/">Top 100 Regen</a></h3>
         <p>A second-generation multiplayer football world and community.</p>
@@ -155,16 +161,23 @@
       <div class="hub-now-visuals">
         {{ range first 1 (shuffle $favouritePhotos) }}
           {{ $photoPost := . }}
-          {{ with .Params.photos }}
-            {{ $photo := index . 0 }}
+          {{ $photoURL := "" }}
+          {{ with .Params.photos }}{{ $photoURL = index . 0 }}{{ end }}
+          {{ if eq $photoURL "" }}
+            {{ $photoMatches := findRE `<img[^>]+src=["'][^"']+["'][^>]*>` .Content 1 }}
+            {{ if gt (len $photoMatches) 0 }}
+              {{ $photoURL = replaceRE `.*src=["']([^"']+)["'].*` "$1" (index $photoMatches 0) }}
+            {{ end }}
+          {{ end }}
+          {{ if ne $photoURL "" }}
             <article class="hub-now-photo">
-              <a href="{{ $photoPost.Permalink }}"><img src="{{ $photo }}" alt="Favourite photo" loading="lazy"></a>
+              <a href="{{ $photoPost.Permalink }}"><img src="{{ $photoURL }}" alt="Favourite photo" loading="lazy"></a>
               <p><span class="hub-label">Favourite photo</span> <a href="{{ "photos/" | relURL }}">See the showcase →</a></p>
             </article>
           {{ end }}
         {{ end }}
 
-        {{ range first 1 $currentlyReading }}
+        {{ range first 1 (shuffle $currentlyReading) }}
         {{ $book := . }}
         <article class="hub-now-book">
           {{ with .cover_url }}<a href="{{ printf "https://micro.blog/books/%s" $book.isbn }}"><img src="{{ . }}" alt="Cover of {{ $book.title }}" loading="lazy"></a>{{ end }}
