@@ -221,6 +221,24 @@
   max-width: 5.25rem;
 }
 
+.hub-project-poster {
+  overflow: hidden;
+}
+
+.hub-project-banner {
+  display: block;
+  margin: -1.25rem -1.25rem 1rem;
+  line-height: 0;
+}
+
+.hub-project-banner img {
+  display: block;
+  width: calc(100% + 2.5rem);
+  max-width: none;
+  height: auto;
+  margin: 0;
+}
+
 .hub-listen {
   display: inline-flex;
   align-items: center;
