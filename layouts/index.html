@@ -148,18 +148,20 @@
 
       <div class="hub-now-visuals">
         {{ range first 1 (shuffle $favouritePhotos) }}
+          {{ $photoPost := . }}
           {{ with .Params.photos }}
             {{ $photo := index . 0 }}
             <article class="hub-now-photo">
-              <a href="{{ $.Permalink }}"><img src="{{ $photo }}" alt="Favourite photo" loading="lazy"></a>
+              <a href="{{ $photoPost.Permalink }}"><img src="{{ $photo }}" alt="Favourite photo" loading="lazy"></a>
               <p><span class="hub-label">Favourite photo</span> <a href="{{ "photos/" | relURL }}">See the showcase →</a></p>
             </article>
           {{ end }}
         {{ end }}
 
         {{ range first 1 $currentlyReading }}
+        {{ $book := . }}
         <article class="hub-now-book">
-          {{ with .cover_url }}<a href="{{ printf "https://micro.blog/books/%s" $.isbn }}"><img src="{{ . }}" alt="Cover of {{ $.title }}" loading="lazy"></a>{{ end }}
+          {{ with .cover_url }}<a href="{{ printf "https://micro.blog/books/%s" $book.isbn }}"><img src="{{ . }}" alt="Cover of {{ $book.title }}" loading="lazy"></a>{{ end }}
           <div>
             <p class="hub-label">Currently reading</p>
             <h3>{{ .title }}</h3>
