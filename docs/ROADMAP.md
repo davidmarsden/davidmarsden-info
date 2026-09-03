@@ -134,29 +134,26 @@ Implemented and confirmed live:
 
 The Twitter/X archive remains intentionally quiet rather than promoted. Whether it should eventually be genuinely private or consolidated to one route is a separate archival/privacy decision and does not block the site-organisation work.
 
-## Phase 7 — Homepage integration — In progress
+## Phase 7 — Homepage integration — Done
 
-Started 2026-09-03.
+Completed 2026-09-03.
 
-Keep the homepage as a concise personal hub while adding a small amount of changing content and visual identity from the destination pages built in earlier phases.
+The homepage is now a concise personal hub that connects the major destinations built in earlier phases while retaining a restrained, editorial feel.
 
-Implemented in GitHub, pending live-theme review:
+Implemented and confirmed live:
 
 - changed the hero CTA from the chronological Blog to **Explore my writing →** linking to `/writing/`;
+- refined the homepage introduction and section copy while keeping the page intentionally personal rather than portal-like;
 - updated **Ealing Civic Commons** to the main `ealing.civiccommons.co.uk` home and added the approved revived Ealing oak mark;
-- added a restrained Hovercraft listening treatment featuring **Mr Tooting Brown** and a route into the Hovercraft Jukebox;
-- added the real Helping Hand family of tool icons from the Helping Hand project;
-- added a compact **Now** section between Things I build and About;
-- Now rotates one **Selected Writing** item and one **Favourite Photo** at build time, and shows the current Micro.blog reading item/book cover;
+- added the Helping Hand family of tool icons from the canonical Helping Hand project assets;
+- added a dedicated Hovercraft release preview with artwork, native audio for **To The Grave**, and a route into the Hovercraft Jukebox;
+- added a compact **Now** section that rotates one **Selected Writing** item and one **Favourite Photo** at build time and shows the current Micro.blog reading item/book cover;
+- added wide branded homepage banners for **The Beautiful Game** and **The Pink Final**, then corrected their responsive sizing so the full artwork remains visible;
+- kept Top 100, Top 100 Regen, One Jimmy Carter, Southall Stories, the Blog and other projects in a coherent card hierarchy rather than adding more navigation or feeds;
 - renumbered About to section 06;
-- added responsive styling so the new visual layer remains editorial rather than turning the homepage into a dashboard.
+- confirmed the new visual layer works live in dark mode and remains responsive without turning the homepage into a dashboard.
 
-Remaining before Phase 7 is complete:
-
-- apply/rebuild on the live Micro.blog theme and review desktop/mobile plus light/dark presentation;
-- confirm the remote Civic Commons and Helping Hand brand assets load reliably from their canonical project sites;
-- check the dynamic Favourite Photo and currently-reading data against real Micro.blog build output;
-- make one small visual refinement pass if needed, then stop rather than adding more homepage furniture.
+The homepage is deliberately considered complete at this point. Further cosmetic cleanup belongs in Phase 8 rather than adding more homepage furniture.
 
 ## Phase 8 — Final polish and maintenance model — Later
 
