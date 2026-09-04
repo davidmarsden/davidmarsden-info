@@ -4,37 +4,53 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="twitter:card" content="summary">
-  {{ with .Title }}
-  <meta name="twitter:title" content="{{ . }}">
-  <meta property="og:title" content="{{ . }}">
-  {{ else }}
-  <meta name="twitter:title" content="{{ .Site.Title }}">
-  <meta property="og:title" content="{{ .Site.Title }}">
-  {{ end }}
+
   {{ if .IsHome }}
-  <meta name="twitter:description" content="Follow @davidmarsden on Micro.blog.">
-  <meta name="og:description" content="Follow @davidmarsden on Micro.blog.">
-  <meta name="description" content="Follow @davidmarsden on Micro.blog.">
-  <meta name="twitter:image" content="{{ .Site.Author.avatar }}">
-  <meta property="og:image" content="{{ .Site.Author.avatar }}">
+    <title>David Marsden — Writing, investigating &amp; building things</title>
+    <meta name="description" content="Writing, investigating, building things and occasionally creating a ruckus — local journalism, civic tech, football worlds, music and more.">
+    <meta property="og:title" content="David Marsden — Writing, investigating &amp; building things">
+    <meta property="og:description" content="Writing, investigating, building things and occasionally creating a ruckus — local journalism, civic tech, football worlds, music and more.">
+    <meta name="twitter:title" content="David Marsden — Writing, investigating &amp; building things">
+    <meta name="twitter:description" content="Writing, investigating, building things and occasionally creating a ruckus — local journalism, civic tech, football worlds, music and more.">
   {{ else }}
-  <meta name="twitter:description" content="{{ .Summary | plainify | truncate 60 }}">
-  <meta name="og:description" content="{{ .Summary | plainify | truncate 60 }}">
-  <meta name="description" content="{{ .Summary | plainify }}">
+    <title>{{ if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ delimit (split .Summary " " | first 5) " " }} … | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ .Summary | plainify | truncate 160 }}">
+    <meta property="og:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+    <meta property="og:description" content="{{ .Summary | plainify | truncate 160 }}">
+    <meta name="twitter:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+    <meta name="twitter:description" content="{{ .Summary | plainify | truncate 160 }}">
   {{ end }}
 
- {{ if .Params.photos }}
-   {{ with index .Params.photos 0 }}
-     <meta property="og:image" content="{{ . }}">
-   {{ end }}
- {{ else }}
-   {{ with .Params.opengraph }}
-     <meta property="og:image" content="{{ .image }}">
-   {{ end }}
- {{ end }}
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:site_name" content="David Marsden">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@dvdmrsdn">
+  <meta name="twitter:creator" content="@dvdmrsdn">
 
-  <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ delimit (split .Summary " " | first 5) " " }} … | {{ .Site.Title }}{{ end }}{{ end }}</title>
+  {{ if .IsHome }}
+    <meta property="og:image" content="https://southallstories.uk/uploads/2025/file-00000000bf44620ab45f63d85b6cc716.png">
+    <meta property="og:image:alt" content="Southall Stories — Investigative Journalism">
+    <meta name="twitter:image" content="https://southallstories.uk/uploads/2025/file-00000000bf44620ab45f63d85b6cc716.png">
+    <meta name="twitter:image:alt" content="Southall Stories — Investigative Journalism">
+  {{ else if .Params.photos }}
+    {{ with index .Params.photos 0 }}
+      <meta property="og:image" content="{{ . }}">
+      <meta name="twitter:image" content="{{ . }}">
+    {{ end }}
+  {{ else if .Params.opengraph }}
+    {{ with .Params.opengraph.image }}
+      <meta property="og:image" content="{{ . }}">
+      <meta name="twitter:image" content="{{ . }}">
+    {{ end }}
+  {{ else }}
+    <meta property="og:image" content="https://southallstories.uk/uploads/2025/file-00000000bf44620ab45f63d85b6cc716.png">
+    <meta property="og:image:alt" content="Southall Stories — Investigative Journalism">
+    <meta name="twitter:image" content="https://southallstories.uk/uploads/2025/file-00000000bf44620ab45f63d85b6cc716.png">
+    <meta name="twitter:image:alt" content="Southall Stories — Investigative Journalism">
+  {{ end }}
+
   <link rel="canonical" href="{{ .Permalink }}">
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
   <link rel="stylesheet" href="{{ "css/all.min.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
