@@ -77,6 +77,20 @@
   letter-spacing: -0.02em;
 }
 
+/* The quote already says the heading. Keep the h2 for structure/accessibility,
+   but don't repeat it visually. */
+.about-page-epilogue h2 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .about-page-collection > p:not(.about-page-kicker) {
   max-width: 44rem;
   margin: 0.7rem 0 0;
@@ -94,6 +108,7 @@
   padding: 0.85rem 1rem;
   border-left: 4px solid var(--primary);
   background: var(--secondary);
+  color: var(--black);
 }
 
 .about-page-trout p {
@@ -148,6 +163,22 @@
 
 .about-page-explore-label {
   flex-basis: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-page-trout {
+    background: #111;
+    color: #f5f5f5;
+    border-color: var(--primary);
+  }
+
+  .about-page-trout footer {
+    color: #f5f5f5;
+  }
+
+  .about-page-solar-system figcaption {
+    color: #f5f5f5;
+  }
 }
 
 @media (max-width: 640px) {
