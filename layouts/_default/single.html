@@ -19,6 +19,26 @@
     {{ partial "collection-cards.html" (dict "page" . "category" "The Story of My Life" "limit" 4 "showAll" true) }}
   </section>
   {{ end }}
+
+  <section class="about-page-epilogue" aria-labelledby="about-universe-heading">
+    <p class="about-page-kicker">A sense of perspective</p>
+    <h2 id="about-universe-heading">The universe is a big place</h2>
+
+    <blockquote class="about-page-trout" cite="https://www.quotes.net/quote/21622">
+      <p>“The Universe is a big place, perhaps the biggest.”</p>
+      <footer>— <cite>Kilgore Trout</cite></footer>
+    </blockquote>
+
+    <figure class="about-page-solar-system">
+      <a href="https://davidmarsden.info/2025/01/21/whats-out-there.html">
+        <img src="https://davidmarsden.info/uploads/2025/xy3.jpeg" width="600" height="180" alt="A colourful child’s drawing of the solar system with planets and celestial objects.">
+      </a>
+      <figcaption>
+        <a href="https://davidmarsden.info/2025/01/21/whats-out-there.html">“The Solar System”</a><br>
+        <span>My four-year-old’s artistic riposte.</span>
+      </figcaption>
+    </figure>
+  </section>
 </main>
 {{ else if eq .RelPermalink "/library/" }}
 {{ $currently := default (slice) (index .Site.Data.bookshelves "currentlyreading") }}
