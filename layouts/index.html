@@ -141,7 +141,7 @@
       <article class="hub-project">
         <p class="hub-label">From the match reports</p>
         <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
-        <p>{{ if .Title }}{{ replace .Plain .Title "" | htmlUnescape | truncate 150 }}{{ else }}{{ .Plain | htmlUnescape | truncate 150 }}{{ end }}</p>
+        <p class="hub-project-link"><a href="{{ .Permalink }}">Read match report →</a></p>
       </article>
       {{ end }}
 
@@ -179,7 +179,7 @@
       <article class="hub-project">
         <p class="hub-label">Music I Love</p>
         <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
-        <p>{{ if .Title }}{{ replace .Plain .Title "" | htmlUnescape | truncate 150 }}{{ else }}{{ .Plain | htmlUnescape | truncate 150 }}{{ end }}</p>
+        <p class="hub-project-link"><a href="{{ .Permalink }}">Read the post →</a></p>
       </article>
       {{ end }}
 
@@ -187,7 +187,7 @@
       <article class="hub-project">
         <p class="hub-label">Songs I Made</p>
         <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
-        <p>{{ if .Title }}{{ replace .Plain .Title "" | htmlUnescape | truncate 150 }}{{ else }}{{ .Plain | htmlUnescape | truncate 150 }}{{ end }}</p>
+        <p class="hub-project-link"><a href="{{ .Permalink }}">Read the post →</a></p>
       </article>
       {{ end }}
     </div>
@@ -220,7 +220,8 @@
       <article class="hub-project">
         <p class="hub-label">From the kitchen · Recipes</p>
         <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
-        <p>{{ if .Title }}{{ replace .Plain .Title "" | htmlUnescape | truncate 170 }}{{ else }}{{ .Plain | htmlUnescape | truncate 170 }}{{ end }}</p>
+        <p>Recipes I’ve cooked, adapted and written down before I forget what went in them.</p>
+        <p class="hub-project-link"><a href="{{ "categories/recipes/" | relURL }}">More recipes →</a></p>
       </article>
       {{ end }}
     </div>
