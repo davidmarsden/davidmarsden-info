@@ -62,13 +62,15 @@
   font-weight: 800;
 }
 
-.about-page-collection {
+.about-page-collection,
+.about-page-epilogue {
   margin-top: 3rem;
   padding-top: 2.2rem;
   border-top: 2px solid var(--tertiary);
 }
 
-.about-page-collection h2 {
+.about-page-collection h2,
+.about-page-epilogue h2 {
   margin: 0;
   font-size: clamp(1.6rem, 3.5vw, 2.25rem);
   line-height: 1.1;
@@ -80,6 +82,57 @@
   margin: 0.7rem 0 0;
   font-size: 1.02rem;
   line-height: 1.6;
+}
+
+.about-page-trout {
+  max-width: 44rem;
+  margin: 1.4rem 0 1.8rem;
+  padding: 1.2rem 1.35rem;
+  border-left: 4px solid var(--primary);
+  background: var(--secondary);
+}
+
+.about-page-trout p {
+  margin: 0;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  line-height: 1.35;
+  font-style: italic;
+}
+
+.about-page-trout footer {
+  margin-top: 0.75rem;
+  text-align: right;
+  font-size: 0.95rem;
+}
+
+.about-page-solar-system {
+  max-width: 46rem;
+  margin: 0;
+}
+
+.about-page-solar-system a {
+  color: inherit;
+}
+
+.about-page-solar-system img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.about-page-solar-system figcaption {
+  margin-top: 0.8rem;
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.about-page-solar-system figcaption a {
+  font-weight: 800;
+}
+
+.about-page-solar-system figcaption span {
+  opacity: 0.72;
 }
 
 .about-page-explore {
@@ -104,5 +157,9 @@
   .about-page-content h2 {
     margin-top: 2.2rem;
     padding-top: 1.8rem;
+  }
+
+  .about-page-trout {
+    padding: 1rem;
   }
 }
