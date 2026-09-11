@@ -9,12 +9,4 @@
 <link rel="stylesheet" href="{{ "book-detail.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
 <link rel="stylesheet" href="{{ "replies.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
 <link rel="stylesheet" href="{{ "secondary-utils.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
-<style>
-  /* Some Micro.blog category posts repeat their title at the start of .Plain.
-     Keep the rotating homepage cards clean by showing the linked title only. */
-  .hub-music .hub-project-grid .hub-project > p:not(.hub-label),
-  section[aria-labelledby="make-heading"] .hub-project-grid .hub-project:last-child > p:not(.hub-label):not(.hub-project-link) {
-    display: none;
-  }
-</style>
 <script defer src="{{ "photo-showcase.js" | relURL }}?{{ .Site.Params.theme_seconds }}"></script>
