@@ -22,9 +22,7 @@
         {{ if gt (len .Params.audio) 0 }}
           <div style="margin:0 0 22px;padding:14px 16px;border-left:4px solid #da291c;background:#151515;">
             <div style="margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:#fbe122;">Listen</div>
-            {{ range .Params.audio }}
-              <audio controls preload="metadata" src="{{ . }}" style="display:block;width:100%;max-width:100%;margin:0 0 10px;">Your email app does not support the audio player.</audio>
-            {{ end }}
+            <audio controls preload="metadata" src="{{ .Params.audio }}" style="display:block;width:100%;max-width:100%;margin:0 0 10px;">Your email app does not support the audio player.</audio>
             <a href="{{ .Permalink }}" style="display:inline-block;padding:10px 15px;background:#da291c;color:#fff;font-weight:800;text-decoration:none;">Listen on davidmarsden.info →</a>
           </div>
         {{ end }}
