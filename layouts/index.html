@@ -76,7 +76,7 @@
       <article class="hub-project">
         <p class="hub-label">Letters from America</p>
         <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-        <p>{{ .Plain | htmlUnescape | truncate 150 }}</p>
+        <p>{{ replace .Plain .Title "" | htmlUnescape | truncate 150 }}</p>
       </article>
       {{ end }}
 
@@ -84,7 +84,7 @@
       <article class="hub-project">
         <p class="hub-label">Letters to America</p>
         <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-        <p>{{ .Plain | htmlUnescape | truncate 150 }}</p>
+        <p>{{ replace .Plain .Title "" | htmlUnescape | truncate 150 }}</p>
       </article>
       {{ end }}
     </div>
@@ -141,7 +141,7 @@
       <article class="hub-project">
         <p class="hub-label">From the match reports</p>
         <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
-        <p>{{ .Plain | htmlUnescape | truncate 150 }}</p>
+        <p>{{ if .Title }}{{ replace .Plain .Title "" | htmlUnescape | truncate 150 }}{{ else }}{{ .Plain | htmlUnescape | truncate 150 }}{{ end }}</p>
       </article>
       {{ end }}
 
@@ -179,7 +179,7 @@
       <article class="hub-project">
         <p class="hub-label">Music I Love</p>
         <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
-        <p>{{ .Plain | htmlUnescape | truncate 150 }}</p>
+        <p>{{ if .Title }}{{ replace .Plain .Title "" | htmlUnescape | truncate 150 }}{{ else }}{{ .Plain | htmlUnescape | truncate 150 }}{{ end }}</p>
       </article>
       {{ end }}
 
@@ -187,7 +187,7 @@
       <article class="hub-project">
         <p class="hub-label">Songs I Made</p>
         <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
-        <p>{{ .Plain | htmlUnescape | truncate 150 }}</p>
+        <p>{{ if .Title }}{{ replace .Plain .Title "" | htmlUnescape | truncate 150 }}{{ else }}{{ .Plain | htmlUnescape | truncate 150 }}{{ end }}</p>
       </article>
       {{ end }}
     </div>
@@ -203,12 +203,12 @@
 
     <div class="hub-project-grid">
       <article class="hub-project hub-helping-hand">
-        <div class="hub-hand-icons" aria-label="Helping Hand tools">
-          <img src="https://hand.davidmarsden.info/brand/helping-hand.svg" alt="Helping Hand" loading="lazy">
-          <img src="https://hand.davidmarsden.info/brand/writing-hand.svg" alt="Writing Hand" loading="lazy">
-          <img src="https://hand.davidmarsden.info/brand/markdown-hand.svg" alt="Markdown Hand" loading="lazy">
-          <img src="https://hand.davidmarsden.info/brand/bum-hand.svg" alt="BUM" loading="lazy">
-          <img src="https://hand.davidmarsden.info/brand/publish-hand.svg" alt="Publish Hand" loading="lazy">
+        <div class="hub-hand-icons" aria-label="Helping Hand tools" style="flex-wrap:nowrap;gap:.4rem;">
+          <img src="https://hand.davidmarsden.info/brand/helping-hand.svg" alt="Helping Hand" loading="lazy" style="width:2.8rem;height:2.8rem;flex:0 0 2.8rem;">
+          <img src="https://hand.davidmarsden.info/brand/writing-hand.svg" alt="Writing Hand" loading="lazy" style="width:2.8rem;height:2.8rem;flex:0 0 2.8rem;">
+          <img src="https://hand.davidmarsden.info/brand/markdown-hand.svg" alt="Markdown Hand" loading="lazy" style="width:2.8rem;height:2.8rem;flex:0 0 2.8rem;">
+          <img src="https://hand.davidmarsden.info/brand/bum-hand.svg" alt="BUM" loading="lazy" style="width:2.8rem;height:2.8rem;flex:0 0 2.8rem;">
+          <img src="https://hand.davidmarsden.info/brand/publish-hand.svg" alt="Publish Hand" loading="lazy" style="width:2.8rem;height:2.8rem;flex:0 0 2.8rem;">
         </div>
         <p class="hub-label">Human-first publishing tools</p>
         <h3><a href="https://hand.davidmarsden.info/">Helping Hand</a></h3>
@@ -220,7 +220,7 @@
       <article class="hub-project">
         <p class="hub-label">From the kitchen · Recipes</p>
         <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
-        <p>{{ .Plain | htmlUnescape | truncate 170 }}</p>
+        <p>{{ if .Title }}{{ replace .Plain .Title "" | htmlUnescape | truncate 170 }}{{ else }}{{ .Plain | htmlUnescape | truncate 170 }}{{ end }}</p>
       </article>
       {{ end }}
     </div>
@@ -238,7 +238,7 @@
     <article class="hub-now-writing">
       <p class="hub-label">From the commonplace book</p>
       {{ if .Title }}<h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>{{ end }}
-      <p>{{ .Plain | htmlUnescape | truncate 260 }}</p>
+      <p>{{ if .Title }}{{ replace .Plain .Title "" | htmlUnescape | truncate 260 }}{{ else }}{{ .Plain | htmlUnescape | truncate 260 }}{{ end }}</p>
       <p class="hub-project-link"><a href="{{ .Permalink }}">Read the post →</a></p>
     </article>
     {{ end }}
@@ -258,7 +258,7 @@
       <article class="hub-now-writing">
         <p class="hub-label">Selected writing</p>
         <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 78 }}{{ end }}</a></h3>
-        <p>{{ .Plain | htmlUnescape | truncate 180 }}</p>
+        <p>{{ if .Title }}{{ replace .Plain .Title "" | htmlUnescape | truncate 180 }}{{ else }}{{ .Plain | htmlUnescape | truncate 180 }}{{ end }}</p>
         <p class="hub-project-link"><a href="{{ "writing/" | relURL }}">More writing →</a></p>
       </article>
       {{ end }}
