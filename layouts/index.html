@@ -1,20 +1,27 @@
 {{ define "main" }}
 {{ $selectedWriting := where .Site.RegularPages "Params.categories" "intersect" (slice "Selected Writing") }}
+{{ $lettersFromAmerica := where (where .Site.RegularPages "Params.categories" "intersect" (slice "Letters from America")) "Title" "like" ".+" }}
+{{ $lettersToAmerica := where (where .Site.RegularPages "Params.categories" "intersect" (slice "Letters to America")) "Title" "like" ".+" }}
+{{ $matchReports := where .Site.RegularPages "Params.categories" "intersect" (slice "Match Reports") }}
+{{ $musicILove := where .Site.RegularPages "Params.categories" "intersect" (slice "Music I Love") }}
+{{ $songsIMade := where .Site.RegularPages "Params.categories" "intersect" (slice "Songs I Made") }}
+{{ $recipes := where .Site.RegularPages "Params.categories" "intersect" (slice "Recipes") }}
+{{ $quotes := where .Site.RegularPages "Params.categories" "intersect" (slice "Quotes") }}
 {{ $favouritePhotos := default (slice) (index .Site.Data.collections "favouritephotos") }}
 {{ $currentlyReading := default (slice) (index .Site.Data.bookshelves "currentlyreading") }}
 <main class="hub-home">
   <section class="hub-hero" aria-labelledby="hub-title">
     <p class="hub-kicker">David Marsden</p>
-    <h1 id="hub-title">Writing, investigating, building things and occasionally creating a ruckus.</h1>
-    <p class="hub-intro">I write about local democracy where I live in west London, build odd little web projects, make music and restore my old band Hovercraft's lost tapes, and manage a one hundred-strong community of pretend football managers.</p>
+    <h1 id="hub-title">Writing, investigating, making (and breaking) things and occasionally creating a ruckus.</h1>
+    <p class="hub-intro">I write about local democracy where I live in west London, make odd little web projects, make music and restore my old band Hovercraft's lost tapes, and manage a one hundred-strong community of pretend football managers.</p>
     <p class="hub-intro hub-intro-last">My own little world.</p>
     <p class="hub-primary-link"><a href="{{ "writing/" | relURL }}">Explore my writing →</a></p>
   </section>
 
-  <section class="hub-section hub-reporting" aria-labelledby="writing-heading">
+  <section class="hub-section hub-reporting" aria-labelledby="reporting-heading">
     <div class="hub-section-heading">
       <p class="hub-section-number">01</p>
-      <h2 id="writing-heading">Reporting &amp; civic work</h2>
+      <h2 id="reporting-heading">Reporting &amp; civic work</h2>
     </div>
     <p class="hub-section-intro">Independent reporting from Southall and civic infrastructure for keeping local public memory connected, accessible and held in common.</p>
 
@@ -47,20 +54,46 @@
         <p class="hub-project-link"><a href="https://civiccommons.co.uk/">Explore Civic Commons →</a></p>
       </div>
     </article>
+  </section>
 
-    <article class="hub-blog-strip">
-      <div>
-        <p class="hub-label">Personal writing</p>
-        <h3><a href="{{ "blog/" | relURL }}">Blog</a></h3>
-      </div>
-      <p>Notes, observations, photos, family life, music, politics, technology and whatever else has caught my attention.</p>
+  <section class="hub-section" aria-labelledby="personal-heading">
+    <div class="hub-section-heading">
+      <p class="hub-section-number">02</p>
+      <h2 id="personal-heading">Personal writing</h2>
+    </div>
+    <p class="hub-section-intro">Notes, observations, photos, family life, politics, technology and whatever else has caught my attention.</p>
+
+    <article class="hub-project hub-project-featured">
+      <p class="hub-label">The blog</p>
+      <h3><a href="{{ "blog/" | relURL }}">Writing outside the day job</a></h3>
+      <p>The less easily filed bits of the site: personal essays, old stories, new obsessions and the occasional dispatch from elsewhere.</p>
       <p class="hub-project-link"><a href="{{ "blog/" | relURL }}">Latest posts →</a></p>
     </article>
+
+    {{ if or (gt (len $lettersFromAmerica) 0) (gt (len $lettersToAmerica) 0) }}
+    <div class="hub-project-grid">
+      {{ range first 1 (shuffle $lettersFromAmerica) }}
+      <article class="hub-project">
+        <p class="hub-label">Letters from America</p>
+        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Plain | htmlUnescape | truncate 150 }}</p>
+      </article>
+      {{ end }}
+
+      {{ range first 1 (shuffle $lettersToAmerica) }}
+      <article class="hub-project">
+        <p class="hub-label">Letters to America</p>
+        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Plain | htmlUnescape | truncate 150 }}</p>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
   </section>
 
   <section class="hub-section" aria-labelledby="football-heading">
     <div class="hub-section-heading">
-      <p class="hub-section-number">02</p>
+      <p class="hub-section-number">03</p>
       <h2 id="football-heading">Football worlds</h2>
     </div>
     <p class="hub-section-intro">I’ve been running online multiplayer football-management communities for many years. These are the worlds, archives and tools that have grown out of them.</p>
@@ -103,16 +136,26 @@
       </article>
     </div>
 
-    <article class="hub-project hub-project-archive">
-      <p class="hub-label">From the archive</p>
-      <h3><a href="https://onejimmycarter.blogspot.co.uk/">One Jimmy Carter</a></h3>
-      <p>My old football blog. Kept online largely because the internet ought to remember things.</p>
-    </article>
+    <div class="hub-project-grid">
+      {{ range first 1 (shuffle $matchReports) }}
+      <article class="hub-project">
+        <p class="hub-label">From the match reports</p>
+        <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
+        <p>{{ .Plain | htmlUnescape | truncate 150 }}</p>
+      </article>
+      {{ end }}
+
+      <article class="hub-project">
+        <p class="hub-label">From the archive</p>
+        <h3><a href="https://onejimmycarter.blogspot.co.uk/">One Jimmy Carter</a></h3>
+        <p>My old football blog. Kept online largely because the internet ought to remember things.</p>
+      </article>
+    </div>
   </section>
 
   <section class="hub-section hub-music" aria-labelledby="music-heading">
     <div class="hub-section-heading">
-      <p class="hub-section-number">03</p>
+      <p class="hub-section-number">04</p>
       <h2 id="music-heading">Music</h2>
     </div>
     <article class="hub-project hub-project-featured">
@@ -129,33 +172,83 @@
       </div>
       <p class="hub-project-link"><a href="https://hovercraft.band/jukebox/">Open the Hovercraft Jukebox →</a></p>
     </article>
-  </section>
 
-  <section class="hub-section" aria-labelledby="build-heading">
-    <div class="hub-section-heading">
-      <p class="hub-section-number">04</p>
-      <h2 id="build-heading">Things I build</h2>
+    {{ if or (gt (len $musicILove) 0) (gt (len $songsIMade) 0) }}
+    <div class="hub-project-grid">
+      {{ range first 1 (shuffle $musicILove) }}
+      <article class="hub-project">
+        <p class="hub-label">Music I Love</p>
+        <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
+        <p>{{ .Plain | htmlUnescape | truncate 150 }}</p>
+      </article>
+      {{ end }}
+
+      {{ range first 1 (shuffle $songsIMade) }}
+      <article class="hub-project">
+        <p class="hub-label">Songs I Made</p>
+        <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
+        <p>{{ .Plain | htmlUnescape | truncate 150 }}</p>
+      </article>
+      {{ end }}
     </div>
-
-    <article class="hub-project hub-project-featured hub-helping-hand">
-      <div class="hub-hand-icons" aria-label="Helping Hand tools">
-        <img src="https://hand.davidmarsden.info/brand/helping-hand.svg" alt="Helping Hand" loading="lazy">
-        <img src="https://hand.davidmarsden.info/brand/writing-hand.svg" alt="Writing Hand" loading="lazy">
-        <img src="https://hand.davidmarsden.info/brand/markdown-hand.svg" alt="Markdown Hand" loading="lazy">
-        <img src="https://hand.davidmarsden.info/brand/bum-hand.svg" alt="BUM" loading="lazy">
-        <img src="https://hand.davidmarsden.info/brand/publish-hand.svg" alt="Publish Hand" loading="lazy">
-      </div>
-      <p class="hub-label">Human-first publishing tools</p>
-      <h3><a href="https://hand.davidmarsden.info/">Helping Hand</a></h3>
-      <p>A family of small publishing tools for getting material from paper, tablets and local files onto the web with as little machinery in the way as possible.</p>
-      <p class="hub-project-link"><a href="https://hand.davidmarsden.info/">Open Helping Hand →</a></p>
-    </article>
+    {{ end }}
   </section>
+
+  <section class="hub-section" aria-labelledby="make-heading">
+    <div class="hub-section-heading">
+      <p class="hub-section-number">05</p>
+      <h2 id="make-heading">Things I make</h2>
+    </div>
+    <p class="hub-section-intro">Small tools, experiments and occasionally something edible.</p>
+
+    <div class="hub-project-grid">
+      <article class="hub-project hub-helping-hand">
+        <div class="hub-hand-icons" aria-label="Helping Hand tools">
+          <img src="https://hand.davidmarsden.info/brand/helping-hand.svg" alt="Helping Hand" loading="lazy">
+          <img src="https://hand.davidmarsden.info/brand/writing-hand.svg" alt="Writing Hand" loading="lazy">
+          <img src="https://hand.davidmarsden.info/brand/markdown-hand.svg" alt="Markdown Hand" loading="lazy">
+          <img src="https://hand.davidmarsden.info/brand/bum-hand.svg" alt="BUM" loading="lazy">
+          <img src="https://hand.davidmarsden.info/brand/publish-hand.svg" alt="Publish Hand" loading="lazy">
+        </div>
+        <p class="hub-label">Human-first publishing tools</p>
+        <h3><a href="https://hand.davidmarsden.info/">Helping Hand</a></h3>
+        <p>A family of small publishing tools for getting material from paper, tablets and local files onto the web with as little machinery in the way as possible.</p>
+        <p class="hub-project-link"><a href="https://hand.davidmarsden.info/">Open Helping Hand →</a></p>
+      </article>
+
+      {{ range first 1 (shuffle $recipes) }}
+      <article class="hub-project">
+        <p class="hub-label">From the kitchen · Recipes</p>
+        <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
+        <p>{{ .Plain | htmlUnescape | truncate 170 }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+
+  {{ if gt (len $quotes) 0 }}
+  <section class="hub-section" aria-labelledby="quotes-heading">
+    <div class="hub-section-heading">
+      <p class="hub-section-number">06</p>
+      <h2 id="quotes-heading">Quotes</h2>
+    </div>
+    <p class="hub-section-intro">Things other people said that seemed worth keeping.</p>
+
+    {{ range first 1 (shuffle $quotes) }}
+    <article class="hub-now-writing">
+      <p class="hub-label">From the commonplace book</p>
+      {{ if .Title }}<h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>{{ end }}
+      <p>{{ .Plain | htmlUnescape | truncate 260 }}</p>
+      <p class="hub-project-link"><a href="{{ .Permalink }}">Read the post →</a></p>
+    </article>
+    {{ end }}
+  </section>
+  {{ end }}
 
   {{ if or (gt (len $selectedWriting) 0) (gt (len $favouritePhotos) 0) (gt (len $currentlyReading) 0) }}
   <section class="hub-section hub-now" aria-labelledby="now-heading">
     <div class="hub-section-heading">
-      <p class="hub-section-number">05</p>
+      <p class="hub-section-number">07</p>
       <h2 id="now-heading">Now</h2>
     </div>
     <p class="hub-section-intro">A few changing glimpses from around the site.</p>
