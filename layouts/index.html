@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ $selectedWriting := where .Site.RegularPages "Params.categories" "intersect" (slice "Selected Writing") }}
-{{ $lettersFromAmerica := where (where .Site.RegularPages "Params.categories" "intersect" (slice "Letters from America")) "Title" "like" ".+" }}
-{{ $lettersToAmerica := where (where .Site.RegularPages "Params.categories" "intersect" (slice "Letters to America")) "Title" "like" ".+" }}
+{{ $lettersFromAmerica := where (where .Site.RegularPages "Params.categories" "intersect" (slice "Letters from America")) "Title" "ne" "" }}
+{{ $lettersToAmerica := where (where .Site.RegularPages "Params.categories" "intersect" (slice "Letters to America")) "Title" "ne" "" }}
 {{ $matchReports := where .Site.RegularPages "Params.categories" "intersect" (slice "Match Reports") }}
 {{ $musicILove := where .Site.RegularPages "Params.categories" "intersect" (slice "Music I Love") }}
 {{ $songsIMade := where .Site.RegularPages "Params.categories" "intersect" (slice "Songs I Made") }}
