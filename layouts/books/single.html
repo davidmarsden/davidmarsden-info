@@ -9,6 +9,23 @@
 {{ if not $cover }}{{ $cover = .Params.cover }}{{ end }}
 {{ $description := .Params.description }}
 
+{{ $shelfBook := false }}
+{{ $shelfNames := slice "currentlyreading" "finishedreading" "fiction" "non-fiction" "kids" "sport" }}
+{{ range $shelfNames }}
+  {{ $books := default (slice) (index $.Site.Data.bookshelves .) }}
+  {{ range $books }}
+    {{ if and (not $shelfBook) (eq .isbn $isbn) }}
+      {{ $shelfBook = . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if $shelfBook }}
+  {{ if not $author }}{{ $author = $shelfBook.author }}{{ end }}
+  {{ if not $cover }}{{ $cover = $shelfBook.cover_url }}{{ end }}
+  {{ if not $description }}{{ $description = $shelfBook.description }}{{ end }}
+{{ end }}
+
 {{ $reviewPosts := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews" "Book Review") }}
 {{ $matches := slice }}
 {{ range $reviewPosts }}
