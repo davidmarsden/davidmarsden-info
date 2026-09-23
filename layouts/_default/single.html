@@ -175,6 +175,21 @@
   {{ end }}
 {{ end }}
 
+{{ $localBookPages := where .Site.RegularPages "Type" "books" }}
+{{ range $localBookPages }}
+  {{ $localISBN := printf "%v" .Params.isbn }}
+  {{ if and (in $reviewISBNs $localISBN) (not (in $seenISBNs $localISBN)) }}
+    {{ $localBook := dict
+      "isbn" $localISBN
+      "title" .Title
+      "author" .Params.author
+      "cover_url" (default .Params.cover .Params.cover_url)
+    }}
+    {{ $reviewBooks = $reviewBooks | append $localBook }}
+    {{ $seenISBNs = $seenISBNs | append $localISBN }}
+  {{ end }}
+{{ end }}
+
 <main class="library-page">
   <header class="library-header">
     <p class="library-kicker">From the shelves</p>
