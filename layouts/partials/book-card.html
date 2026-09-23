@@ -2,9 +2,13 @@
 {{- $page := .page -}}
 {{- $hasLocalBookPage := false -}}
 
-{{- if and $page $page.Site.Data.bookReviewLinks -}}
-  {{- with index $page.Site.Data.bookReviewLinks.books $book.isbn -}}
-    {{- $hasLocalBookPage = true -}}
+{{- if $page -}}
+  {{- with index $page.Site.Data "book-review-links" -}}
+    {{- with .books -}}
+      {{- with index . $book.isbn -}}
+        {{- $hasLocalBookPage = true -}}
+      {{- end -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 
