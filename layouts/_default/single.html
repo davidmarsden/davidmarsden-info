@@ -84,7 +84,8 @@
     <p class="library-section-kicker">From the blog</p>
     <h2 id="book-reviews-heading">Book reviews</h2>
     <p class="library-section-intro">Books, reading notes and occasional detours I’ve actually written about.</p>
-    {{ partial "collection-cards.html" (dict "page" . "category" $bookReviewCategory "limit" 4 "random" true "showAll" true) }}
+    {{ partial "collection-cards.html" (dict "page" . "category" $bookReviewCategory "limit" 4 "random" true "showAll" false) }}
+    <p class="collection-card-more"><a href="{{ "reviews/" | relURL }}">Browse the book reviews →</a></p>
   </section>
   {{ end }}
 
@@ -113,6 +114,79 @@
     {{ if gt (len $sport) 0 }}
     <details class="library-shelf-detail" id="shelf-sport"><summary>Sport — {{ len $sport }} books</summary>{{ partial "book-grid.html" (dict "page" . "books" $sport) }}</details>
     {{ end }}
+  </section>
+  {{ end }}
+</main>
+{{ else if eq .RelPermalink "/reviews/" }}
+{{ $bookReviewCategories := slice "Book Reviews" "Book Review" }}
+{{ $bookReviews := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" $bookReviewCategories }}
+
+{{ $reviewISBNs := slice }}
+{{ range $bookReviews }}
+  {{ range (default (slice) .Params.books) }}
+    {{ if not (in $reviewISBNs .) }}
+      {{ $reviewISBNs = $reviewISBNs | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ with index .Site.Data "book-review-links" }}
+  {{ with .books }}
+    {{ range $isbn, $_ := . }}
+      {{ if not (in $reviewISBNs $isbn) }}
+        {{ $reviewISBNs = $reviewISBNs | append $isbn }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $reviewBooks := slice }}
+{{ $seenISBNs := slice }}
+{{ $shelfNames := slice "currentlyreading" "finishedreading" "fiction" "non-fiction" "kids" "sport" }}
+{{ range $shelfNames }}
+  {{ $books := default (slice) (index $.Site.Data.bookshelves .) }}
+  {{ range $books }}
+    {{ if and (in $reviewISBNs .isbn) (not (in $seenISBNs .isbn)) }}
+      {{ $reviewBooks = $reviewBooks | append . }}
+      {{ $seenISBNs = $seenISBNs | append .isbn }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<main class="library-page">
+  <header class="library-header">
+    <p class="library-kicker">From the shelves</p>
+    <h1>Book reviews</h1>
+    <p class="library-intro">A small but growing collection of books I’ve written about properly — or at least more than once in passing.</p>
+    <p><a href="{{ "library/" | relURL }}">← Back to the Library</a></p>
+  </header>
+
+  {{ if gt (len $reviewBooks) 0 }}
+  <section class="library-section" aria-labelledby="reviewed-books-heading">
+    <p class="library-section-kicker">The books</p>
+    <h2 id="reviewed-books-heading">Reviewed and written about</h2>
+    <p class="library-section-intro">The cover links stay on this site where I have a local book page; anything without one still falls back to Micro.blog.</p>
+    {{ partial "book-grid.html" (dict "page" . "books" $reviewBooks) }}
+  </section>
+  {{ end }}
+
+  {{ if gt (len $bookReviews) 0 }}
+  <section class="library-section" aria-labelledby="review-writing-heading">
+    <p class="library-section-kicker">From the blog</p>
+    <h2 id="review-writing-heading">Reviews and reading notes</h2>
+    <div class="collection-card-grid">
+      {{ range $bookReviews }}
+        {{ $excerpt := .Plain | htmlUnescape }}
+        <article class="collection-card">
+          <p class="collection-card-meta">{{ .Date.Format "2 January 2006" }}</p>
+          <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ $excerpt | truncate 72 }}{{ end }}</a></h3>
+          {{ with $excerpt }}<p>{{ . | truncate 160 }}</p>{{ end }}
+        </article>
+      {{ end }}
+    </div>
+  </section>
+  {{ else }}
+  <section class="library-section">
+    <p>No book reviews yet. That probably tells you more about my reading habits than I’d like.</p>
   </section>
   {{ end }}
 </main>
