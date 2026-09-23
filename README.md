@@ -29,7 +29,7 @@ The homepage redesign is complete, merged to `main`, and live. The repository no
 - a curated Favourite Photos showcase at `/photos/`;
 - homepage and site-specific styling in `static/custom.css`.
 
-`main` should be treated as the current source of truth for the live customisation layer.
+`main` should be treated as the current source of truth for the live customisation layer. The repository is packaged as a GitHub-backed Micro.blog plug-in via `plugin.json`, allowing the maintained overrides to be reloaded directly from GitHub instead of copied file-by-file. See `docs/MICROBLOG-GITHUB-SYNC.md`.
 
 The earlier redesign work was tested on `davidmarsden-test.micro.blog`, but production and test were later found to share the same custom Bayou theme. The test site must therefore not be treated as an isolated staging environment until it has its own cloned custom theme.
 
@@ -38,3 +38,5 @@ The earlier redesign work was tested on `davidmarsden-test.micro.blog`, but prod
 The branch `pre-homepage-redesign-2026-08-27` preserves the known-good pre-redesign state.
 
 Raw Micro.blog exports are intentionally kept outside this repository.
+
+This repository deliberately does **not** contain `theme.toml`: it is an override plug-in layered on top of Bayou, not a standalone full theme.
