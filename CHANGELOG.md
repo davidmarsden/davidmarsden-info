@@ -2,6 +2,14 @@
 
 ## 2026-09-23
 
+### Book review metadata and filtering cleanup
+
+- Normalized ISBN comparisons to strings when matching local book pages against Micro.blog Bookshelves data, fixing missing covers/metadata caused by string-vs-number mismatches.
+- Made local book pages match review posts against both canonical and alias ISBNs, so alternate-edition metadata still surfaces the related writing.
+- Filtered the Reviews page card list to posts that are actually tied to a book through `Params.books` or the legacy manual mapping, instead of showing every post carrying the broad Book Review category.
+
+## 2026-09-23
+
 ### Local reviewed-book pages
 
 - Added local Hugo content stubs for the three books currently surfaced on `/reviews/`, including `Yesterday's Man` at `/books/9781839760297/`.
