@@ -2,6 +2,14 @@
 
 ## 2026-09-23
 
+### Include local-only reviewed books on Reviews
+
+- Updated `/reviews/` so the reviewed-books grid is not limited to books currently present in Micro.blog Bookshelves data.
+- After collecting matching bookshelf records, the template now adds any reviewed local `books` content pages that have not already been seen.
+- This allows locally defined reviewed books such as **The Invisible Doctrine** and **The Property Lobby** to appear in the cover grid even when they are absent from the scanned bookshelf shelves.
+
+## 2026-09-23
+
 ### Complete local reviewed-book pages
 
 - Made the reviewed paperback ISBN `9781542004541` canonical for **The Son and Heir**, with the previous `9781542004558` route retained as an alias.
