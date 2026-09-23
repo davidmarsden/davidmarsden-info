@@ -19,6 +19,7 @@
 {{ end }}
 
 {{ $shelfBook := false }}
+{{ $titleMatch := false }}
 {{ $pageTitle := lower .Title }}
 {{ $shelfNames := slice "currentlyreading" "finishedreading" "fiction" "non-fiction" "kids" "sport" }}
 {{ range $shelfNames }}
@@ -26,10 +27,15 @@
   {{ range $books }}
     {{ $shelfISBN := printf "%v" .isbn }}
     {{ $shelfTitle := lower (default "" .title) }}
-    {{ if and (not $shelfBook) (or (in $acceptedISBNs $shelfISBN) (eq $shelfTitle $pageTitle)) }}
+    {{ if in $acceptedISBNs $shelfISBN }}
       {{ $shelfBook = . }}
+    {{ else if and (not $titleMatch) (eq $shelfTitle $pageTitle) }}
+      {{ $titleMatch = . }}
     {{ end }}
   {{ end }}
+{{ end }}
+{{ if and (not $shelfBook) $titleMatch }}
+  {{ $shelfBook = $titleMatch }}
 {{ end }}
 
 {{ if $shelfBook }}
