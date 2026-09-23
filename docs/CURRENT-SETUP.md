@@ -51,10 +51,19 @@ The untouched Micro.blog export ZIP and `.bar` archive should be retained separa
 
 The test blog must **not** be treated as an isolated staging environment while it shares the production custom theme. Before using it for risky theme experiments, give it a separate cloned custom theme.
 
+## GitHub-backed override plug-in
+
+The repository now contains `plugin.json` so it can be installed in Micro.blog as a GitHub-backed **non-theme plug-in** layered over Bayou.
+
+It deliberately does not contain `theme.toml`. Micro.blog uses that file to identify a full theme, and this repository is not a complete replacement for Bayou.
+
+See `MICROBLOG-GITHUB-SYNC.md` for installation, refresh and rollback instructions.
+
 ## Safe development rule
 
 1. Keep this GitHub repository as the documented source of truth.
 2. Make meaningful changes on a dedicated branch/PR where practical.
-3. Test theme changes only against a genuinely separate test custom theme.
-4. Check homepage, `/blog/`, archive, posts, feeds, navigation, mobile rendering and light/dark appearance as relevant.
-5. Apply approved changes to the production custom theme deliberately and record material changes here or in `CHANGELOG.md`.
+3. Test risky template changes only against a genuinely separate test setup.
+4. After merge, reload the GitHub-backed plug-in in Micro.blog instead of copying templates by hand.
+5. Republish and check homepage, `/blog/`, Library, Reviews, archive, posts, feeds, navigation, mobile rendering and light/dark appearance as relevant.
+6. Record material changes here or in `CHANGELOG.md`.
