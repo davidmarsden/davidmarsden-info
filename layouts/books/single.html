@@ -9,10 +9,7 @@
 {{ if not $cover }}{{ $cover = .Params.cover }}{{ end }}
 {{ $description := .Params.description }}
 
-{{ $reviewPosts := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews") }}
-{{ if eq (len $reviewPosts) 0 }}
-  {{ $reviewPosts = where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Review") }}
-{{ end }}
+{{ $reviewPosts := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews" "Book Review") }}
 {{ $matches := slice }}
 {{ range $reviewPosts }}
   {{ $postBooks := default (slice) .Params.books }}
