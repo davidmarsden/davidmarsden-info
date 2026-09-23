@@ -2,6 +2,15 @@
 
 ## 2026-09-23
 
+### Local reviewed-book pages
+
+- Added local Hugo content stubs for the three books currently surfaced on `/reviews/`, including `Yesterday's Man` at `/books/9781839760297/`.
+- Added alias ISBN routes for known alternate editions of `The Son and Heir` and `In Plain Sight` so existing bookshelf links remain resilient.
+- Updated the local book-detail template to pull author, cover and description from Micro.blog Bookshelves data when those fields are not duplicated in the content stub.
+- This completes the routing chain from the Reviews grid to working local `/books/<isbn>/` pages.
+
+## 2026-09-23
+
 ### Reviews route and homepage writing-card fix
 
 - Removed `content/reviews.md` from the GitHub-backed plug-in so the manually created Micro.blog Page is the sole owner of `/reviews/`.
