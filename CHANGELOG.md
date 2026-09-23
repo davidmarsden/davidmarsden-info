@@ -2,6 +2,15 @@
 
 ## 2026-09-23
 
+### Complete local reviewed-book pages
+
+- Made the reviewed paperback ISBN `9781542004541` canonical for **The Son and Heir**, with the previous `9781542004558` route retained as an alias.
+- Added explicit Open Library cover URLs to the existing local pages for **Yesterday's Man**, **The Son and Heir** and **In Plain Sight** so their presentation no longer depends on bookshelf metadata being available at render time.
+- Added local pages for **The Invisible Doctrine** (`9780241703113`) and **The Property Lobby** (`9781447348160`), which were already represented in the Reviews writing list.
+- Kept the Bookshelves metadata lookup as a fallback rather than the primary source for local-page cover presentation.
+
+## 2026-09-23
+
 ### Book review metadata and filtering cleanup
 
 - Normalized ISBN comparisons to strings when matching local book pages against Micro.blog Bookshelves data, fixing missing covers/metadata caused by string-vs-number mismatches.

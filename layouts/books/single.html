@@ -36,10 +36,26 @@
   {{ if not $description }}{{ $description = $shelfBook.description }}{{ end }}
 {{ end }}
 
+{{ $legacyReviewPaths := slice }}
+{{ with index .Site.Data "book-review-links" }}
+  {{ with .books }}
+    {{ range $mappedISBN, $entry := . }}
+      {{ $mappedISBNString := printf "%v" $mappedISBN }}
+      {{ if in $acceptedISBNs $mappedISBNString }}
+        {{ with $entry.post }}
+          {{ if not (in $legacyReviewPaths .) }}
+            {{ $legacyReviewPaths = $legacyReviewPaths | append . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
 {{ $reviewPosts := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews" "Book Review") }}
 {{ $matches := slice }}
 {{ range $reviewPosts }}
-  {{ $postMatches := false }}
+  {{ $postMatches := in $legacyReviewPaths .RelPermalink }}
   {{ range (default (slice) .Params.books) }}
     {{ $postISBN := printf "%v" . }}
     {{ if in $acceptedISBNs $postISBN }}

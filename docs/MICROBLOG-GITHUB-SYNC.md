@@ -49,6 +49,17 @@ Because `content/reviews.md` existed in the first GitHub-backed plug-in version,
 4. Confirm the manually created Micro.blog Page remains at `/reviews/`.
 5. Republish and verify `/reviews/` resolves to the Micro.blog Page using the custom template.
 
+### One-time cleanup for The Son and Heir ISBN migration
+
+The canonical local page moved from `content/books/9781542004558.md` to `content/books/9781542004541.md`. Because Micro.blog may retain deleted plug-in files, the old installed file must be removed before republishing or Hugo can see two pages that alias each other's routes.
+
+1. Reload the GitHub-backed plug-in after merging the ISBN migration.
+2. Open the installed plug-in and check whether `content/books/9781542004558.md` still exists.
+3. If it does, delete that stale installed file.
+4. Confirm `content/books/9781542004541.md` is present and owns the canonical page.
+5. Republish.
+6. Verify `/books/9781542004541/` loads normally and `/books/9781542004558/` redirects to it.
+
 ## What is synced
 
 The plug-in is intended to own site customisation such as:
