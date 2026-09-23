@@ -118,12 +118,8 @@
   {{ end }}
 </main>
 {{ else if eq .RelPermalink "/reviews/" }}
-{{ $bookReviewCategory := "Book Reviews" }}
-{{ $bookReviews := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice $bookReviewCategory) }}
-{{ if eq (len $bookReviews) 0 }}
-  {{ $bookReviewCategory = "Book Review" }}
-  {{ $bookReviews = where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice $bookReviewCategory) }}
-{{ end }}
+{{ $bookReviewCategories := slice "Book Reviews" "Book Review" }}
+{{ $bookReviews := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" $bookReviewCategories }}
 
 {{ $reviewISBNs := slice }}
 {{ range $bookReviews }}
@@ -133,10 +129,12 @@
     {{ end }}
   {{ end }}
 {{ end }}
-{{ with .Site.Data.bookReviewLinks.books }}
-  {{ range $isbn, $_ := . }}
-    {{ if not (in $reviewISBNs $isbn) }}
-      {{ $reviewISBNs = $reviewISBNs | append $isbn }}
+{{ with index .Site.Data "book-review-links" }}
+  {{ with .books }}
+    {{ range $isbn, $_ := . }}
+      {{ if not (in $reviewISBNs $isbn) }}
+        {{ $reviewISBNs = $reviewISBNs | append $isbn }}
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}
@@ -175,7 +173,16 @@
   <section class="library-section" aria-labelledby="review-writing-heading">
     <p class="library-section-kicker">From the blog</p>
     <h2 id="review-writing-heading">Reviews and reading notes</h2>
-    {{ partial "collection-cards.html" (dict "page" . "category" $bookReviewCategory "limit" 100 "showAll" false) }}
+    <div class="collection-card-grid">
+      {{ range $bookReviews }}
+        {{ $excerpt := .Plain | htmlUnescape }}
+        <article class="collection-card">
+          <p class="collection-card-meta">{{ .Date.Format "2 January 2006" }}</p>
+          <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ $excerpt | truncate 72 }}{{ end }}</a></h3>
+          {{ with $excerpt }}<p>{{ . | truncate 160 }}</p>{{ end }}
+        </article>
+      {{ end }}
+    </div>
   </section>
   {{ else }}
   <section class="library-section">
