@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-23
+
+### Book Reviews page and Library follow-up
+
+- Added a dedicated `/reviews/` page alongside the broader Library.
+- Built the page from the existing Micro.blog Bookshelves data and Book Review post metadata rather than introducing a second book database.
+- Reused the Library's local-book-page routing, so reviewed books prefer `/books/<isbn>/` and otherwise fall back to Micro.blog.
+- Kept the existing Book Reviews section on `/library/`, but made its main route point to the new reviews page.
+- Added a publishable draft, **Plumbing the Library**, documenting how the Bookshelves, Hugo templates, ISBN metadata and legacy mapping file fit together.
+
 Significant changes to the site customisation layer are recorded here.
 
 ## 2026-09-03
