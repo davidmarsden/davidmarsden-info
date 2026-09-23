@@ -2,6 +2,15 @@
 
 ## 2026-09-23
 
+### GitHub-backed Micro.blog theme overrides
+
+- Added `plugin.json` so the repository can be installed as a GitHub-backed Micro.blog plug-in.
+- Kept the repository as a non-theme plug-in layered over Bayou rather than adding `theme.toml`, which would incorrectly mark these partial overrides as a full theme.
+- Added `docs/MICROBLOG-GITHUB-SYNC.md` with one-time installation, refresh, smoke-test and rollback instructions.
+- Updated the documented deployment workflow from manual file copying to PR → merge → reload from GitHub → rebuild.
+
+## 2026-09-23
+
 ### Book Reviews page and Library follow-up
 
 - Added a dedicated `/reviews/` page alongside the broader Library.
