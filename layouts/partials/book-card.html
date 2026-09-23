@@ -1,11 +1,12 @@
 {{- $book := .book -}}
 {{- $page := .page -}}
+{{- $bookISBN := printf "%v" $book.isbn -}}
 {{- $hasLocalBookPage := false -}}
 
 {{- if $page -}}
   {{- with index $page.Site.Data "book-review-links" -}}
     {{- with .books -}}
-      {{- with index . $book.isbn -}}
+      {{- with index . $bookISBN -}}
         {{- $hasLocalBookPage = true -}}
       {{- end -}}
     {{- end -}}
@@ -16,16 +17,16 @@
   {{- $reviews := where $page.Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews" "Book Review") -}}
   {{- range $reviews -}}
     {{- with .Params.books -}}
-      {{- if intersect . (slice $book.isbn) -}}
+      {{- if intersect . (slice $bookISBN) -}}
         {{- $hasLocalBookPage = true -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
 
-{{- $bookURL := printf "//micro.blog/books/%s" $book.isbn -}}
+{{- $bookURL := printf "//micro.blog/books/%s" $bookISBN -}}
 {{- if $hasLocalBookPage -}}
-  {{- $bookURL = printf "/books/%s/" $book.isbn -}}
+  {{- $bookURL = printf "/books/%s/" $bookISBN -}}
 {{- end -}}
 
 <article class="library-book-card">

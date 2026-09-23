@@ -119,21 +119,43 @@
 </main>
 {{ else if eq .RelPermalink "/reviews/" }}
 {{ $bookReviewCategories := slice "Book Reviews" "Book Review" }}
-{{ $bookReviews := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" $bookReviewCategories }}
+{{ $categoryBookReviews := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" $bookReviewCategories }}
+
+{{ $legacyReviewPosts := slice }}
+{{ with index .Site.Data "book-review-links" }}
+  {{ with .books }}
+    {{ range $isbn, $entry := . }}
+      {{ with $entry.post }}
+        {{ $legacyReviewPosts = $legacyReviewPosts | append . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $bookReviews := slice }}
+{{ range $categoryBookReviews }}
+  {{ $hasBookMetadata := gt (len (default (slice) .Params.books)) 0 }}
+  {{ $isLegacyReview := in $legacyReviewPosts .RelPermalink }}
+  {{ if or $hasBookMetadata $isLegacyReview }}
+    {{ $bookReviews = $bookReviews | append . }}
+  {{ end }}
+{{ end }}
 
 {{ $reviewISBNs := slice }}
 {{ range $bookReviews }}
   {{ range (default (slice) .Params.books) }}
-    {{ if not (in $reviewISBNs .) }}
-      {{ $reviewISBNs = $reviewISBNs | append . }}
+    {{ $postISBN := printf "%v" . }}
+    {{ if not (in $reviewISBNs $postISBN) }}
+      {{ $reviewISBNs = $reviewISBNs | append $postISBN }}
     {{ end }}
   {{ end }}
 {{ end }}
 {{ with index .Site.Data "book-review-links" }}
   {{ with .books }}
     {{ range $isbn, $_ := . }}
-      {{ if not (in $reviewISBNs $isbn) }}
-        {{ $reviewISBNs = $reviewISBNs | append $isbn }}
+      {{ $legacyISBN := printf "%v" $isbn }}
+      {{ if not (in $reviewISBNs $legacyISBN) }}
+        {{ $reviewISBNs = $reviewISBNs | append $legacyISBN }}
       {{ end }}
     {{ end }}
   {{ end }}
@@ -145,9 +167,10 @@
 {{ range $shelfNames }}
   {{ $books := default (slice) (index $.Site.Data.bookshelves .) }}
   {{ range $books }}
-    {{ if and (in $reviewISBNs .isbn) (not (in $seenISBNs .isbn)) }}
+    {{ $shelfISBN := printf "%v" .isbn }}
+    {{ if and (in $reviewISBNs $shelfISBN) (not (in $seenISBNs $shelfISBN)) }}
       {{ $reviewBooks = $reviewBooks | append . }}
-      {{ $seenISBNs = $seenISBNs | append .isbn }}
+      {{ $seenISBNs = $seenISBNs | append $shelfISBN }}
     {{ end }}
   {{ end }}
 {{ end }}

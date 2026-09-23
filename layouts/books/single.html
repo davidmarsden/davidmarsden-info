@@ -9,10 +9,10 @@
 {{ if not $cover }}{{ $cover = .Params.cover }}{{ end }}
 {{ $description := .Params.description }}
 
-{{ $acceptedISBNs := slice $isbn }}
+{{ $acceptedISBNs := slice (printf "%v" $isbn) }}
 {{ range .Params.aliases }}
   {{ $aliasParts := split (strings.TrimSuffix "/" .) "/" }}
-  {{ $aliasISBN := index (last 1 $aliasParts) 0 }}
+  {{ $aliasISBN := printf "%v" (index (last 1 $aliasParts) 0) }}
   {{ if and $aliasISBN (not (in $acceptedISBNs $aliasISBN)) }}
     {{ $acceptedISBNs = $acceptedISBNs | append $aliasISBN }}
   {{ end }}
@@ -23,7 +23,8 @@
 {{ range $shelfNames }}
   {{ $books := default (slice) (index $.Site.Data.bookshelves .) }}
   {{ range $books }}
-    {{ if and (not $shelfBook) (in $acceptedISBNs .isbn) }}
+    {{ $shelfISBN := printf "%v" .isbn }}
+    {{ if and (not $shelfBook) (in $acceptedISBNs $shelfISBN) }}
       {{ $shelfBook = . }}
     {{ end }}
   {{ end }}
@@ -38,8 +39,14 @@
 {{ $reviewPosts := where .Site.RegularPages.ByDate.Reverse "Params.categories" "intersect" (slice "Book Reviews" "Book Review") }}
 {{ $matches := slice }}
 {{ range $reviewPosts }}
-  {{ $postBooks := default (slice) .Params.books }}
-  {{ if in $postBooks $isbn }}
+  {{ $postMatches := false }}
+  {{ range (default (slice) .Params.books) }}
+    {{ $postISBN := printf "%v" . }}
+    {{ if in $acceptedISBNs $postISBN }}
+      {{ $postMatches = true }}
+    {{ end }}
+  {{ end }}
+  {{ if $postMatches }}
     {{ $matches = $matches | append . }}
   {{ end }}
 {{ end }}
