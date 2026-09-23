@@ -39,6 +39,16 @@ After a PR is merged to `main`:
 
 Micro.blog's reload updates existing files and adds new files from GitHub. It may not remove a file that was deleted from the repository, so deletions should be checked explicitly in Micro.blog.
 
+### One-time cleanup for the Reviews migration
+
+Because `content/reviews.md` existed in the first GitHub-backed plug-in version, deleting it from Git may not remove the already-installed copy. Before republishing after this migration:
+
+1. Open the installed `davidmarsden.info site overrides` plug-in in Micro.blog.
+2. Check whether `content/reviews.md` is still present.
+3. If it is, delete that stale file from the installed plug-in.
+4. Confirm the manually created Micro.blog Page remains at `/reviews/`.
+5. Republish and verify `/reviews/` resolves to the Micro.blog Page using the custom template.
+
 ## What is synced
 
 The plug-in is intended to own site customisation such as:
@@ -54,9 +64,9 @@ Repository documentation such as `docs/`, `CHANGELOG.md` and development notes i
 
 Posts and standalone Pages remain content managed by Micro.blog rather than theme source.
 
-The repository may contain Markdown representations such as `content/blog.md` or `content/reviews.md` for version control and implementation history, but a page must still exist in Micro.blog at the expected permalink when a template depends on it.
+Standalone Pages should be created and owned in Micro.blog rather than supplied from this plug-in's `content/` directory. The GitHub plug-in should own templates, static assets and data, while Micro.blog owns the page records and their permalinks.
 
-For example, the custom Reviews presentation expects the Micro.blog Page route `/reviews/`.
+For example, the custom Reviews presentation expects a Micro.blog Page at `/reviews/`; the plug-in supplies the template logic, not the Page itself.
 
 ## Safe workflow
 

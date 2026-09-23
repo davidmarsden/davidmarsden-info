@@ -2,6 +2,14 @@
 
 ## 2026-09-23
 
+### Reviews route and homepage writing-card fix
+
+- Removed `content/reviews.md` from the GitHub-backed plug-in so the manually created Micro.blog Page is the sole owner of `/reviews/`.
+- Clarified that standalone Pages live in Micro.blog while the GitHub plug-in supplies templates, static assets and data.
+- Made the homepage Letters from/to America card queries tolerate either capitalization of `from/to`, preventing one card from disappearing if category names are normalised differently.
+
+## 2026-09-23
+
 ### GitHub-backed Micro.blog theme overrides
 
 - Added `plugin.json` so the repository can be installed as a GitHub-backed Micro.blog plug-in.
