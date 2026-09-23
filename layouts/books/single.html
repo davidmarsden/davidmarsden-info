@@ -32,7 +32,7 @@
 
 {{ if $shelfBook }}
   {{ if not $author }}{{ $author = $shelfBook.author }}{{ end }}
-  {{ if not $cover }}{{ $cover = $shelfBook.cover_url }}{{ end }}
+  {{ with $shelfBook.cover_url }}{{ $cover = . }}{{ end }}
   {{ if not $description }}{{ $description = $shelfBook.description }}{{ end }}
 {{ end }}
 
