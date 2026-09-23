@@ -9,12 +9,21 @@
 {{ if not $cover }}{{ $cover = .Params.cover }}{{ end }}
 {{ $description := .Params.description }}
 
+{{ $acceptedISBNs := slice $isbn }}
+{{ range .Params.aliases }}
+  {{ $aliasParts := split (strings.TrimSuffix "/" .) "/" }}
+  {{ $aliasISBN := index (last 1 $aliasParts) 0 }}
+  {{ if and $aliasISBN (not (in $acceptedISBNs $aliasISBN)) }}
+    {{ $acceptedISBNs = $acceptedISBNs | append $aliasISBN }}
+  {{ end }}
+{{ end }}
+
 {{ $shelfBook := false }}
 {{ $shelfNames := slice "currentlyreading" "finishedreading" "fiction" "non-fiction" "kids" "sport" }}
 {{ range $shelfNames }}
   {{ $books := default (slice) (index $.Site.Data.bookshelves .) }}
   {{ range $books }}
-    {{ if and (not $shelfBook) (eq .isbn $isbn) }}
+    {{ if and (not $shelfBook) (in $acceptedISBNs .isbn) }}
       {{ $shelfBook = . }}
     {{ end }}
   {{ end }}
