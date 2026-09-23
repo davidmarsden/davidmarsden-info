@@ -54,9 +54,9 @@ Repository documentation such as `docs/`, `CHANGELOG.md` and development notes i
 
 Posts and standalone Pages remain content managed by Micro.blog rather than theme source.
 
-The repository may contain Markdown representations such as `content/blog.md` or `content/reviews.md` for version control and implementation history, but a page must still exist in Micro.blog at the expected permalink when a template depends on it.
+Standalone Pages should be created and owned in Micro.blog rather than supplied from this plug-in's `content/` directory. The GitHub plug-in should own templates, static assets and data, while Micro.blog owns the page records and their permalinks.
 
-For example, the custom Reviews presentation expects the Micro.blog Page route `/reviews/`.
+For example, the custom Reviews presentation expects a Micro.blog Page at `/reviews/`; the plug-in supplies the template logic, not the Page itself.
 
 ## Safe workflow
 
