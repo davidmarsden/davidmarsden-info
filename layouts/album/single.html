@@ -21,7 +21,7 @@
 
       <audio data-audio controls preload="metadata" src="{{ (index $album.tracks 0).url }}"></audio>
 
-      <div class="solo-album-controls" aria-label="Album playback controls">
+      <div class="solo-album-controls" aria-label="Album playback controls" data-enhanced-controls hidden>
         <button type="button" data-prev>← Previous</button>
         <button type="button" data-next>Next →</button>
       </div>
