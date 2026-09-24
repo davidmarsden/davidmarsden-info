@@ -20,16 +20,28 @@
 
 {{ $shelfBook := false }}
 {{ $titleMatch := false }}
-{{ $pageTitle := lower .Title }}
+{{ $pageTitleKey := urlize .Title }}
+{{ $pageAuthorKey := urlize (default "" $author) }}
 {{ $shelfNames := slice "currentlyreading" "finishedreading" "fiction" "non-fiction" "kids" "sport" }}
 {{ range $shelfNames }}
   {{ $books := default (slice) (index $.Site.Data.bookshelves .) }}
   {{ range $books }}
     {{ $shelfISBN := printf "%v" .isbn }}
-    {{ $shelfTitle := lower (default "" .title) }}
+    {{ $shelfTitleKey := urlize (default "" .title) }}
+    {{ $shelfAuthorKey := urlize (default "" .author) }}
+    {{ $titleLooksSame := or
+      (eq $shelfTitleKey $pageTitleKey)
+      (and $shelfTitleKey (in $pageTitleKey $shelfTitleKey))
+      (and $pageTitleKey (in $shelfTitleKey $pageTitleKey))
+    }}
+    {{ $authorLooksSame := or
+      (not $pageAuthorKey)
+      (not $shelfAuthorKey)
+      (eq $shelfAuthorKey $pageAuthorKey)
+    }}
     {{ if in $acceptedISBNs $shelfISBN }}
       {{ $shelfBook = . }}
-    {{ else if and (not $titleMatch) (eq $shelfTitle $pageTitle) }}
+    {{ else if and (not $titleMatch) $titleLooksSame $authorLooksSame }}
       {{ $titleMatch = . }}
     {{ end }}
   {{ end }}
