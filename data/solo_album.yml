@@ -3,6 +3,9 @@ artist: "David Marsden"
 year: 2026
 subtitle: "An album of songs I made, borrowed, bent and broke."
 intro: "Eleven songs, covers, rewrites and oddities made over a number of years and gathered together here."
+cover: "https://davidmarsden.info/uploads/2026/file-00000000ad1081f59ec3dc88004d38e7.png"
+social_image: "https://davidmarsden.info/uploads/2026/file-000000009b0881f48ff7e28333a5288c.png"
+poster_image: "https://davidmarsden.info/uploads/2026/file-000000005a0081f6b1e2b0cbb7b6756e.png"
 tracks:
   - number: 1
     title: "Since You Turned On"
