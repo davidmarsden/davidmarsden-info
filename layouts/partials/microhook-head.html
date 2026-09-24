@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="{{ "book-detail.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
 <link rel="stylesheet" href="{{ "replies.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
 <link rel="stylesheet" href="{{ "secondary-utils.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
+{{ if .IsHome }}<link rel="stylesheet" href="{{ "algorithm-blues-home.css" | relURL }}?{{ .Site.Params.theme_seconds }}">{{ end }}
 <style>
   @media (min-width: 701px) {
     section[aria-labelledby="make-heading"] .hub-project-grid .hub-project:last-child .hub-label {
