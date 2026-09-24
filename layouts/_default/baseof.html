@@ -58,6 +58,9 @@
   <link rel="canonical" href="{{ .Permalink }}">
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
   <link rel="stylesheet" href="{{ "css/all.min.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
+  {{ if eq .RelPermalink "/music/" }}
+  <link rel="stylesheet" href="{{ "solo-album.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
+  {{ end }}
   {{ partial "microblog_head.html" . }}
   {{ if templates.Exists "partials/microhook-head.html" }}
   {{ partial "microhook-head.html" . }}
@@ -76,6 +79,7 @@
         <li><a class="page-link About" href="{{ "about/" | relURL }}">About</a></li>
         <li><a class="page-link Photos" href="{{ "photos/" | relURL }}">Photos</a></li>
         <li><a class="page-link Library" href="{{ "library/" | relURL }}">Library</a></li>
+        <li><a class="page-link Music" href="{{ "music/" | relURL }}">Music</a></li>
         <li><a class="page-link Archive" href="{{ "archive/" | relURL }}">Archive</a></li>
         <li><a class="page-link Subscribe" href="{{ "subscribe/" | relURL }}">Subscribe</a></li>
       </ul>
