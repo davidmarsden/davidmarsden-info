@@ -4,7 +4,7 @@
 .solo-album-cover { display:flex; aspect-ratio:1; padding:1.45rem; flex-direction:column; justify-content:space-between; border:2px solid var(--text-color); background:linear-gradient(135deg,transparent 0 44%,var(--primary) 44% 47%,transparent 47% 100%),var(--background); box-shadow:.6rem .6rem 0 var(--tertiary); font-family:var(--font-secondary),sans-serif; }
 .solo-album-cover strong { max-width:8ch; font-size:clamp(2.8rem,8vw,5.2rem); line-height:.86; letter-spacing:-.07em; }
 .solo-album-cover-kicker,.solo-album-cover-year,.solo-album-kicker,.solo-album-section-number,.solo-album-now-label,.solo-album-note-kind { font-family:var(--font-secondary),sans-serif; font-size:.78rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--primary); }
-.solo-album-intro h1 { margin:.15rem 0 .7rem; font-size:clamp(2.5rem,7vw,4.9rem); line-height:.95; letter-spacing:-.045em; }
+.solo-album-intro h1 { margin:.15rem 0 .55rem; font-size:clamp(2.2rem,6vw,4.6rem); line-height:.95; letter-spacing:-.045em; }
 .solo-album-subtitle { max-width:28rem; margin:0 0 1rem; font-size:1.25rem; font-weight:700; line-height:1.35; }
 .solo-album-intro > p:not(.solo-album-kicker):not(.solo-album-subtitle) { max-width:34rem; line-height:1.6; }
 .solo-album-now { margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--tertiary); }
@@ -48,7 +48,7 @@
 }
 @media (max-width:760px) {
   .solo-album-hero { grid-template-columns:1fr; }
-  .solo-album-cover { width:min(100%,24rem); }
+  .solo-album-cover-image { width:min(100%,24rem); }
   .solo-album-notes { grid-template-columns:1fr; }
 }
 @media (max-width:560px) {
@@ -57,3 +57,4 @@
 }
 .solo-album-cover-image img { display:block; width:100%; height:auto; margin:0; border:2px solid var(--text-color); box-shadow:.6rem .6rem 0 var(--tertiary); }
 @media (prefers-color-scheme:dark) { .solo-album-cover-image img { box-shadow:.6rem .6rem 0 #222; } }
+
