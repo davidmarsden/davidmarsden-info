@@ -675,3 +675,59 @@
     gap: 0.7rem;
   }
 }
+
+/* Algorithm + Blues homepage preview */
+.hub-music .hub-project h3 {
+  margin-bottom: .45rem;
+}
+
+.hub-release-preview-album {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.1rem;
+  padding: 1rem;
+  border: 1px solid var(--tertiary);
+}
+
+.hub-release-art-link {
+  display: block;
+  line-height: 0;
+  flex: 0 0 auto;
+}
+
+.hub-release-preview-album .hub-release-art {
+  display: block;
+  width: 8rem;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.hub-release-preview-album .hub-release-copy {
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+
+.hub-release-preview-album .hub-release-track {
+  display: block;
+  margin: .15rem 0 .65rem;
+  font-size: 1.25rem;
+}
+
+.hub-release-preview-album audio {
+  display: block;
+  width: 100%;
+  max-width: 24rem;
+}
+
+@media (max-width: 640px) {
+  .hub-release-preview-album {
+    align-items: flex-start;
+  }
+
+  .hub-release-preview-album .hub-release-art {
+    width: 7rem;
+  }
+}
