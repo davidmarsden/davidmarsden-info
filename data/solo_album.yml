@@ -56,8 +56,13 @@ tracks:
   - number: 8
     title: "Here Now"
     url: "https://davidmarsden.info/uploads/2026/here-now-5.m4a"
-    kind: "Piers' song · 2009"
-    note: "Written by Piers in 2009 and gifted to me as atonement for taking my guitar amp in 1996 and selling it for super-strength lager. A song about coming out of your own fog and recognising the person and the life that are still here."
+    kind: "Written by Piers · 2009"
+    note: "In 2009 I asked Piers to make amends for selling my Park amp for alcohol thirteen years earlier by writing me a love song I could sing and play to Juli. A few days later a note arrived in the post with a CD, lyrics and chords for Here Now. I made my own arrangement in 2013–14; years later it found its way back into the Hovercraft orbit."
+    links:
+      - label: "Hovercraft interview — FVMusicBlog"
+        url: "https://fvmusicblog.com/interview-hovercraft/"
+      - label: "Here Now — BandLab"
+        url: "https://www.bandlab.com/track/f979b840-128c-f011-b480-6045bd35f0e2?revId=f879b840-128c-f011-b480-6045bd35f0e2"
   - number: 9
     title: "Jimmy Carter"
     url: "https://davidmarsden.info/uploads/2026/jimmy-carter-1.m4a"
