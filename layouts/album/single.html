@@ -34,12 +34,12 @@
     <ol class="solo-album-tracklist">
       {{ range $album.tracks }}
       <li class="solo-album-track" data-track data-index="{{ sub .number 1 }}" data-src="{{ .url }}" data-title="{{ .title }}">
-        <button type="button" class="solo-album-track-play" data-play-track aria-label="Play {{ .title }}">
+        <a href="{{ .url }}" class="solo-album-track-play" data-play-track aria-label="Play {{ .title }}">
           <span class="solo-album-track-number">{{ printf "%02d" .number }}</span>
           <span class="solo-album-track-title">{{ .title }}</span>
           <span class="solo-album-track-kind">{{ .kind }}</span>
           <span class="solo-album-track-icon" aria-hidden="true">▶</span>
-        </button>
+        </a>
       </li>
       {{ end }}
     </ol>
@@ -75,7 +75,7 @@
     <p>Some began as blog posts, some as jokes, some as grief, some as arguments and some by borrowing somebody else's song and seeing where it went.</p>
   </section>
 
-  <noscript><p class="solo-album-noscript">JavaScript is off, but every track remains available through the browser's audio controls by opening its source file.</p></noscript>
+  <noscript><p class="solo-album-noscript">JavaScript is off, so the track titles open the original audio files directly.</p></noscript>
 </main>
 <script src="{{ "solo-album.js" | relURL }}" defer></script>
 {{ end }}
