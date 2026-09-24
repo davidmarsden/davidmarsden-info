@@ -12,7 +12,7 @@
 .solo-album-now strong { margin-top:.2rem; font-size:1.25rem; }
 .solo-album audio { width:100%; margin-top:.8rem; }
 .solo-album-controls { display:flex; gap:.6rem; margin-top:.7rem; }
-.solo-album-controls button,.solo-album-track-play { appearance:none; border:0; background:none; color:inherit; font:inherit; cursor:pointer; }
+.solo-album-controls button,.solo-album-track-play { appearance:none; border:0; background:none; color:inherit; font:inherit; cursor:pointer; text-decoration:none; }
 .solo-album-controls button { padding:.45rem .7rem; border:1px solid var(--tertiary); font-size:.88rem; font-weight:700; }
 .solo-album-controls button:disabled { cursor:default; opacity:.4; }
 .solo-album-section { padding:2.8rem 0; border-top:2px solid var(--tertiary); }
