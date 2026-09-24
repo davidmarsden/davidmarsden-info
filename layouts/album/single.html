@@ -1,0 +1,81 @@
+{{ define "main" }}
+{{ $album := .Site.Data.solo_album }}
+<main class="solo-album" data-album-player>
+  <header class="solo-album-hero">
+    <div class="solo-album-cover" aria-label="{{ $album.title }} by {{ $album.artist }}">
+      <span class="solo-album-cover-kicker">{{ $album.artist }}</span>
+      <strong>{{ $album.title }}</strong>
+      <span class="solo-album-cover-year">{{ $album.year }}</span>
+    </div>
+
+    <div class="solo-album-intro">
+      <p class="solo-album-kicker">Solo album · {{ $album.year }}</p>
+      <h1>{{ $album.title }}</h1>
+      <p class="solo-album-subtitle">{{ $album.subtitle }}</p>
+      <p>{{ $album.intro }}</p>
+
+      <div class="solo-album-now" aria-live="polite">
+        <span class="solo-album-now-label">Now playing</span>
+        <strong data-now-title>{{ (index $album.tracks 0).title }}</strong>
+      </div>
+
+      <audio data-audio controls preload="metadata" src="{{ (index $album.tracks 0).url }}"></audio>
+
+      <div class="solo-album-controls" aria-label="Album playback controls">
+        <button type="button" data-prev>← Previous</button>
+        <button type="button" data-next>Next →</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="solo-album-section" aria-labelledby="tracklist-heading">
+    <p class="solo-album-section-number">01</p>
+    <h2 id="tracklist-heading">Tracklist</h2>
+    <ol class="solo-album-tracklist">
+      {{ range $album.tracks }}
+      <li class="solo-album-track" data-track data-index="{{ sub .number 1 }}" data-src="{{ .url }}" data-title="{{ .title }}">
+        <button type="button" class="solo-album-track-play" data-play-track aria-label="Play {{ .title }}">
+          <span class="solo-album-track-number">{{ printf "%02d" .number }}</span>
+          <span class="solo-album-track-title">{{ .title }}</span>
+          <span class="solo-album-track-kind">{{ .kind }}</span>
+          <span class="solo-album-track-icon" aria-hidden="true">▶</span>
+        </button>
+      </li>
+      {{ end }}
+    </ol>
+  </section>
+
+  <section class="solo-album-section" aria-labelledby="notes-heading">
+    <p class="solo-album-section-number">02</p>
+    <h2 id="notes-heading">Sleeve notes</h2>
+    <div class="solo-album-notes">
+      {{ range $album.tracks }}
+      <article class="solo-album-note" id="{{ .title | urlize }}">
+        <div class="solo-album-note-heading">
+          <span>{{ printf "%02d" .number }}</span>
+          <h3>{{ .title }}</h3>
+        </div>
+        <p class="solo-album-note-kind">{{ .kind }}</p>
+        <p>{{ .note }}</p>
+        {{ with .links }}
+        <p class="solo-album-note-links">
+          <span>From the archive:</span>
+          {{ range $index, $link := . }}{{ if $index }} · {{ end }}<a href="{{ $link.url }}">{{ $link.label }}</a>{{ end }}
+        </p>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="solo-album-section solo-album-about" aria-labelledby="about-album-heading">
+    <p class="solo-album-section-number">03</p>
+    <h2 id="about-album-heading">About this record</h2>
+    <p>This is not an attempt to turn a scattered set of recordings into something grander than it is. It is simply an album-shaped home for songs I have made over the years: originals, covers, rewrites, football songs, political songs, book-inspired songs and things that escaped from the internet.</p>
+    <p>Some began as blog posts, some as jokes, some as grief, some as arguments and some by borrowing somebody else's song and seeing where it went.</p>
+  </section>
+
+  <noscript><p class="solo-album-noscript">JavaScript is off, but every track remains available through the browser's audio controls by opening its source file.</p></noscript>
+</main>
+<script src="{{ "solo-album.js" | relURL }}" defer></script>
+{{ end }}
