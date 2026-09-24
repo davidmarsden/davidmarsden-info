@@ -39,7 +39,8 @@
 
   tracks.forEach((track, index) => {
     const button = track.querySelector('[data-play-track]');
-    button.addEventListener('click', function () {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
       if (current === index && !audio.paused) {
         audio.pause();
       } else {
