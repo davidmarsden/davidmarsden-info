@@ -29,11 +29,15 @@
     {{ $shelfISBN := printf "%v" .isbn }}
     {{ $shelfTitleKey := urlize (default "" .title) }}
     {{ $shelfAuthorKey := urlize (default "" .author) }}
-    {{ $titleLooksSame := or
-      (eq $shelfTitleKey $pageTitleKey)
-      (and $shelfTitleKey (in $pageTitleKey $shelfTitleKey))
-      (and $pageTitleKey (in $shelfTitleKey $pageTitleKey))
-    }}
+    {{ $titleLooksSame := eq $shelfTitleKey $pageTitleKey }}
+    {{ if and (not $titleLooksSame) $shelfTitleKey $pageTitleKey }}
+      {{ $shelfPrefix := printf "%s-" $shelfTitleKey }}
+      {{ $pagePrefix := printf "%s-" $pageTitleKey }}
+      {{ $titleLooksSame = or
+        (hasPrefix $pageTitleKey $shelfPrefix)
+        (hasPrefix $shelfTitleKey $pagePrefix)
+      }}
+    {{ end }}
     {{ $authorLooksSame := or
       (not $pageAuthorKey)
       (not $shelfAuthorKey)
