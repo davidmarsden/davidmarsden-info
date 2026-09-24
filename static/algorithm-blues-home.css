@@ -1,0 +1,44 @@
+/* Algorithm + Blues homepage card */
+.hub-release-preview-album {
+  display: block;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--tertiary);
+}
+
+.hub-release-art-link {
+  display: block;
+  width: min(100%, 18rem);
+  margin: 0 auto 1rem;
+  line-height: 0;
+}
+
+.hub-release-preview-album .hub-release-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.hub-release-preview-album .hub-release-copy {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.hub-release-preview-album .hub-release-track {
+  display: block;
+  margin: .15rem 0 .65rem;
+  font-size: 1.25rem;
+}
+
+.hub-release-preview-album audio {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .hub-release-art-link {
+    width: min(100%, 15rem);
+  }
+}
