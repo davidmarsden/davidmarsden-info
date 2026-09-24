@@ -57,8 +57,10 @@ tracks:
     title: "Here Now"
     url: "https://davidmarsden.info/uploads/2026/here-now-5.m4a"
     kind: "Written by Piers · 2009"
-    note: "In 2009 I asked Piers to make amends for selling my Park amp for alcohol thirteen years earlier by writing me a love song I could sing and play to Juli. A few days later a note arrived in the post with a CD, lyrics and chords for Here Now. I made my own arrangement in 2013–14; years later it found its way back into the Hovercraft orbit."
+    note: "Written by Piers in 2009 and given to me as part of making amends during his recovery. I made my own arrangement in 2013–14; years later it found its way back into the Hovercraft orbit."
     links:
+      - label: "Hovercraft"
+        url: "https://hovercraft.band/"
       - label: "Hovercraft interview — FVMusicBlog"
         url: "https://fvmusicblog.com/interview-hovercraft/"
       - label: "Here Now — BandLab"
