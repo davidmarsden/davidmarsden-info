@@ -7,7 +7,10 @@
   const nowTitle = root.querySelector('[data-now-title]');
   const prev = root.querySelector('[data-prev]');
   const next = root.querySelector('[data-next]');
+  const enhancedControls = root.querySelector('[data-enhanced-controls]');
   let current = 0;
+
+  if (enhancedControls) enhancedControls.hidden = false;
 
   function setActive(index, autoplay) {
     if (index < 0 || index >= tracks.length) return;
@@ -19,7 +22,10 @@
     tracks.forEach((item, i) => {
       item.classList.toggle('is-active', i === index);
       const icon = item.querySelector('.solo-album-track-icon');
-      if (icon) icon.textContent = i === index && !audio.paused ? '❚❚' : '▶';
+      const control = item.querySelector('[data-play-track]');
+      const isPlaying = i === index && !audio.paused;
+      if (icon) icon.textContent = isPlaying ? '❚❚' : '▶';
+      if (control) control.setAttribute('aria-label', (isPlaying ? 'Pause ' : 'Play ') + item.dataset.title);
     });
 
     if (audio.getAttribute('src') !== src) {
@@ -60,21 +66,30 @@
   audio.addEventListener('play', function () {
     tracks.forEach((item, i) => {
       const icon = item.querySelector('.solo-album-track-icon');
-      if (icon) icon.textContent = i === current ? '❚❚' : '▶';
+      const control = item.querySelector('[data-play-track]');
+      const isPlaying = i === current;
+      if (icon) icon.textContent = isPlaying ? '❚❚' : '▶';
+      if (control) control.setAttribute('aria-label', (isPlaying ? 'Pause ' : 'Play ') + item.dataset.title);
     });
   });
 
   audio.addEventListener('pause', function () {
-    const icon = tracks[current] && tracks[current].querySelector('.solo-album-track-icon');
+    const item = tracks[current];
+    const icon = item && item.querySelector('.solo-album-track-icon');
+    const control = item && item.querySelector('[data-play-track]');
     if (icon) icon.textContent = '▶';
+    if (control) control.setAttribute('aria-label', 'Play ' + item.dataset.title);
   });
 
   audio.addEventListener('ended', function () {
     if (current < tracks.length - 1) {
       setActive(current + 1, true);
     } else {
-      const icon = tracks[current] && tracks[current].querySelector('.solo-album-track-icon');
+      const item = tracks[current];
+      const icon = item && item.querySelector('.solo-album-track-icon');
+      const control = item && item.querySelector('[data-play-track]');
       if (icon) icon.textContent = '▶';
+      if (control) control.setAttribute('aria-label', 'Play ' + item.dataset.title);
     }
   });
 
