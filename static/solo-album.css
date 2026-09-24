@@ -1,0 +1,56 @@
+/* Solo album: /music/ */
+.solo-album { max-width:58rem; margin:0 auto; }
+.solo-album-hero { display:grid; grid-template-columns:minmax(15rem,22rem) minmax(0,1fr); gap:clamp(1.5rem,5vw,3.5rem); align-items:center; padding:1.2rem 0 3.2rem; }
+.solo-album-cover { display:flex; aspect-ratio:1; padding:1.45rem; flex-direction:column; justify-content:space-between; border:2px solid var(--text-color); background:linear-gradient(135deg,transparent 0 44%,var(--primary) 44% 47%,transparent 47% 100%),var(--background); box-shadow:.6rem .6rem 0 var(--tertiary); font-family:var(--font-secondary),sans-serif; }
+.solo-album-cover strong { max-width:8ch; font-size:clamp(2.8rem,8vw,5.2rem); line-height:.86; letter-spacing:-.07em; }
+.solo-album-cover-kicker,.solo-album-cover-year,.solo-album-kicker,.solo-album-section-number,.solo-album-now-label,.solo-album-note-kind { font-family:var(--font-secondary),sans-serif; font-size:.78rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--primary); }
+.solo-album-intro h1 { margin:.15rem 0 .7rem; font-size:clamp(2.5rem,7vw,4.9rem); line-height:.95; letter-spacing:-.045em; }
+.solo-album-subtitle { max-width:28rem; margin:0 0 1rem; font-size:1.25rem; font-weight:700; line-height:1.35; }
+.solo-album-intro > p:not(.solo-album-kicker):not(.solo-album-subtitle) { max-width:34rem; line-height:1.6; }
+.solo-album-now { margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--tertiary); }
+.solo-album-now span,.solo-album-now strong { display:block; }
+.solo-album-now strong { margin-top:.2rem; font-size:1.25rem; }
+.solo-album audio { width:100%; margin-top:.8rem; }
+.solo-album-controls { display:flex; gap:.6rem; margin-top:.7rem; }
+.solo-album-controls button,.solo-album-track-play { appearance:none; border:0; background:none; color:inherit; font:inherit; cursor:pointer; }
+.solo-album-controls button { padding:.45rem .7rem; border:1px solid var(--tertiary); font-size:.88rem; font-weight:700; }
+.solo-album-controls button:disabled { cursor:default; opacity:.4; }
+.solo-album-section { padding:2.8rem 0; border-top:2px solid var(--tertiary); }
+.solo-album-section-number { margin:0 0 .35rem; }
+.solo-album-section h2 { margin:0 0 1.5rem; font-size:clamp(1.8rem,4vw,2.8rem); line-height:1; }
+.solo-album-tracklist { margin:0; padding:0; list-style:none; border-top:1px solid var(--tertiary); }
+.solo-album-track { border-bottom:1px solid var(--tertiary); }
+.solo-album-track-play { display:grid; width:100%; grid-template-columns:2.6rem minmax(0,1fr) minmax(8rem,auto) 1.5rem; gap:.7rem; align-items:center; padding:.9rem .2rem; text-align:left; }
+.solo-album-track-play:hover .solo-album-track-title,.solo-album-track-play:focus-visible .solo-album-track-title { text-decoration:underline; text-underline-offset:.15em; }
+.solo-album-track.is-active { background:color-mix(in srgb,var(--primary) 10%,transparent); }
+.solo-album-track.is-active .solo-album-track-icon { color:var(--primary); }
+.solo-album-track-number,.solo-album-track-kind { font-family:var(--font-secondary),sans-serif; font-size:.78rem; }
+.solo-album-track-number { opacity:.65; }
+.solo-album-track-title { font-weight:800; }
+.solo-album-track-kind { text-align:right; opacity:.65; }
+.solo-album-track-icon { text-align:right; }
+.solo-album-notes { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.solo-album-note { padding:1.25rem; border:1px solid var(--tertiary); }
+.solo-album-note-heading { display:grid; grid-template-columns:2rem minmax(0,1fr); gap:.5rem; align-items:baseline; }
+.solo-album-note-heading span { font-family:var(--font-secondary),sans-serif; font-size:.75rem; opacity:.55; }
+.solo-album-note h3 { margin:0; font-size:1.35rem; line-height:1.1; }
+.solo-album-note-kind { margin:.5rem 0 .85rem; }
+.solo-album-note > p:not(.solo-album-note-kind) { line-height:1.55; }
+.solo-album-note-links { margin-top:1rem; padding-top:.8rem; border-top:1px dashed var(--tertiary); font-size:.9rem; }
+.solo-album-note-links span { font-weight:700; }
+.solo-album-about { max-width:44rem; }
+.solo-album-about p { font-size:1.05rem; line-height:1.68; }
+.solo-album-noscript { padding:1rem; border:1px solid var(--tertiary); }
+@media (prefers-color-scheme:dark) {
+  .solo-album-cover-kicker,.solo-album-cover-year,.solo-album-kicker,.solo-album-section-number,.solo-album-now-label,.solo-album-note-kind { color:var(--white); }
+  .solo-album-cover { box-shadow:.6rem .6rem 0 #222; }
+}
+@media (max-width:760px) {
+  .solo-album-hero { grid-template-columns:1fr; }
+  .solo-album-cover { width:min(100%,24rem); }
+  .solo-album-notes { grid-template-columns:1fr; }
+}
+@media (max-width:560px) {
+  .solo-album-track-play { grid-template-columns:2.2rem minmax(0,1fr) 1.25rem; }
+  .solo-album-track-kind { display:none; }
+}
