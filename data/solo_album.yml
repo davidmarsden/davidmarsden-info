@@ -11,7 +11,7 @@ tracks:
     note: "Written in 2025 as an attempt to imagine what a new Hovercraft song might sound like if we wrote and performed one now."
   - number: 2
     title: "Pump Dot IO"
-    url: "https://davidmarsden.info/uploads/2026/53b8e0e522.m4a"
+    url: "https://davidmarsden.info/uploads/2026/3be3106c93.m4a"
     kind: "After Elvis Costello"
     note: "A 2013 riff on Pump It Up, written for This Is Not A Podcast with Evan Prodromou. 'Dents' came from the identi.ca/StatusNet world; 'Pump your life in and out of your friends' was Pump.io's own tagline."
     links:
@@ -31,7 +31,10 @@ tracks:
     title: "Individuality"
     url: "https://davidmarsden.info/uploads/2026/individuality-1.m4a"
     kind: "After Billy Bragg"
-    note: "A take on Sexuality, redirected into local government, civic frustration, Ealing and the difference between celebrating individuality and sharing power."
+    note: "A take on Billy Bragg's Sexuality, written as the musical coda to a Southall Stories piece about Ealing Council's new logo, its promise to respect the individuality of residents, and the gap between branding, consultation and representation."
+    links:
+      - label: "Individuality — Southall Stories"
+        url: "https://southallstories.uk/2026/05/29/individuality/"
   - number: 5
     title: "Doomscrolling"
     url: "https://davidmarsden.info/uploads/2026/doomscrolling.m4a"
@@ -53,8 +56,8 @@ tracks:
   - number: 8
     title: "Here Now"
     url: "https://davidmarsden.info/uploads/2026/here-now-5.m4a"
-    kind: "Original"
-    note: "A song about coming out of your own fog and recognising the person and the life that are still here."
+    kind: "Piers' song · 2009"
+    note: "Written by Piers in 2009 and gifted to me as atonement for taking my guitar amp in 1996 and selling it for super-strength lager. A song about coming out of your own fog and recognising the person and the life that are still here."
   - number: 9
     title: "Jimmy Carter"
     url: "https://davidmarsden.info/uploads/2026/jimmy-carter-1.m4a"
@@ -67,7 +70,7 @@ tracks:
         url: "https://davidmarsden.info/2014/05/17/whatever-happened-to.html"
   - number: 10
     title: "A New Ingerland"
-    url: "https://davidmarsden.info/uploads/2026/3be3106c93.m4a"
+    url: "https://davidmarsden.info/uploads/2026/53b8e0e522.m4a"
     kind: "After Billy Bragg"
     note: "First written in 2014 after years of writing about England's football failures, then updated twelve years later. Older singer, newer disappointments, same old England."
     links:
@@ -79,4 +82,4 @@ tracks:
     title: "Satisfaction"
     url: "https://davidmarsden.info/uploads/2026/satisfaction.m4a"
     kind: "Rolling Stones cover"
-    note: "My acoustic re-arrangement: less swagger, more weary repetition, with the lyric's cycle of frustration taking the place of the famous riff."
+    note: "My preferred electric-guitar and full-band arrangement: still a reinterpretation rather than a Stones replica, but with enough muscle to sit naturally at the end of this album."
