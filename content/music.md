@@ -1,6 +1,6 @@
 ---
-title: "Songs I Made"
+title: "Algorithm + Blues"
 type: "album"
 url: "/music/"
-description: "Eleven songs, covers, rewrites and oddities by David Marsden."
+description: "Algorithm + Blues — eleven songs, covers, rewrites and oddities by David Marsden."
 ---
