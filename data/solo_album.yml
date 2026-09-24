@@ -51,6 +51,9 @@ tracks:
     url: "https://davidmarsden.info/uploads/2026/woven-sky.m4a"
     kind: "Inspired by The Blood of Flowers"
     note: "Inspired by The Blood of Flowers: displacement, the move from village to city, carpet-making, discovery and a young woman learning to shape her own life."
+    links:
+      - label: "Finished reading The Blood of Flowers"
+        url: "https://davidmarsden.info/2010/12/14/finished-reading-the-blood-of.html"
   - number: 7
     title: "All I Want To Do"
     url: "https://davidmarsden.info/uploads/2026/all-i-want-to-do.m4a"
