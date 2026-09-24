@@ -7,10 +7,8 @@
     </div>
 
     <div class="solo-album-intro">
-      <p class="solo-album-kicker">Solo album · {{ $album.year }}</p>
-      <h1>{{ $album.title }}</h1>
-      <p class="solo-album-subtitle">{{ $album.subtitle }}</p>
-      <p>{{ $album.intro }}</p>
+      <h1 class="solo-album-visually-hidden">{{ $album.title }}</h1>
+      <p class="solo-album-kicker">{{ $album.artist }} · Solo album · {{ $album.year }}</p>
 
       <div class="solo-album-now" aria-live="polite">
         <span class="solo-album-now-label">Now playing</span>
@@ -22,6 +20,11 @@
       <div class="solo-album-controls" aria-label="Album playback controls" data-enhanced-controls hidden>
         <button type="button" data-prev>← Previous</button>
         <button type="button" data-next>Next →</button>
+      </div>
+
+      <div class="solo-album-description">
+        <p class="solo-album-subtitle">{{ $album.subtitle }}</p>
+        <p>{{ $album.intro }}</p>
       </div>
     </div>
   </header>
