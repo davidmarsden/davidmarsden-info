@@ -2,10 +2,8 @@
 {{ $album := .Site.Data.solo_album }}
 <main class="solo-album" data-album-player>
   <header class="solo-album-hero">
-    <div class="solo-album-cover" aria-label="{{ $album.title }} by {{ $album.artist }}">
-      <span class="solo-album-cover-kicker">{{ $album.artist }}</span>
-      <strong>{{ $album.title }}</strong>
-      <span class="solo-album-cover-year">{{ $album.year }}</span>
+    <div class="solo-album-cover-image">
+      <img src="{{ $album.cover }}" alt="{{ $album.title }} by {{ $album.artist }} album cover">
     </div>
 
     <div class="solo-album-intro">
