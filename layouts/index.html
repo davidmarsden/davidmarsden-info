@@ -4,7 +4,6 @@
 {{ $lettersToAmerica := where (where .Site.RegularPages "Params.categories" "intersect" (slice "Letters to America" "Letters To America")) "Title" "ne" "" }}
 {{ $matchReports := where .Site.RegularPages "Params.categories" "intersect" (slice "Match Reports") }}
 {{ $musicILove := where .Site.RegularPages "Params.categories" "intersect" (slice "Music I Love") }}
-{{ $songsIMade := where .Site.RegularPages "Params.categories" "intersect" (slice "Songs I Made") }}
 {{ $recipes := where .Site.RegularPages "Params.categories" "intersect" (slice "Recipes") }}
 {{ $quotes := where .Site.RegularPages "Params.categories" "intersect" (slice "Quotes") }}
 {{ $favouritePhotos := default (slice) (index .Site.Data.collections "favouritephotos") }}
@@ -162,7 +161,14 @@
       <p class="hub-label">Solo album · 2026</p>
       <h3><a href="{{ "music/" | relURL }}">Songs I Made</a></h3>
       <p>Eleven originals, covers, rewrites and oddities — songs made, borrowed, bent and broke over the years.</p>
-      <p class="hub-project-link"><a href="{{ "music/" | relURL }}">Listen to the album →</a></p>
+      <div class="hub-release-preview" aria-label="Preview David Marsden's solo album Songs I Made" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-top:1.25rem;padding:1rem;border:1px solid var(--tertiary);">
+        <div class="hub-release-copy" style="flex:1 1 18rem;min-width:0;">
+          <span class="hub-listen-label">Listen from the beginning</span>
+          <strong style="display:block;margin:.15rem 0 .65rem;font-size:1.25rem;">Since You Turned On</strong>
+          <audio src="https://davidmarsden.info/uploads/2026/since-you-turned-on.m4a" controls="controls" preload="metadata" style="display:block;width:100%;max-width:28rem;"></audio>
+        </div>
+      </div>
+      <p class="hub-project-link"><a href="{{ "music/" | relURL }}">Open the full album →</a></p>
     </article>
 
     <article class="hub-project hub-project-featured">
@@ -180,24 +186,15 @@
       <p class="hub-project-link"><a href="https://hovercraft.band/jukebox/">Open the Hovercraft Jukebox →</a></p>
     </article>
 
-    {{ if or (gt (len $musicILove) 0) (gt (len $songsIMade) 0) }}
-    <div class="hub-project-grid">
+    {{ if gt (len $musicILove) 0 }}
       {{ range first 1 (shuffle $musicILove) }}
-      <article class="hub-project">
+      <article class="hub-project hub-project-featured hub-music-loved">
         <p class="hub-label">Music I Love</p>
         <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
+        <p>{{ if .Title }}{{ replace .Plain .Title "" | htmlUnescape | truncate 180 }}{{ else }}{{ .Plain | htmlUnescape | truncate 180 }}{{ end }}</p>
         <p class="hub-project-link"><a href="{{ .Permalink }}">Read the post →</a></p>
       </article>
       {{ end }}
-
-      {{ range first 1 (shuffle $songsIMade) }}
-      <article class="hub-project">
-        <p class="hub-label">Songs I Made</p>
-        <h3><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}{{ .Plain | htmlUnescape | truncate 70 }}{{ end }}</a></h3>
-        <p class="hub-project-link"><a href="{{ .Permalink }}">Read the post →</a></p>
-      </article>
-      {{ end }}
-    </div>
     {{ end }}
   </section>
 
