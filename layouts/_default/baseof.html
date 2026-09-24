@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  {{ $metaDescription := .Summary | plainify | truncate 160 }}
+  {{ with .Params.description }}{{ $metaDescription = . | plainify | truncate 160 }}{{ end }}
   {{ if .IsHome }}
     <title>David Marsden — Writing, investigating &amp; building things</title>
     <meta name="description" content="Writing, investigating, building things and occasionally creating a ruckus — local journalism, civic tech, football worlds, music and more.">
@@ -14,11 +16,11 @@
     <meta name="twitter:description" content="Writing, investigating, building things and occasionally creating a ruckus — local journalism, civic tech, football worlds, music and more.">
   {{ else }}
     <title>{{ if .Title }}{{ .Title | plainify | htmlUnescape }} | {{ .Site.Title }}{{ else }}{{ delimit (split (.Summary | plainify | htmlUnescape) " " | first 5) " " }} … | {{ .Site.Title }}{{ end }}</title>
-    <meta name="description" content="{{ .Summary | plainify | truncate 160 }}">
+    <meta name="description" content="{{ $metaDescription }}">
     <meta property="og:title" content="{{ if .Title }}{{ .Title | plainify | htmlUnescape }}{{ else }}{{ .Site.Title }}{{ end }}">
-    <meta property="og:description" content="{{ .Summary | plainify | truncate 160 }}">
+    <meta property="og:description" content="{{ $metaDescription }}">
     <meta name="twitter:title" content="{{ if .Title }}{{ .Title | plainify | htmlUnescape }}{{ else }}{{ .Site.Title }}{{ end }}">
-    <meta name="twitter:description" content="{{ .Summary | plainify | truncate 160 }}">
+    <meta name="twitter:description" content="{{ $metaDescription }}">
   {{ end }}
 
   <meta property="og:url" content="{{ .Permalink }}">
@@ -58,6 +60,9 @@
   <link rel="canonical" href="{{ .Permalink }}">
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
   <link rel="stylesheet" href="{{ "css/all.min.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
+  {{ if eq .RelPermalink "/music/" }}
+  <link rel="stylesheet" href="{{ "solo-album.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
+  {{ end }}
   {{ partial "microblog_head.html" . }}
   {{ if templates.Exists "partials/microhook-head.html" }}
   {{ partial "microhook-head.html" . }}
@@ -76,6 +81,7 @@
         <li><a class="page-link About" href="{{ "about/" | relURL }}">About</a></li>
         <li><a class="page-link Photos" href="{{ "photos/" | relURL }}">Photos</a></li>
         <li><a class="page-link Library" href="{{ "library/" | relURL }}">Library</a></li>
+        <li><a class="page-link Music" href="{{ "music/" | relURL }}">Music</a></li>
         <li><a class="page-link Archive" href="{{ "archive/" | relURL }}">Archive</a></li>
         <li><a class="page-link Subscribe" href="{{ "subscribe/" | relURL }}">Subscribe</a></li>
       </ul>
